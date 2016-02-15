@@ -1,0 +1,7 @@
+{
+  "name": "express-test",
+  "description": "a test repo for using Express",
+  "dependencies": {
+    "express": "^4.13.4"
+  }
+}
