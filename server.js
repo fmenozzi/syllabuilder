@@ -2,9 +2,10 @@ var express = require('express');
 
 var app = express();
 
-app.use(express.static(__dirname + '/'));
+app.use(express.static(__dirname + "/public"));
 
-var server = app.listen(8000, function() {
+// Start server on localhost:8000
+var server = app.listen(8000, 'localhost', function() {
     var host = server.address().address;
     var port = server.address().port;
 
@@ -13,6 +14,8 @@ var server = app.listen(8000, function() {
     console.log("Port: '%s'", port);
 });
 
-app.get('/', function(req, res) {
-    res.send("Hello from Express!");
+// Handle GET requests to /test
+app.get('/test', function(req, res) {
+    res.status(200).json({mydata: "Hello from Express!"});
 });
+

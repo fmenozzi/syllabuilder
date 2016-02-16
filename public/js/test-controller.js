@@ -46,15 +46,19 @@ app.controller('basic-services-controller', function($scope, $location, $interva
 });
 
 app.controller('basic-http-controller', function($scope, $http) {
-	// Use localhost on port 8000 as a test server
-	$scope.serverURL = "http://localhost:8000/";
+	// Use server at localhost:8000
+	var baseURL = "http://localhost:8000";
+	var getPath = "/test";
 
-	$http.get($scope.serverURL).then(
-	function(response) { // Success
-        $scope.resp = "Success! ("+response.status+"): " + response.data;
+	$scope.serverURL = baseURL + getPath;
+
+	// Make GET request to retrieve sample JSON
+	$http.get(getPath).then(
+	function(resp) { // Success
+        $scope.resp = resp.data.mydata;
     },
-    function(response) { // Failure
-    	$scope.resp = "Failure! " + response.status;
+    function(resp) { // Failure
+    	$scope.resp = "Failure! " + resp.status;
     });
 });
 
