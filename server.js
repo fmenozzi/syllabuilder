@@ -14,7 +14,10 @@ db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', function() {console.log("We're connected!");});
 
 // Define Section schema
-var sectionSchema = mongoose.Schema({title: String});
+var sectionSchema = mongoose.Schema({
+    title: String,
+    sampleLanguage: [String],
+});
 var Section = mongoose.model('Section', sectionSchema);
 
 // Delete database (so that we have a fresh copy every time we connect)
@@ -23,9 +26,9 @@ Section.remove({}, function(err) {
 });
 
 // Make three sections
-var section1 = new Section({title: "Course Name"});
-var section2 = new Section({title: "Learning Objectives"});
-var section3 = new Section({title: "Prerequisites"});
+var section1 = new Section({title: "Course Name", sampleLanguage: ["Sample1", "Sample2"]});
+var section2 = new Section({title: "Learning Objectives", sampleLanguage: ["Sample1", "Sample2"]});
+var section3 = new Section({title: "Prerequisites", sampleLanguage: ["Sample1", "Sample2"]});
 
 // DB insert callback
 var saveCallback = function(err, section) {
@@ -60,20 +63,24 @@ var server = app.listen(8000, 'localhost', function() {
 
 // Handle GET requests to /test
 app.get('/test', function(req, res) {
-    // Log query parameters from GET request
-    console.log("GET request params: " + req.query.titles);
-
-    // Return JSON object with all titles from the database
-    if (req.query.titles === "all") {
+    // Return JSON object with all sections from the database
+    if (req.query.sections === "all") {
         Section.find(function(err, sections) {
             if (err) {
                 res.status(404).json({});
             } else {
-                var allTitles = [];
+                // Construct JSON response that includes title
+                // and sample language
+                var allSections = [];
                 for (var i = 0; i < sections.length; i++) {
-                    allTitles.push(sections[i].title);
+                    allSections.push({
+                        title: sections[i].title,
+                        sampleLanguage: sections[i].sampleLanguage
+                    });
                 }
-                res.status(200).json({titles: allTitles});
+                res.status(200).json({
+                    sections: allSections
+                });
             }
         });
     } else {

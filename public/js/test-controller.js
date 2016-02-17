@@ -53,11 +53,11 @@ app.controller('basic-http-controller', function($scope, $http) {
     $scope.serverURL = baseURL + getPath;
 
     // Success and failure callbacks
-    var success = function(resp) {$scope.titles = resp.data.titles;};
-    var failure = function(resp) {$scope.titles = "Failure! " + resp.status;};
+    var success = function(resp) {$scope.sections = resp.data.sections;};
+    var failure = function(resp) {$scope.sections = "Failure! " + resp.status;};
 
-    // Make GET request to retrieve sample JSON using query "?titles=all"
-    $http.get(getPath, {params: {titles: "all"}}).then(success, failure);
+    // Make GET request to retrieve sample JSON using query "?sections=all"
+    $http.get(getPath, {params: {sections: "all"}}).then(success, failure);
 });
 
 app.controller('dragula-controller', function($scope) {
