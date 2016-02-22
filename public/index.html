@@ -9,11 +9,10 @@
 
     <head>
         <link rel="stylesheet" type="text/css" href="css/dragula.min.css"></link>
-        <link rel="stylesheet" type="text/css" href="css/index.css"></link>
     </head>
 
     <body ng-app="test-app">
-        <div class="Name" ng-controller="basic-name-controller">
+        <div ng-controller="basic-name-controller">
             <h2>Basic Name Controller</h2>
             <!-- Use ng-model to bind data and {{}} to evaluate expressions -->
             <div>First Name: <input type="text" ng-model="firstName"></div>
@@ -61,8 +60,8 @@
             <p> Making GET request to {{serverURL}} </p>
             <p> Response from server:</p>
             <ul>
-                <li ng-repeat="t in titles">
-                    {{t}}
+                <li ng-repeat="s in sections">
+                    {{s.title}}
                 </li>
             </ul>
         </div>
