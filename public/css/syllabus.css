@@ -7,7 +7,7 @@ header {
     position: fixed;
 	text-align:center;
     width: 100%;
-    height: 40px;
+    height: 100px;
     top: 0px;
     left: 0px; 
     margin: auto; 
@@ -15,100 +15,25 @@ header {
 	
 }
 
-header span {
-    font-weight: bold;
-    font-size: 25px;
+header .mainTitle{
+	display:inline-block;
+	font-weight: bold-blue;
+    font-size: 50px;
     color: white;
     position: relative;
     top: 20%;
     left: 1%;
 }
-
-
-#main h2 {
-    text-align: center;
-}
-#main {
-    width: 75%;
-    margin: 5% auto;
-}
-
-#section1 {
-    min-height: 50px;
-    width: 80%;
-    margin: auto;
-	font-size:0px;
+header .section1{
+	display:inline-block;
+	float:right;
+	position:relative;	
 	
 }
-#section1 button,#section1 div{
-	display: inline-block;
-	width:25%;
-	height:25%;
-	margin:none;
-	font-size:20px;
-	background-color:lightgrey;
-	white-space:nowrap;
-	overflow:hidden;
-	
-}
-#section1 button:active{	
-}
-#section2 {
-    min-height: 50px;
-    width: 80%;
-    margin: auto;
-	font-size:0px;
-}
-#section2 button,#section2 div{
-	display: inline-block;
-	width:25%;
-	height:25%;
-	margin:none;
-	font-size:20px;
-	background-color:lightgrey;	
-	white-space:nowrap;
-	overflow:hidden;
-}
-#section2 button:active{	
-}
 
-
-.labels {
-    display: block;
-    min-width: 125px;
-    margin: 10px;
-    padding: 10px;
-    background-color: whitesmoke;
-}
-.inputs {
-    text-align: center-left;    
-    float: left;
-    display: inline-block;
-}
-#editing .texts .content{
-	transform: scaleY(0);
-	transition:transform 0.20s ease-in-out;
-	
-}
-#editing {
-    margin-top: 40px;
-    margin-left: 11%;
-}
-#editing h3 {
-    line-height: 0.15em;
-}
-#editing p {
-    line-height: 1em;
-    color: grey;
-}
-#editing textarea {
-    font-family: 'Verdana', sans-serif;
-    min-width: 500px;
-    min-height: 200px;
-}
-.texts {
-    padding: 10px;
+.subSection{
+	padding: 10px;
     border: 3px solid lightgrey;
     width: 60%;
-}    
 
+}

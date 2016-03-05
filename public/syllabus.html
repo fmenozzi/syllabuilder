@@ -5,17 +5,7 @@
     <script src="js/test-controller.js"></script>
 	<script src="js/syllabus.js"></script>
     <script src="js/dragula.min.js"></script>
-       <script>
-        function toggle(id){
-            if (document.getElementById(id).style.backgroundColor=="red") {
-                document.getElementById(id).style.backgroundColor="transparent";
-            } else {
-                document.getElementById(id).style.backgroundColor="red";
-            }
-        }
-        </script>
-
-
+       
     <head>
         <title>Syllabuilder</title>
         <link rel="stylesheet" type="text/css" href="css/dragula.min.css">
@@ -26,64 +16,17 @@
     <body ng-app="test-app">
         <header>   							
 			<div id="mainSection">	
-				<h2 id="logo">
-				<img class="img" alt="image1" src="http://identity.uncods.webfactional.com/wp-content/uploads/2014/02/image11.jpg" 
-							srcset="http://identity.unc.edu/wp-content/uploads/2014/02/image11-300x86.jpg 300w, http://identity.unc.edu/wp-content/uploads/2014/02/image11.jpg 436w" sizes="(max-width: 436px) 100vw, 436px" height="125" width="436">
-				<span> UNC Syllabuilder </span>	
-				<!---	<div class='mainS' id='Home_text'>
-					<h3> Home </h3>
-				</div>	
-				<div class='mainS' id='About_text'>
-					<h3> About </h3>
-				</div>-->
-			</div>
+				<div class="mainTitle"> <span> UNC Syllabuilder </span>	</div>
+					<div class="section1"> <a href="about.html"> <span class="About"> About </span> </a>  
+											<a href="creator.html"> <span class="About"> Create a Syllabus </span>  </a> </div>										
+				  <p> Welcome to the home page! </p>				
+			</div>			
         </header>
-
-        <div id='main'>		
-            <div id="selection" ng-controller="Syllabuilder">				
-                <h2>Syllabuilder</h2>
-                
-                <div id="section1">
-					<button id="inputs" onclick="toggleButton(this)" toggle-class="active">Title</button>
- 
-                    <button id="inputs" onclick="toggleButton(this)" toggle-class="active">Prerequisite</button>
-					
-                    <button id="inputs" onclick="toggleButton(this)" toggle-class="active">Extra Info</button>
-                        
-                    <button id="inputs" onclick="toggleButton(this)" toggle-class="active">Objective</button>
-                </div>    
-            
-                <div id="section2">
-                    <button id="inputs" onclick="toggleButton(this)" toggle-class="active">Schedule</button>
-                   
-                    <button id="inputs" onclick="toggleButton(this)" toggle-class="active">Honor Code</button>
-                    
-                    <button id="inputs" onclick="toggleButton(this)" toggle-class="active">Expectations</button>
-                    
-                    <button id="inputs" onclick="toggleButton(this)" toggle-class="active">Computer Policies</button>
-                </div>    
-            </div>   
-
-            <div id="editing">				
-					<div class='texts' id='title_text'> 
-					<h3 onclick="toggleEC(this)"> Title </h3>	
-					<div class="content"> 
-					   <p> Edit | Reorder | Delete </p>
-                       <!-- <input type='text' placeholder="lorem ipsum" characters='500'> -->
-                       <textarea rows="10" cols="50" placeholder="lorem ipsum"> </textarea>	
-
-					   </div>
-					</div>								
-				   
-				   <div class='texts' id='Prerequisite_text'>
-						<h3 onclick="toggleEC(this)"> Prerequisite </h3>
-						<p> Edit | Reorder | Delete </p>
-						<!-- <input type='text' placeholder="lorem ipsum" characters='500'> -->
-						<textarea rows="10" cols="50" placeholder="lorem ipsum"> </textarea>
-				    </div>	   
-            </div>
-
-        </div>
-
+		
+		<div id="subSection">
+			<div class="subSection">
+				<p> You can create syllabus here </p> 
+			</div>
+		</div>		
     </body>
 </html>
