@@ -1,0 +1,39 @@
+body {
+    font-family: "Verdana", sans-Seriff;
+}
+
+header {
+    background: #7BAFD4;
+    position: fixed;
+	text-align:center;
+    width: 100%;
+    height: 100px;
+    top: 0px;
+    left: 0px; 
+    margin: auto; 
+    z-index: 100000;
+	
+}
+
+header .mainTitle{
+	display:inline-block;
+	font-weight: bold-blue;
+    font-size: 50px;
+    color: white;
+    position: relative;
+    top: 20%;
+    left: 1%;
+}
+header .section1{
+	display:inline-block;
+	float:right;
+	position:relative;	
+	
+}
+
+.subSection{
+	padding: 10px;
+    border: 3px solid lightgrey;
+    width: 60%;
+
+}
