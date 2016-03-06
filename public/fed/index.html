@@ -48,7 +48,7 @@
 			<!-- Bottom button panel -->
 			<div class="bottom">
 				<span class="preview-button" style="background: #99BADD; color: #ffffff;" ng-click="preview()">Preview</span>
-				<span class="export-button"  style="background: #99BADD; color: #ffffff;" ng-click="export()" >Export to Word</span>
+				<a class="export-button" style="background: #99BADD; color: #ffffff;" ng-click="export()" ng-href="{{fileUrl}}" download="syllabus.docx">Export to Word</a>
 			</div>
 		</div>
 	</body>

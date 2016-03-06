@@ -1,5 +1,11 @@
 var app = angular.module('syllabuilder', []);
 
+// Needed for cross-browser (i.e modern browsers + IE10) download support
+app.config(['$compileProvider', function ($compileProvider) {
+    $compileProvider.aHrefSanitizationWhitelist(/^\s*(|blob|):/);
+}]);
+
+// The contents of each section
 var sectionContents = {
 	"Title": 		 "",
 	"Course Info":   "",
@@ -16,7 +22,7 @@ var sectionContents = {
 // Construct HTML representation of section contents
 // TODO: Handle newlines in the textarea more elegantly in the final HTML
 var constructHTML = function() {
-	var html = "<html> <head></head> <body style='font-family: Arial;'>\n";
+	var html = "<!DOCTYPE html><html> <head></head> <body style='font-family: Arial;'>\n";
 
 	for (section in sectionContents) {
 		if (sectionContents.hasOwnProperty(section)) {	// Make sure it's our own property and not from the prototype
@@ -33,7 +39,7 @@ var constructHTML = function() {
 	return html;
 };
 
-app.controller('main-controller', function($scope) {
+app.controller('main-controller', function($scope, $window) {
 	// Save contents of text editor to appropriate section
 	$scope.saveSection = function(text, currentSection, lastSection) {
 		// Toggle button background colors
@@ -68,10 +74,11 @@ app.controller('main-controller', function($scope) {
 		previewWindow.document.write(html);
 	};
 
-	// Masquerade section contents as .docx file by writing .html
 	$scope.export = function() {
-		// TODO: Implement me!
-		var exportWindow = window.open();
-		exportWindow.document.write("Implement me!");
-	}
+		$scope.html = constructHTML();
+		$scope.blob = new Blob([$scope.html], { type: 'text/html' });
+		$scope.url  = $window.URL || $window.webkitURL;
+
+		$scope.fileUrl = $scope.url.createObjectURL($scope.blob);
+	};
 });
