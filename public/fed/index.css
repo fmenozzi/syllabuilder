@@ -37,7 +37,7 @@ body {
 	padding-bottom: 40px;
 }
 
-.toggle-button {
+.section-button {
 	-webkit-border-radius: 6;
 	-moz-border-radius: 6;
 	border-radius: 6px;
@@ -67,9 +67,9 @@ body {
 	margin-bottom: 7px;
 }
 
-.toggle-button:hover {
-	background: #e0e0e0;
-	text-decoration: none;
+.section-button:hover {
+	background: #e0e0e0!important;
+	text-decoration: none!important;	
 }
 
 .editor {
