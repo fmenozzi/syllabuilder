@@ -2,9 +2,9 @@ var app = angular.module('syllabuilder', []);
 
 var savedSections = {
 	"Title": 		 "",
-	"Course Info":   "",  
-	"Objectives":    "",
+	"Course Info":   "",
 	"Description":   "",
+	"Objectives":    "",
 	"Prerequisites": "",
 	"Required Text": "",
 	"Grading":       "",
