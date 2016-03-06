@@ -48,8 +48,10 @@
 
 		<!-- Bottom button panel -->
 		<div class="bottom">
-			<span class="preview-button" style="background: #33dd33; color: #ffffff;">Preview</span>
-			<span class="export-button"  style="background: #3333dd; color: #ffffff;">Export to Word</span>
+			<div ng-controller="bottom-buttons-controller">
+				<span class="preview-button" style="background: #99BADD; color: #ffffff;" ng-click="preview()">Preview</span>
+				<span class="export-button"  style="background: #99BADD; color: #ffffff;" ng-click="export()" >Export to Word</span>
+			</div>
 		</div>
 	</body>
 </html>
