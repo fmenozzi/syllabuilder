@@ -13,7 +13,28 @@ var sectionContents = {
 	"Disclaimer":    "",
 };
 
-app.controller('keep-track-of-text', function($scope) {
+// Construct HTML representation of section contents
+// TODO: Handle newlines in the textarea more elegantly in the final HTML
+var constructHTML = function() {
+	var html = "<html> <head></head> <body style='font-family: Arial;'>\n";
+
+	for (section in sectionContents) {
+		if (sectionContents.hasOwnProperty(section)) {	// Make sure it's our own property and not from the prototype
+			if (sectionContents[section] !== "" && sectionContents[section] !== undefined) {
+				html += "<h2>" + section + "</h2>\n";
+				html += sectionContents[section] + "\n";
+				html += "<p></p>\n\n"
+			}
+		}
+	}
+
+	html += "</body></html>";
+
+	return html;
+};
+
+app.controller('main-controller', function($scope) {
+	// Save contents of text editor to appropriate section
 	$scope.saveSection = function(text, currentSection, lastSection) {
 		// Toggle button background colors
 		document.getElementById(lastSection).style.background    = "#ffffff";
@@ -31,11 +52,26 @@ app.controller('keep-track-of-text', function($scope) {
 		// Update last section
 		$scope.lastSection = currentSection;
 	};
-});
 
-app.controller('bottom-buttons-controller', function($scope) {
+	// Preview current contents of section in another tab
 	$scope.preview = function() {
+		// Save current text to appropriate object
+		$scope.saveSection($scope.text, $scope.currentSection, $scope.lastSection);
+
+		// Create preview window in new tab
 		var previewWindow = window.open();
-		previewWindow.document.write("<html> <head></head> <body>Hello, World!</body> </html>");
+
+		// Construct final HTML from section contents
+		var html = constructHTML();
+
+		// Write final HTML to preview window
+		previewWindow.document.write(html);
 	};
+
+	// Masquerade section contents as .docx file by writing .html
+	$scope.export = function() {
+		// TODO: Implement me!
+		var exportWindow = window.open();
+		exportWindow.document.write("Implement me!");
+	}
 });

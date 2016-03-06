@@ -18,7 +18,7 @@
 			<span class="tagline">Let's build a better syllabus</span>
 		</div>
 
-		<div ng-controller='keep-track-of-text'>
+		<div ng-controller='main-controller'>
 			<!-- Left button panel -->
 			<div class="left-side" ng-init="placeholderText='Title'; lastSection='Title'; currentSection='Title';">			
 				<div class="section-button" id="Title"         ng-click="saveSection(text, 'Title',         lastSection)">Title</div>
@@ -44,11 +44,9 @@
 					<textarea class="editor" placeholder="{{placeholderText}}" ng-model="text"></textarea>
 				</div>
 			</div>
-		</div>
 
-		<!-- Bottom button panel -->
-		<div class="bottom">
-			<div ng-controller="bottom-buttons-controller">
+			<!-- Bottom button panel -->
+			<div class="bottom">
 				<span class="preview-button" style="background: #99BADD; color: #ffffff;" ng-click="preview()">Preview</span>
 				<span class="export-button"  style="background: #99BADD; color: #ffffff;" ng-click="export()" >Export to Word</span>
 			</div>
