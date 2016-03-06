@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+	<!-- Angular -->
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+
+    <!-- Controllers -->
+    <script src="controller.js"></script>
+
+    <!-- CSS -->
+	<head>
+		<link rel="stylesheet" type="text/css" href="index.css"></link>
+	</head>
+
+	<body ng-app="syllabuilder">
+		<!-- Top header -->
+		<div class="header">
+			<span class="title">Syllabuilder</span>
+			<span class="tagline">Let's build a better syllabus</span>
+		</div>
+
+		<!-- Left button panel -->
+		<div class="left-side">
+			<div class="toggle-button" ng-click="text='Title'"        >Title</div> 
+			<div class="toggle-button" ng-click="text='Course Info'"  >Course Info</div>
+			<div class="toggle-button" ng-click="text='Objectives'"   >Objectives</div> 
+			<div class="toggle-button" ng-click="text='Description'"  >Description</div>
+			<div class="toggle-button" ng-click="text='Prerequisites'">Prerequisites</div> 
+			<div class="toggle-button" ng-click="text='Required Text'">Required Text</div>
+			<div class="toggle-button" ng-click="text='Grading'" 	  >Grading</div> 
+			<div class="toggle-button" ng-click="text='Exams'"        >Exams</div>
+			<div class="toggle-button" ng-click="text='Honor Code'"   >Honor Code</div>
+			<div class="toggle-button" ng-click="text='Disclaimer'"   >Disclaimer</div>	
+		</div>
+
+		<!-- Text editor -->
+		<div class="right-side">
+			<div>
+				<textarea class="editor" placeholder="{{text}}"></textarea>
+			</div>
+		</div>
+
+		<!-- Bottom button panel -->
+		<div class="bottom">
+			<span class="toggle-button">Preview</span>
+			<span class="toggle-button">Export to Word</span>
+		</div>
+	</body>
+</html>
