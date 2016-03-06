@@ -17,7 +17,7 @@ app.controller('keep-track-of-text', function($scope) {
 	$scope.saveSection = function(text, currentSection, lastSection) {
 		// Toggle button background colors
 		document.getElementById(lastSection).style.background    = "#ffffff";
-		document.getElementById(currentSection).style.background = "#dddddd";
+		document.getElementById(currentSection).style.background = "#e0e0e0";
 
 		// Set default placeholder text to be current section being edited
 		$scope.placeholderText = currentSection;

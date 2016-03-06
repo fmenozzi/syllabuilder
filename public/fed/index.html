@@ -20,10 +20,7 @@
 
 		<div ng-controller='keep-track-of-text'>
 			<!-- Left button panel -->
-			<div class="left-side" ng-init="placeholderText='Title'; lastSection='Title'; currentSection='Title';">
-				<!-- Call saveSection() once before any clicks -->
-				{{saveSection(text, currentSection, lastSection)}}
-				
+			<div class="left-side" ng-init="placeholderText='Title'; lastSection='Title'; currentSection='Title';">			
 				<div class="section-button" id="Title"         ng-click="saveSection(text, 'Title',         lastSection)">Title</div>
 				<div class="section-button" id="Course Info"   ng-click="saveSection(text, 'Course Info',   lastSection)">Course Info</div>
 				<div class="section-button" id="Objectives"    ng-click="saveSection(text, 'Objectives',    lastSection)">Objectives</div>
