@@ -46,6 +46,9 @@ app.controller('main-controller', function($scope, $window) {
 		document.getElementById(lastSection).style.background    = "#ffffff";
 		document.getElementById(currentSection).style.background = "#e0e0e0";
 
+		// Set current section
+		$scope.currentSection = currentSection;
+
 		// Set default placeholder text to be current section being edited
 		$scope.placeholderText = currentSection;
 
@@ -74,11 +77,14 @@ app.controller('main-controller', function($scope, $window) {
 		previewWindow.document.write(html);
 	};
 
+	// Export HTML to .docx file (Word will take care of the rest)
 	$scope.export = function() {
-		$scope.html = constructHTML();
-		$scope.blob = new Blob([$scope.html], { type: 'text/html' });
-		$scope.url  = $window.URL || $window.webkitURL;
+		// Save current text to appropriate object
+		$scope.saveSection($scope.text, $scope.currentSection, $scope.lastSection);
 
-		$scope.fileUrl = $scope.url.createObjectURL($scope.blob);
+		// 
+		$scope.html    = constructHTML();
+		$scope.blob    = new Blob([$scope.html], { type: 'text/html' });
+		$scope.fileUrl = ($window.URL || $window.webkitURL).createObjectURL($scope.blob);
 	};
 });
