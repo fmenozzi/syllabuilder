@@ -82,7 +82,7 @@ app.controller('main-controller', function($scope, $window) {
 		// Save current text to appropriate object
 		$scope.saveSection($scope.text, $scope.currentSection, $scope.lastSection);
 
-		// 
+		// Prompt file download
 		$scope.html    = constructHTML();
 		$scope.blob    = new Blob([$scope.html], { type: 'text/html' });
 		$scope.fileUrl = ($window.URL || $window.webkitURL).createObjectURL($scope.blob);
