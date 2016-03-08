@@ -89,4 +89,19 @@ app.controller('main-controller', function($scope, $window) {
 		$scope.blob    = new Blob([$scope.html], { type: 'text/html' });
 		$scope.fileUrl = ($window.URL || $window.webkitURL).createObjectURL($scope.blob);
 	};
+
+	// Clear all data
+	$scope.clear = function() {
+		if (confirm("Are you sure you want to clear all edit data?")) {
+			// Clear section data
+			for (section in sectionContents) {
+				if (sectionContents.hasOwnProperty(section) && sectionContents[section] !== undefined) {
+					sectionContents[section] = "";
+				}
+			}
+
+			// Clear text editor
+			$scope.text = "";
+		}
+	}
 });
