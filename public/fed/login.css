@@ -1,0 +1,93 @@
+body {
+	width: 900px;
+	margin: auto;
+	margin-top: -1px;
+	overflow-x: hidden;
+	font-family: Arial;
+}
+
+header {
+	font-family: Arial;
+	height: 50px;
+	padding: 5px 0 0px 5px;
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	color: white;
+	background-color: #93c1ee;
+}
+
+#unc_logo {
+	display: inline;
+	position: relative;
+	height: 75px;
+	margin-top: -16px;
+	margin-left: -5px;
+}
+#title {
+	font-size: 36px;
+	font-weight: bold;
+	display: block;
+	color: white;
+	width: 210px;
+	margin: -62px auto 0 auto;
+}
+#about {
+	position: absolute;
+	right: 15px;
+	top: 17px;
+	font-size: 18px;
+}
+#about a {
+	text-decoration: none !important;
+	color: white;
+}
+#about a:hover {
+	color: #235d86;
+}
+.tagline {
+	padding-left: 25px;
+	font-size: 18px;
+	position: relative;
+	left: 230px;
+	top: -30px;
+	color: #235d86;
+}
+h1 {
+	text-align: center;
+}
+#login_box {
+	background: #93c1ee;
+	/*color: #235d86;*/
+	padding: 30px;
+	display: block;
+	width: 360px;
+	height: 150px;
+	margin: 250px auto 0 auto;
+}
+#fields {
+	width: 310px;
+	margin: -10px auto 0 auto;
+}
+#fields span {
+	/*font-weight: bold;*/
+	font-size: 1.15em;
+}
+input[type="text"]{
+	height: 30px;
+	width: 200px;
+	font-size: 1.25em;
+}
+input[type="password"] {
+	height: 30px;
+	width: 200px;
+	font-size: 1.25em;
+	margin-left: 4px;
+}
+button {
+	display: block;
+	width: 100px;
+	height: 35px;
+	margin: 0 auto;
+}

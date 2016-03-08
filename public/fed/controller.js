@@ -43,8 +43,10 @@ app.controller('main-controller', function($scope, $window) {
 	// Save contents of text editor to appropriate section
 	$scope.saveSection = function(text, currentSection, lastSection) {
 		// Toggle button background colors
-		document.getElementById(lastSection).style.background    = "#ffffff";
-		document.getElementById(currentSection).style.background = "#e0e0e0";
+		document.getElementById(lastSection).style.background    = "white";
+		document.getElementById(currentSection).style.background = "#235d86";
+		document.getElementById(lastSection).style.color    = "#575757";
+		document.getElementById(currentSection).style.color = "white";
 
 		// Set current section
 		$scope.currentSection = currentSection;
