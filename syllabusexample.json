@@ -1,0 +1,77 @@
+{
+	"section": "Course Identifiers",
+	"course": { "department": "COMP", 
+				"courseNum": 523,
+				"sectionNum": 001
+				},
+	"term": "Spring 2016",
+	"meetings": "Tuesday/Thursday 3:30pm-4:45pm"
+}
+
+{
+	"section": "Instructor Identifiers",
+	"name": "Dr. David Stotts",
+	"location": "FB 144",
+	"officeHours": "Mon 1:00-2:30 or by appointment",
+	"phoneNum": "(919)590-6133",
+	"email": "help-comp523@cs.unc.edu",
+	"website": "www.cs.unc.edu/~stotts/COMP523-s16"
+}
+
+{
+	"section": "Target Audience",
+	"text": "This course is intended for students with a computer science background who wish to learn about and engage in modern software engineering practices."
+}
+
+{
+	"section": "Course Prerequisites",
+	"reqCourses": ["COMP 401", "COMP 410", "COMP 411"],
+	"other": "Preparation in areas like OS, networking, compilers, databases, security, and graphics are helpful."
+}
+
+{
+	"section": "Course Goals",
+	"text": "The goal of this course is to teach the technical and managerial skills necessary for building a software product as a team. The essence of the course is the faculty-coached team project. Teams of 3 to 5 students spend three months negotiating, estimating, scheduling, specifying, coding, debugging, integrating, documenting, and testing a substantial programming product. Grades are based on code, documentation, ambition, effort, teamwork, and accomplishment. When the course is completed, each student will have",
+	"objectives": ["experienced a decent simulation of industrial software development",
+				   "written code, written technical documentation",
+				   "prepared Web content",
+				   "learned how to run an effective meeting",
+				   "overcome the difficulties of clear and effective communication",
+				   "given public presentations of your work",
+				   "come to realize how much time on a software project has nothing to do with actual coding"]
+}
+
+{
+	"section": "Course Requirements",
+	"text": "Comp 523 is mostly a project course. Lectures are practical, (providing guidance for the students' current projects) or cultural (presenting background and insight from the field of software engineering). Project groups will meet weekly with the "boss", and as required with their clients and among themselves."
+}
+
+{
+	"section": "Grades",
+	"text": "The class has no exams or graded individual homework. The grade is based on performance in the software project and on team presentations. This included attendance at the weekly boss meetings. Each team will have at least two opportunities during the semester to publicly report on progress, and will receive feedback on progress during each weekly boss meeting. Each team will also give a presentation during the semester on a technical concept or system related to the project development."
+}
+
+{
+	"section": "Course Policies",
+	"text": "",
+}
+
+{
+	"section": "Course Resources",
+	"text": "No text is required for purchase. We will be reading articles online. You may find you will need various supporting materials, depending on the project you end up working on. For example, you may need a text on Ruby/Rails, or PHP, or Objective C, or Python, or Linux or something we can't predict until it happens."
+}
+
+{
+	"section": "Honor Code",
+	"text": ""
+}
+
+{
+	"section": "Time Table",
+	"table": ...
+}
+
+{
+	"section": "Disclaimer",
+	"text": "The professor reserves to right to make changes to the syllabus, including project due dates and test dates. These changes will be announced as early as possible.",
+}
