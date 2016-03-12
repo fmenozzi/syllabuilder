@@ -22,7 +22,6 @@
 			<a href="http://www.unc.edu"><img id="unc_logo" src="images/small_white_300px.png"></a>
 			<span id="title">Syllabuilder</span>
 			<span id="log_out"><a href="login.html"> Log Out </a></span>
-			<!-- <span class="tagline">Build a better syllabus</span> -->
 		</div>
 
 		<div id="main" ng-controller='main-controller'>
@@ -58,6 +57,41 @@
 				<span class="button" id="preview-button" style="background: #93c1ee; color: whitesmoke;" ng-click="preview()">Preview</span>
 				<a class="button" id="export-button" style="background: #93c1ee; color: whitesmoke;" ng-click="export()" ng-href="{{fileUrl}}" download="syllabus.docx">Export to Word</a>
 				<span class="button" id="clear-button" style="background: #ff4d4d; color: whitesmoke;" ng-click="clear()">Clear Data</span>
+			</div>
+
+			<!-- Schedule -->
+			<div class="schedule">
+				<table>
+					<tr>
+				    <th>Date</th>
+				    <th>Material Covered</th>
+				    <th>Homework</th>
+						</tr>
+							<td>Mo, 14 Mar</td>
+							<td><input type="text"></td>
+							<td><input type="text"></td>
+						</tr>
+						<tr>
+							<td>Tu, 15 Mar</td>
+							<td><input type="text"></td>
+							<td><input type="text"></td>
+						</tr>
+						<tr>
+							<td>We, 16 Mar</td>
+							<td><input type="text"></td>
+							<td><input type="text"></td>
+						</tr>
+						<tr>
+							<td>Th, 17 Mar</td>
+							<td><input type="text"></td>
+							<td><input type="text"></td>
+						</tr>
+						<tr>
+							<td>Fr, 18 Mar</td>
+							<td><input type="text"></td>
+							<td><input type="text"></td>
+						</tr>
+				</table>
 			</div>
 		</div>
 	</body>

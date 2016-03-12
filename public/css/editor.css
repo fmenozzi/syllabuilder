@@ -3,10 +3,10 @@ body {
 	margin: auto;
 	margin-top: -1px;
 	overflow-x: hidden;
+	font-family: Arial;
 }
 
 .header {
-	font-family: Arial;
 	height: 50px;
 	padding: 5px 0 0px 5px;
 	position: absolute;
@@ -76,7 +76,6 @@ body {
 	-moz-border-radius: 6;
 	border-radius: 0px;
 	-moz-box-shadow: 0px 1px 5px #666666;
-	font-family: Arial;
 	color: #575757;
 	font-size: 20px;
 	background: #ffffff;
@@ -130,4 +129,33 @@ body {
 	outline: none;
 	resize: none;
 	overflow: auto;
+}
+
+.schedule {
+	margin-top: 30px;
+	margin-bottom: 50px;
+}
+table {
+	width:100%;
+}
+th, td {
+    padding: 5px;
+    text-align: left;
+}
+table, th, td {
+	border: 1px solid black;
+	border-collapse: collapse;
+}
+table tr:nth-child(even) {
+    background-color: #93c1ee;
+}
+table tr:nth-child(odd) {
+   background-color: #ffffff;
+}
+table th {
+    background-color: white;
+    color: black;
+}
+table input {
+	width: 99%;
 }
