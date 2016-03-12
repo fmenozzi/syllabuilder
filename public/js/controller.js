@@ -26,12 +26,19 @@ var constructHTML = function() {
 
 	// Set style
 	html += "<style type='text/css'>";
+	html += "	.section-header {";
+	html += "		font-size: 12pt;";
+	html += "		font-weight: bold;";
+	html += "	}";
+	html += "	.section-contents {";
+	html += "		font-size: 12pt;";
+	html += "	}";
 	html += "	body {";
 	html += "		margin: 1in;";
 	html += "		font-family: Arial;";
 	html += "	}";
 	html += "	table {";
-	html += "		width:100%;";
+	html += "		width: 100%;";
 	html += "	}";
 	html += "	th, td {";
 	html += "		padding: 5px;";
@@ -54,8 +61,8 @@ var constructHTML = function() {
 	for (section in sectionContents) {
 		if (sectionContents.hasOwnProperty(section)) {
 			if (sectionContents[section] !== "" && sectionContents[section] !== undefined) {
-				html += "<div style='font-size: 20pt;'>" + section + "</div><br>";
-				html += "<div style='font-size: 12pt;'>" + sectionContents[section] + "</div><br>";
+				html += "<span class='section-header'>" + section + ": </span>";
+				html += "<span class='section-contents'>" + sectionContents[section] + "</span>";
 				html += "<br><br>";
 			}
 		}
