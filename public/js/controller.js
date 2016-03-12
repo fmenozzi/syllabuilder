@@ -22,14 +22,41 @@ var sectionContents = {
 // Construct HTML representation of section contents
 // TODO: Handle newlines in the textarea more elegantly in the final HTML
 var constructHTML = function() {
-	var html = "<!DOCTYPE html><html> <head></head> <body style='font-family: Arial;'>\n";
+	var html = "<!DOCTYPE html><html> <head></head>\n";
 
+	// Set style
+	html += "<style type='text/css'>";
+	html += "	body {";
+	html += "		margin: 1in;";
+	html += "		font-family: Arial;";
+	html += "	}";
+	html += "	table {";
+	html += "		width:100%;";
+	html += "	}";
+	html += "	th, td {";
+	html += "		padding: 5px;";
+	html += "		text-align: left;";
+	html += "	}";
+	html += "	table, th, td {";
+	html += "		border: 1px solid black;";
+	html += "		border-collapse: collapse;";
+	html += "	}";
+	html += "	table th {";
+	html += "		background-color: white;";
+	html += "		color: black;";
+	html += "	}";
+	html += "	table input {";
+	html += "		width: 99%;";
+	html += "	}";
+	html += "</style>";
+
+	// Add in sections
 	for (section in sectionContents) {
-		if (sectionContents.hasOwnProperty(section)) {	// Make sure it's our own property and not from the prototype
+		if (sectionContents.hasOwnProperty(section)) {
 			if (sectionContents[section] !== "" && sectionContents[section] !== undefined) {
-				html += "<h2>" + section + "</h2>\n";
-				html += sectionContents[section] + "\n";
-				html += "<p></p>\n\n"
+				html += "<div style='font-size: 20pt;'>" + section + "</div><br>";
+				html += "<div style='font-size: 12pt;'>" + sectionContents[section] + "</div><br>";
+				html += "<br><br>";
 			}
 		}
 	}
