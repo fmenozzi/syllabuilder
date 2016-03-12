@@ -1,98 +1,109 @@
 <!DOCTYPE html>
 <html>
-	<!-- Angular -->
+    <!-- Angular -->
     <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
 
     <!-- Controllers -->
     <script src="js/controller.js"></script>
 
     <!-- CSS -->
-	<head>
-		<title> Syllabuilder - Editor </title>
-		<link rel="stylesheet" type="text/css" href="css/editor.css">
-		<link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
-		<link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
-		<link rel="shortcut icon" type="image/x-icon" href="images/favicon.ico">
-		<meta charset="UTF-8">
-	</head>
+    <head>
+        <title> Syllabuilder - Editor </title>
+        <link rel="stylesheet" type="text/css" href="css/editor.css">
+        <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
+        <link rel="shortcut icon" type="image/x-icon" href="images/favicon.ico">
+        <meta charset="UTF-8">
+    </head>
 
-	<body ng-app="syllabuilder">
-		<!-- Top header -->
-		<div class="header">
-			<a href="http://www.unc.edu"><img id="unc_logo" src="images/small_white_300px.png"></a>
-			<span id="title">Syllabuilder</span>
-			<span id="log_out"><a href="login.html"> Log Out </a></span>
-		</div>
+    <body ng-app="syllabuilder">
+        <!-- Top header -->
+        <div class="header">
+            <a href="http://www.unc.edu"><img id="unc_logo" src="images/small_white_300px.png"></a>
+            <span id="title">Syllabuilder</span>
+            <span id="log_out"><a href="login.html"> Log Out </a></span>
+        </div>
 
-		<div id="main" ng-controller='main-controller'>
-			<!-- Left button panel -->
-			<div class="left-side" ng-init="placeholderText='Title'; lastSection='Title'; currentSection='Title';">			
-				<div class="button" id="Title"         ng-click="saveSection(text, 'Title',         lastSection)">Title</div>
-				<div class="button" id="Course Info"   ng-click="saveSection(text, 'Course Info',   lastSection)">Course Info</div>
-				<div class="button" id="Description"   ng-click="saveSection(text, 'Description',   lastSection)">Description</div>
-				<div class="button" id="Objectives"    ng-click="saveSection(text, 'Objectives',    lastSection)">Objectives</div>
-				<div class="button" id="Prerequisites" ng-click="saveSection(text, 'Prerequisites', lastSection)">Prerequisites</div>
-				<div class="button" id="Required Text" ng-click="saveSection(text, 'Required Text', lastSection)">Required Text</div>
-				<div class="button" id="Grading"       ng-click="saveSection(text, 'Grading',       lastSection)">Grading</div>
-				<div class="button" id="Exams"         ng-click="saveSection(text, 'Exams',         lastSection)">Exams</div>
-				<div class="button" id="Honor Code"    ng-click="saveSection(text, 'Honor Code',    lastSection)">Honor Code</div>
-				<div class="button" id="Disclaimer"    ng-click="saveSection(text, 'Disclaimer',    lastSection)">Disclaimer</div>
-			</div>
+        <div id="main" ng-controller='main-controller'>
+            <!-- Left button panel -->
+            <div class="left-side" ng-init="placeholderText='Title'; lastSection='Title'; currentSection='Title';">
+                <div class="button" id="Title"         ng-click="saveSection(text, 'Title',         lastSection)">Title</div>
+                <div class="button" id="Course Info"   ng-click="saveSection(text, 'Course Info',   lastSection)">Course Info</div>
+                <div class="button" id="Description"   ng-click="saveSection(text, 'Description',   lastSection)">Description</div>
+                <div class="button" id="Objectives"    ng-click="saveSection(text, 'Objectives',    lastSection)">Objectives</div>
+                <div class="button" id="Prerequisites" ng-click="saveSection(text, 'Prerequisites', lastSection)">Prerequisites</div>
+                <div class="button" id="Required Text" ng-click="saveSection(text, 'Required Text', lastSection)">Required Text</div>
+                <div class="button" id="Grading"       ng-click="saveSection(text, 'Grading',       lastSection)">Grading</div>
+                <div class="button" id="Exams"         ng-click="saveSection(text, 'Exams',         lastSection)">Exams</div>
+                <div class="button" id="Honor Code"    ng-click="saveSection(text, 'Honor Code',    lastSection)">Honor Code</div>
+                <div class="button" id="Disclaimer"    ng-click="saveSection(text, 'Disclaimer',    lastSection)">Disclaimer</div>
+            </div>
 
-			<!-- Highlight "Title" button by default -->
-			<script type="text/javascript">
-				document.getElementById('Title').style.background = "#235d86";
-				document.getElementById('Title').style.color = "white";
-			</script>
+            <!-- Highlight "Title" button by default -->
+            <script type="text/javascript">
+                document.getElementById('Title').style.background = "#235d86";
+                document.getElementById('Title').style.color = "white";
+            </script>
 
-			<!-- Text editor -->
-			<div class="right-side">
-				<div>
-					<textarea class="editor" placeholder="{{placeholderText}}" ng-model="text"></textarea>
-				</div>
-			</div>
+            <!-- Text editor -->
+            <div class="right-side">
+                <div>
+                    <textarea class="editor" placeholder="{{placeholderText}}" ng-model="text"></textarea>
+                </div>
+            </div>
 
-			<!-- Bottom button panel -->
-			<div class="bottom">
-				<span class="button" id="preview-button" style="background: #93c1ee; color: whitesmoke;" ng-click="preview()">Preview</span>
-				<a class="button" id="export-button" style="background: #93c1ee; color: whitesmoke;" ng-click="export()" ng-href="{{fileUrl}}" download="syllabus.html">Export to HTML</a>
-				<span class="button" id="clear-button" style="background: #ff4d4d; color: whitesmoke;" ng-click="clear()">Clear Data</span>
-			</div>
+            <!-- Bottom button panel -->
+            <div class="bottom">
+                <span class="button" id="preview-button" style="background: #93c1ee; color: whitesmoke;" ng-click="preview()">Preview</span>
+                <!--
+                <a class="button" id="export-button" style="background: #93c1ee; color: whitesmoke;" ng-click="export()" ng-href="{{fileUrl}}" download="syllabus.html">Export to HTML</a>
+                -->
+                    <form action="https://api.cloudconvert.com/convert" method="POST" enctype="multipart/form-data">
+                        <input type="hidden" name="apikey" value="Zs2BH2Wykji2E2ZJh7tmBvZETDW2AT1_mv8ZcimWwzf1Ds4AYquUOyDPzf921Y9eorJeyAHses37jnWHPUlvyg">
+                        <input type="hidden" name="input" value="raw">
+                        <input type="hidden" name="filename" value="syllabus.html">
+                        <input type="hidden" name="inputformat" value="html">
+                        <input type="hidden" name="outputformat" value="docx">
+                        <input type="hidden" name="file" value="{{export();}}">
+                        <input class="button" id="export-button" style="background: #93c1ee; color: whitesmoke;" type="submit" value="Export to Word">
+                    </form>
+                <span class="button" id="clear-button" style="background: #ff4d4d; color: whitesmoke;" ng-click="clear()">Clear Data</span>
+            </div>
 
-			<!-- Schedule -->
-			<div class="schedule">
-				<table>
-					<tr>
-				    <th>Date</th>
-				    <th>Material Covered</th>
-				    <th>Homework</th>
-						</tr>
-							<td>Mo, 14 Mar</td>
-							<td><input type="text"></td>
-							<td><input type="text"></td>
-						</tr>
-						<tr>
-							<td>Tu, 15 Mar</td>
-							<td><input type="text"></td>
-							<td><input type="text"></td>
-						</tr>
-						<tr>
-							<td>We, 16 Mar</td>
-							<td><input type="text"></td>
-							<td><input type="text"></td>
-						</tr>
-						<tr>
-							<td>Th, 17 Mar</td>
-							<td><input type="text"></td>
-							<td><input type="text"></td>
-						</tr>
-						<tr>
-							<td>Fr, 18 Mar</td>
-							<td><input type="text"></td>
-							<td><input type="text"></td>
-						</tr>
-				</table>
-			</div>
-		</div>
-	</body>
+            <!-- Schedule -->
+            <div class="schedule">
+                <table>
+                    <tr>
+                    <th>Date</th>
+                    <th>Material Covered</th>
+                    <th>Homework</th>
+                        </tr>
+                            <td>Mo, 14 Mar</td>
+                            <td><input type="text"></td>
+                            <td><input type="text"></td>
+                        </tr>
+                        <tr>
+                            <td>Tu, 15 Mar</td>
+                            <td><input type="text"></td>
+                            <td><input type="text"></td>
+                        </tr>
+                        <tr>
+                            <td>We, 16 Mar</td>
+                            <td><input type="text"></td>
+                            <td><input type="text"></td>
+                        </tr>
+                        <tr>
+                            <td>Th, 17 Mar</td>
+                            <td><input type="text"></td>
+                            <td><input type="text"></td>
+                        </tr>
+                        <tr>
+                            <td>Fr, 18 Mar</td>
+                            <td><input type="text"></td>
+                            <td><input type="text"></td>
+                        </tr>
+                </table>
+            </div>
+        </div>
+    </body>
 </html>
