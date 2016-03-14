@@ -83,11 +83,12 @@
                     </tr>
                     <tr ng-repeat="date in dates">
                         <td>{{date.toString("ddd, MMM dd")}}</td>
-                        <td><input type="text"></td>
-                        <td><input type="text"></td>
+                        <td><input id="{{'material_' + $index}}" type="text"></td>
+                        <td><input id="{{'homework_' + $index}}" type="text"></td>
                     </tr>
                 </table>
             </div>
+            {{testSettingMaterialHomeworkValues()}}
         </div>
     </body>
 </html>

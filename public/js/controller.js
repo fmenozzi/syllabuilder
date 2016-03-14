@@ -165,5 +165,13 @@ app.controller('main-controller', function($scope, $window) {
 		}
 	}
 
+	$scope.testSettingMaterialHomeworkValues = function() {
+		var numEntries = $scope.dates.length;
+		for (var i = 0; i < numEntries; i++) {
+			document.getElementById('material_' + i).value = "Material " + i;
+			document.getElementById('homework_' + i).value = "Homework " + i;
+		}
+	}
+
 	$scope.dates = getDates('monday mar 14', 'monday apr 04');
 });
