@@ -63,7 +63,7 @@ var constructHTML = function() {
 			if (sectionContents[section] !== "" && sectionContents[section] !== undefined) {
 				html += "<div class='section-header'>" + section + ": </div><br>";
 				html += "<div class='section-contents'>" + sectionContents[section] + "</div><br>";
-				html += "<br><br>";
+				html += "<br>";
 			}
 		}
 	}
@@ -177,6 +177,12 @@ app.controller('main-controller', function($scope, $window) {
 
 			// Clear text editor
 			$scope.text = "";
+
+			// Clear schedule
+			for (var i = 0; i < $scope.dates.length; i++) {
+				document.getElementById("material_" + i).value = "";
+				document.getElementById("homework_" + i).value = "";
+			}
 		}
 	}
 
