@@ -61,14 +61,29 @@ var constructHTML = function() {
 	for (section in sectionContents) {
 		if (sectionContents.hasOwnProperty(section)) {
 			if (sectionContents[section] !== "" && sectionContents[section] !== undefined) {
-				html += "<span class='section-header'>" + section + ": </span>";
-				html += "<span class='section-contents'>" + sectionContents[section] + "</span>";
+				html += "<div class='section-header'>" + section + ": </div><br>";
+				html += "<div class='section-contents'>" + sectionContents[section] + "</div><br>";
 				html += "<br><br>";
 			}
 		}
 	}
 
+	// Add in schedule
+	html += "<table> <tr><th>Date</th> <th>Material Covered</th> <th>Homework</th></tr>";
+	var dates = getDates("monday mar 14", "monday apr 04"); // TODO: Change this
+	for (var i = 0; i < dates.length; i++) {
+		var date = dates[i];
+		html += "<tr>";
+		html += "<td>" + date.toString("ddd, MMM dd") + "</td>";
+		html += "<td>" + document.getElementById("material_" + i).value + "</td>";
+		html += "<td>" + document.getElementById("homework_" + i).value + "</td>";
+		html += "</tr>";
+	}
+	html += "</table>";
+
 	html += "</body></html>";
+
+	console.log(html);
 
 	return html;
 };
@@ -165,13 +180,5 @@ app.controller('main-controller', function($scope, $window) {
 		}
 	}
 
-	$scope.testSettingMaterialHomeworkValues = function() {
-		var numEntries = $scope.dates.length;
-		for (var i = 0; i < numEntries; i++) {
-			document.getElementById('material_' + i).value = "Material " + i;
-			document.getElementById('homework_' + i).value = "Homework " + i;
-		}
-	}
-
-	$scope.dates = getDates('monday mar 14', 'monday apr 04');
+	$scope.dates = getDates("monday mar 14", "monday apr 04");
 });
