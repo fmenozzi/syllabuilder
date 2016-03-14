@@ -152,18 +152,23 @@ app.controller('main-controller', function($scope, $window) {
 	};
 
 	// Export HTML to .docx file (Word will take care of the rest)
-	$scope.export = function() {
+	$scope.exportDOCX = function() {
 		// Save current text to appropriate object
 		$scope.saveSection($scope.text, $scope.currentSection, $scope.lastSection);
 
-		/*
+		return constructHTML();
+	};
+
+	// Export HTML file for download, in case automatic conversion fails
+	$scope.exportHTML = function() {
+		// Save current text to appropriate object
+		$scope.saveSection($scope.text, $scope.currentSection, $scope.lastSection);
+
 		// Prompt file download
 		$scope.html    = constructHTML();
 		$scope.blob    = new Blob([$scope.html], { type: 'text/html' });
 		$scope.fileUrl = ($window.URL || $window.webkitURL).createObjectURL($scope.blob);
-		*/
-		return constructHTML();
-	};
+	}
 
 	// Clear all data
 	$scope.clear = function() {
