@@ -73,6 +73,29 @@ var constructHTML = function() {
 	return html;
 };
 
+// Get all dates between FDOC and LDOC
+var getDates = function(fdocstr, ldocstr) {
+	var fdoc = Date.parse(fdocstr);
+	var ldoc = Date.parse(ldocstr);
+
+	// Let's consider MoWe classes for now
+	var date = fdoc.add(-1).day();
+	var res = [];
+	while (true) {
+		date = date.next().monday();
+		if (date.compareTo(ldoc) > 0)
+			break;
+		res.push(date.clone());
+
+		date = date.next().wednesday();
+		if (date.compareTo(ldoc) > 0)
+			break;
+		res.push(date.clone());
+	}
+
+	return res;
+}
+
 app.controller('main-controller', function($scope, $window) {
 	// Save contents of text editor to appropriate section
 	$scope.saveSection = function(text, currentSection, lastSection) {
@@ -141,4 +164,6 @@ app.controller('main-controller', function($scope, $window) {
 			$scope.text = "";
 		}
 	}
+
+	$scope.dates = getDates('monday mar 14', 'monday apr 04');
 });

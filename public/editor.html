@@ -6,6 +6,9 @@
     <!-- Controllers -->
     <script src="js/controller.js"></script>
 
+    <!-- Other -->
+    <script src="js/date.js"></script>
+
     <!-- CSS -->
     <head>
         <title> Syllabuilder - Editor </title>
@@ -74,34 +77,15 @@
             <div class="schedule">
                 <table>
                     <tr>
-                    <th>Date</th>
-                    <th>Material Covered</th>
-                    <th>Homework</th>
-                        </tr>
-                            <td>Mo, 14 Mar</td>
-                            <td><input type="text"></td>
-                            <td><input type="text"></td>
-                        </tr>
-                        <tr>
-                            <td>Tu, 15 Mar</td>
-                            <td><input type="text"></td>
-                            <td><input type="text"></td>
-                        </tr>
-                        <tr>
-                            <td>We, 16 Mar</td>
-                            <td><input type="text"></td>
-                            <td><input type="text"></td>
-                        </tr>
-                        <tr>
-                            <td>Th, 17 Mar</td>
-                            <td><input type="text"></td>
-                            <td><input type="text"></td>
-                        </tr>
-                        <tr>
-                            <td>Fr, 18 Mar</td>
-                            <td><input type="text"></td>
-                            <td><input type="text"></td>
-                        </tr>
+                        <th>Date</th>
+                        <th>Material Covered</th>
+                        <th>Homework</th>
+                    </tr>
+                    <tr ng-repeat="date in dates">
+                        <td>{{date.toString("ddd, MMM dd")}}</td>
+                        <td><input type="text"></td>
+                        <td><input type="text"></td>
+                    </tr>
                 </table>
             </div>
         </div>
