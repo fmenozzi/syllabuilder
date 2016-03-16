@@ -112,7 +112,7 @@ body {
 	padding: 10px 30px;
 }
 
-#preview-button:hover, #export-docx-button:hover .export-html-button:hover {
+#preview-button:hover, #export-docx-button:hover #export-html-button:hover {
 	background: #235d86 !important;
 	color: white !important;
 	text-decoration: none !important;
