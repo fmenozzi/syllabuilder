@@ -28,24 +28,47 @@
         </div>
 
         <div id="main" ng-controller='main-controller'>
-            <!-- Left button panel -->
-            <div class="left-side" ng-init="placeholderText='Title'; lastSection='Title'; currentSection='Title';">
-                <div class="button" id="Title"         ng-click="saveSection(text, 'Title',         lastSection)">Title</div>
-                <div class="button" id="Course Info"   ng-click="saveSection(text, 'Course Info',   lastSection)">Course Info</div>
-                <div class="button" id="Description"   ng-click="saveSection(text, 'Description',   lastSection)">Description</div>
-                <div class="button" id="Objectives"    ng-click="saveSection(text, 'Objectives',    lastSection)">Objectives</div>
-                <div class="button" id="Prerequisites" ng-click="saveSection(text, 'Prerequisites', lastSection)">Prerequisites</div>
-                <div class="button" id="Required Text" ng-click="saveSection(text, 'Required Text', lastSection)">Required Text</div>
-                <div class="button" id="Grading"       ng-click="saveSection(text, 'Grading',       lastSection)">Grading</div>
-                <div class="button" id="Exams"         ng-click="saveSection(text, 'Exams',         lastSection)">Exams</div>
-                <div class="button" id="Honor Code"    ng-click="saveSection(text, 'Honor Code',    lastSection)">Honor Code</div>
-                <div class="button" id="Disclaimer"    ng-click="saveSection(text, 'Disclaimer',    lastSection)">Disclaimer</div>
+            <!-- Prelude info -->
+            <div class="prelude">
+                <div class="course-info">Course Name: <input type="text" id="course-name"></div>
+                <div class="course-info">Department (4 letters): <input type="text" id="dept-id"></div>
+                <div class="course-info">Course Number and Section: <input type="text" id="course-num"> - <input type="text" id="section-num"></div>
+                <div class="course-info" id="meeting-days">Meeting Days:
+                    <span><input type="checkbox" ng-model="mo">Mo</span>
+                    <span><input type="checkbox" ng-model="tu">Tu</span>
+                    <span><input type="checkbox" ng-model="we">We</span>
+                    <span><input type="checkbox" ng-model="th">Th</span>
+                    <span><input type="checkbox" ng-model="fr">Fr</span>
+                </div>
+                <div class="course-info">Meeting Times: <input type="text" id="from-time"> to <input type="text" id="to-time"></div>
+                <div class="course-info">Meeting Location: <input type="text" id="meeting-location"></div>
+                <div class="course-info">Course Website: <input type="text" id="course-website"></div>
+
+                <div class="instructor-info">Instructor Name: <input type="text" id="instructor-name"></div>
+                <div class="instructor-info">Instructor Email: <input type="text" id="instructor-email"></div>
+                <div class="instructor-info">Instructor Phone: <input type="text" id="instructor-phone"></div>
+                <div class="instructor-info">Instructor Office Hours: <input type="text" id="instructor-office-hours"></div>
+                <div class="instructor-website">Instructor Website: <input type="text" id="instructor-website"></div>
             </div>
 
-            <!-- Highlight "Title" button by default -->
+            <!-- Left button panel -->
+            <div class="left-side" ng-init="placeholderText='Description'; lastSection='Description'; currentSection='Description';">
+                <div class="button" id="Description"     ng-click="saveSection(text, 'Description',     lastSection)">Description</div>
+                <div class="button" id="Objectives"      ng-click="saveSection(text, 'Objectives',      lastSection)">Objectives</div>
+                <div class="button" id="Target Audience" ng-click="saveSection(text, 'Target Audience', lastSection)">Target Audience</div>
+                <div class="button" id="Prerequisites"   ng-click="saveSection(text, 'Prerequisites',   lastSection)">Prerequisites</div>
+                <div class="button" id="Materials"       ng-click="saveSection(text, 'Materials',       lastSection)">Materials</div>
+                <div class="button" id="Grading"         ng-click="saveSection(text, 'Grading',         lastSection)">Grading</div>
+                <div class="button" id="Exams"           ng-click="saveSection(text, 'Exams',           lastSection)">Exams</div>
+                <div class="button" id="Honor Code"      ng-click="saveSection(text, 'Honor Code',      lastSection)">Honor Code</div>
+                <div class="button" id="Accessibility"   ng-click="saveSection(text, 'Accessibility',   lastSection)">Accessibility</div>
+                <div class="button" id="Disclaimer"      ng-click="saveSection(text, 'Disclaimer',      lastSection)">Disclaimer</div>
+            </div>
+
+            <!-- Highlight "Description" button by default -->
             <script type="text/javascript">
-                document.getElementById('Title').style.background = "#235d86";
-                document.getElementById('Title').style.color = "white";
+                document.getElementById('Description').style.background = "#235d86";
+                document.getElementById('Description').style.color = "white";
             </script>
 
             <!-- Text editor -->
@@ -83,9 +106,9 @@
                         <th>Homework</th>
                     </tr>
                     <tr ng-repeat="date in dates">
-                        <td>{{date.toString("ddd, MMM dd")}}</td>
-                        <td><input id="{{'material_' + $index}}" type="text"></td>
-                        <td><input id="{{'homework_' + $index}}" type="text"></td>
+                        <td ng-if="checkDate(date)">{{date.toString("ddd, MMM dd")}}</td>
+                        <td ng-if="checkDate(date)"><input id="{{'material_' + $index}}" type="text"></td>
+                        <td ng-if="checkDate(date)"><input id="{{'homework_' + $index}}" type="text"></td>
                     </tr>
                 </table>
             </div>

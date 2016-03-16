@@ -1,164 +1,178 @@
 body {
-	width: 900px;
-	margin: auto;
-	margin-top: -1px;
-	overflow-x: hidden;
-	font-family: Arial;
+    width: 900px;
+    margin: auto;
+    margin-top: -1px;
+    overflow-x: hidden;
+    font-family: Arial;
 }
 
 .header {
-	height: 50px;
-	padding: 5px 0 0px 5px;
-	position: absolute;
-	top: 0;
-	left: 0;
-	right: 0;
-	color: white;
-	background-color: #93c1ee;
+    height: 50px;
+    padding: 5px 0 0px 5px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    color: white;
+    background-color: #93c1ee;
 }
 
 #unc_logo {
-	display: inline;
-	position: relative;
-	height: 75px;
-	margin-top: -16px;
-	margin-left: -5px;
+    display: inline;
+    position: relative;
+    height: 75px;
+    margin-top: -16px;
+    margin-left: -5px;
 }
 #title {
-	font-size: 36px;
-	font-weight: bold;
-	display: block;
-	color: white;
-	width: 210px;
-	margin: -62px auto 0 auto;
+    font-size: 36px;
+    font-weight: bold;
+    display: block;
+    color: white;
+    width: 210px;
+    margin: -62px auto 0 auto;
 }
 #log_out {
-	position: absolute;
-	right: 15px;
-	top: 17px;
-	font-size: 18px;
+    position: absolute;
+    right: 15px;
+    top: 17px;
+    font-size: 18px;
 }
 #log_out a {
-	text-decoration: none !important;
-	color: white;
+    text-decoration: none !important;
+    color: white;
 }
 #log_out a:hover {
-	color: #235d86;
+    color: #235d86;
 }
 .tagline {
-	padding-left: 25px;
-	font-size: 18px;
-	position: relative;
-	left: 230px;
-	top: -30px;
-	color: #235d86;
+    padding-left: 25px;
+    font-size: 18px;
+    position: relative;
+    left: 230px;
+    top: -30px;
+    color: #235d86;
 }
 
 #main {
-	padding-top: 80px;
+    padding-top: 80px;
+}
+
+.prelude {
+    padding-bottom: 40px;
+}
+
+.course-info {
+    padding-bottom: 10px;
+}
+
+.instructor-info {
+    padding-bottom: 10px;
 }
 
 .left-side {
-	float: left;
-	width: 20%;
-	padding-bottom: 30px;
+    float: left;
+    width: 20%;
+    padding-bottom: 30px;
 }
 
 .right-side {
-	float: right;
-	width: 80%;
-	height: 100%;
-	padding-bottom: 30px;
+    float: right;
+    width: 80%;
+    height: 100%;
+    padding-bottom: 30px;
 }
 
 .button {
-	-webkit-border-radius: 6;
-	-moz-border-radius: 6;
-	border-radius: 0px;
-	-moz-box-shadow: 0px 1px 5px #666666;
-	color: #575757;
-	font-size: 20px;
-	background: #ffffff;
-	padding: 10px 0px 10px 10px;
-	text-decoration: none;
-	user-select: none;
-	-moz-user-select: none;
-	-khtml-user-select: none;
-	-webkit-user-select: none;
-	-o-user-select: none;
-	cursor: pointer;
-	min-width: 150px;
-	max-width: 150px;
-	margin-bottom: 7px;
-	border: 1px solid lightgray;
+    -webkit-border-radius: 6;
+    -moz-border-radius: 6;
+    border-radius: 0px;
+    -moz-box-shadow: 0px 1px 5px #666666;
+    color: #575757;
+    font-size: 20px;
+    background: #ffffff;
+    padding: 10px 0px 10px 10px;
+    text-decoration: none;
+    user-select: none;
+    -moz-user-select: none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    -o-user-select: none;
+    cursor: pointer;
+    min-width: 150px;
+    max-width: 150px;
+    margin-bottom: 7px;
+    border: 1px solid lightgray;
 }
 
 .button:hover {
-	background: #93c1ee !important;
-	color: white !important;
-	text-decoration: none !important;	
+    background: #93c1ee !important;
+    color: white !important;
+    text-decoration: none !important;
 }
 
 #preview-button {
-	padding: 10px 30px;
+    padding: 10px 30px;
 }
 #export-docx-button {
-	padding: 10px 30px;
+    padding: 10px 30px;
 }
 #export-html-button {
-	padding: 10px 30px;
+    padding: 10px 30px;
 }
 #clear-button {
-	padding: 10px 30px;
+    padding: 10px 30px;
 }
 
 #preview-button:hover, #export-docx-button:hover #export-html-button:hover {
-	background: #235d86 !important;
-	color: white !important;
-	text-decoration: none !important;
+    background: #235d86 !important;
+    color: white !important;
+    text-decoration: none !important;
 }
 #clear-button:hover {
-	background: #ff0000 !important;
-	color: white !important;
-	text-decoration: none !important;
+    background: #ff0000 !important;
+    color: white !important;
+    text-decoration: none !important;
 }
 
 .editor {
-	width: 100%;
-	height: 507px;
-	-moz-border-radius: 6;
-	font-family: Arial;
-	font-size: 20px;
-	outline: none;
-	resize: none;
-	overflow: auto;
+    width: 100%;
+    height: 507px;
+    -moz-border-radius: 6;
+    font-family: Arial;
+    font-size: 20px;
+    outline: none;
+    resize: none;
+    overflow: auto;
 }
 
 .schedule {
-	margin-top: 30px;
-	margin-bottom: 50px;
+    margin-top: 30px;
+    margin-bottom: 50px;
 }
 table {
-	width:100%;
+    width:100%;
 }
 th, td {
     padding: 5px;
     text-align: left;
 }
 table, th, td {
-	border: 1px solid black;
-	border-collapse: collapse;
+    border: 1px solid black;
+    border-collapse: collapse;
 }
+/*
 table tr:nth-child(even) {
     background-color: #93c1ee;
 }
 table tr:nth-child(odd) {
    background-color: #ffffff;
 }
+*/
 table th {
     background-color: white;
     color: black;
 }
 table input {
-	width: 99%;
+    width: 99%;
 }
