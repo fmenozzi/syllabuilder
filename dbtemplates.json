@@ -8,7 +8,7 @@
 				},
 	"term": "Term goes here",
 	"meetings": "Meeting dates and times go here"
-}
+},
 
 {
 	"section": "Instructor Identifiers",
@@ -18,13 +18,13 @@
 	"phoneNum": "Class/professor phone # goes here if applicable",
 	"email": "Class/professor e-mail goes here",
 	"website": "Website URL goes here if applicable"
-}
+},
 
 {
 	"section": "Course Prerequisites",
 	"reqCourses": ["Hard course prereqs", "or coreqs", "go here"],
 	"other": "Any other requirements go here"
-}
+},
 
 {
 	"section": "Standard text box layout",
