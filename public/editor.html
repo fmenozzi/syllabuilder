@@ -39,7 +39,7 @@
                     <div class="course-info">Section Number: <input type="text" id="section-num"></div>
                     <div class="course-info">Course Website: <input type="text" id="course-website"></div>
                 </span>
-                <!-- <br> -->
+
                 <span id="prelude2">
                     <h3> Course Meeting</h3>
                     <div class="course-info" id="meeting-days">Weekdays:
@@ -56,7 +56,7 @@
                     <div class="course-info">Building: <input type="text" id="meeting-building"></div>
                     <div class="course-info">Room: <input type="text" id="meeting-room"></div>
                 </span>
-                <!-- <br> -->
+
                 <span id="prelude3">
                     <h3> Course Instructor</h3>
                     <div class="instructor-info">Name: <input type="text" id="instructor-name"></div>
@@ -97,8 +97,8 @@
             <!-- Bottom button panel -->
             <div class="bottom">
                 <span class="button" id="preview-button" style="background: #93c1ee; color: whitesmoke;" ng-click="preview()">Preview</span>
-
-                <!-- <form action="https://api.cloudconvert.com/convert" method="POST" enctype="multipart/form-data">
+                <!--
+                <form action="https://api.cloudconvert.com/convert" method="POST" enctype="multipart/form-data">
                     <input type="hidden" name="apikey" value="Zs2BH2Wykji2E2ZJh7tmBvZETDW2AT1_mv8ZcimWwzf1Ds4AYquUOyDPzf921Y9eorJeyAHses37jnWHPUlvyg">
                     <input type="hidden" name="input" value="raw">
                     <input type="hidden" name="filename" value="syllabus.html">
@@ -106,7 +106,8 @@
                     <input type="hidden" name="outputformat" value="docx">
                     <input type="hidden" name="file" value="{{exportDOCX();}}">
                     <input class="button" id="export-docx-button" style="background: #93c1ee; color: whitesmoke;" type="submit" value="Export to Word">
-                </form> -->
+                </form>
+                -->
 
                 <a class="button" id="export-html-button" style="background: #93c1ee; color: whitesmoke;" 
                     ng-click="exportHTML()" ng-href="{{fileUrl}}" download="syllabus.html">Export to HTML</a>
@@ -115,7 +116,7 @@
             </div>
 
             <!-- Schedule -->
-           <!--  <div class="schedule">
+           <div class="schedule">
                 <table>
                     <tr>
                         <th>Date</th>
@@ -128,7 +129,7 @@
                         <td ng-if="checkDate(date)"><input id="{{'homework_' + $index}}" type="text"></td>
                     </tr>
                 </table>
-            </div> -->
+            </div>
         </div>
     </body>
 </html>

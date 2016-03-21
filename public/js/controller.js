@@ -107,7 +107,8 @@ app.controller('main-controller', function($scope, $window, $http) {
         if ($scope.fr) meetingDays += "Fr";
         var fromTime              = document.getElementById("from-time").value;
         var toTime                = document.getElementById("to-time").value;
-        var meetingLocation       = document.getElementById("meeting-location").value;
+        var meetingBuilding       = document.getElementById("meeting-building").value;
+        var meetingRoom           = document.getElementById("meeting-room").value;
         var courseWebsite         = document.getElementById("course-website").value;
         var instructorName        = document.getElementById("instructor-name").value;
         var instructorEmail       = document.getElementById("instructor-email").value;
@@ -120,7 +121,8 @@ app.controller('main-controller', function($scope, $window, $http) {
         html += "<div class='prelude-header'>General Course Info</div>";
         html += "<br>";
         html += "<div class='prelude-contents'>Time: " + meetingDays + " from " + fromTime + " to " + toTime + "</div>";
-        html += "<div class='prelude-contents'>Location: " + meetingLocation + "</div>";
+        html += "<div class='prelude-contents'>Meeting Building: " + meetingBuilding + "</div>";
+        html += "<div class='prelude-contents'>Meeting Room: " + meetingRoom + "</div>";
         html += "<div class='prelude-contents'>Website: " + courseWebsite + "</div>";
         html += "<br>";
         html += "<div class='prelude-header'>Instructor Info</div>";
