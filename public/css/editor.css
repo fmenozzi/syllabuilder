@@ -1,10 +1,12 @@
 body {
-    width: 900px;
+    width: 950px;
     margin: auto;
     margin-top: -1px;
     overflow-x: hidden;
     font-family: Arial;
 }
+
+/*----- HEADER -----*/
 
 .header {
     height: 50px;
@@ -54,24 +56,73 @@ body {
     color: #235d86;
 }
 
+
+/*----- BODY -----*/
+
 #main {
     padding-top: 80px;
 }
 
 .prelude {
-    padding-bottom: 40px;
+    /*padding-bottom: 40px;*/
+    padding: 10px 0px 30px 10px;
+    border-bottom: 1px solid lightgray;
+    margin-bottom: 40px;
+    height: auto;
+    overflow: auto;
+    font-size: 1.1em;
 }
+#prelude1 {
+    float: left;
+    width: 32%;
+    padding-right: 2%;
+    margin-right: 2%;
+    border-right: 1px dotted gainsboro; 
+}
+#prelude2 {
+    float: left;
+    width: 30%;
+    padding-right: 1%;
+    margin-right: 1.5%;
+}
+#prelude3 {
+    float: left;
+    width: 28%;
+    padding-left: 1.5%;
+    margin-right: 1%;
+    border-left: 1px dotted gainsboro;
 
+}
+.prelude h2 {
+    line-height: 0.2em;
+    color: #235d86;
+}
+.prelude h3 {
+    line-height: 0.6em;
+    color: #93c1ee;
+}
+.prelude input[type="text"]{
+    float: right;
+}
 .course-info {
     padding-bottom: 10px;
 }
-
+#day_boxes {
+    float: right;
+    font-size: 0.9em;
+}
+#day_boxes input {
+    margin-left: 5px;
+}
 .instructor-info {
     padding-bottom: 10px;
 }
 
+
+
 .left-side {
     float: left;
+    clear: left;
     width: 20%;
     padding-bottom: 30px;
 }
@@ -111,11 +162,18 @@ body {
     text-decoration: none !important;
 }
 
+.bottom {
+    margin-bottom: 50px;
+    clear: left;
+    padding-left: 20%;
+}
+
 #preview-button {
     padding: 10px 30px;
 }
 #export-docx-button {
     padding: 10px 30px;
+    /*display: inline;*/
 }
 #export-html-button {
     padding: 10px 30px;
@@ -124,7 +182,7 @@ body {
     padding: 10px 30px;
 }
 
-#preview-button:hover, #export-docx-button:hover #export-html-button:hover {
+#preview-button:hover, #export-docx-button:hover, #export-html-button:hover {
     background: #235d86 !important;
     color: white !important;
     text-decoration: none !important;
@@ -134,6 +192,7 @@ body {
     color: white !important;
     text-decoration: none !important;
 }
+
 
 .editor {
     width: 100%;
