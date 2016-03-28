@@ -1,5 +1,5 @@
 body {
-    width: 950px;
+    width: 1000px;
     margin: auto;
     margin-top: -1px;
     overflow-x: hidden;
@@ -123,13 +123,13 @@ body {
 .left-side {
     float: left;
     clear: left;
-    width: 20%;
+    width: 100%;
     padding-bottom: 30px;
 }
 
 .right-side {
     float: right;
-    width: 80%;
+    width: 85%;
     height: 100%;
     padding-bottom: 30px;
 }
@@ -142,7 +142,7 @@ body {
     color: #575757;
     font-size: 20px;
     background: #ffffff;
-    padding: 10px 0px 10px 10px;
+    padding: 10px 1px 10px 1px;
     text-decoration: none;
     user-select: none;
     -moz-user-select: none;
@@ -150,10 +150,11 @@ body {
     -webkit-user-select: none;
     -o-user-select: none;
     cursor: pointer;
-    min-width: 150px;
-    max-width: 150px;
-    margin-bottom: 7px;
+    min-width: 13%;
+    max-width: 13%;
+    margin: auto 4px 7px 4px;
     border: 1px solid lightgray;
+    text-align: center;
 }
 
 .button:hover {
@@ -162,24 +163,51 @@ body {
     text-decoration: none !important;
 }
 
+#top_row {
+    float: left;
+    width: 100%;
+}
+#top_row div {
+    float: left;
+}
+#bottom_row {
+    float: left;
+    clear: left;
+    width: 100%;
+}
+#bottom_row div{
+    float: left;
+}
+
+
+
+
+/*----- BOTTOM -----*/
+
 .bottom {
     margin-bottom: 50px;
     clear: left;
-    padding-left: 20%;
+    /*padding-left: 20%;*/
+}
+
+.bottom .button {
+    float: left;
+    clear: left;
+    min-height: 25%;
 }
 
 #preview-button {
-    padding: 10px 30px;
+    padding: 48px 2px;
 }
 #export-docx-button {
-    padding: 10px 30px;
-    /*display: inline;*/
+    padding: 48px 2px;
+    display: inline;
 }
 #export-html-button {
-    padding: 10px 30px;
+    padding: 39px 2px;
 }
 #clear-button {
-    padding: 10px 30px;
+    padding: 48px 2px;
 }
 
 #preview-button:hover, #export-docx-button:hover, #export-html-button:hover {
@@ -188,7 +216,7 @@ body {
     text-decoration: none !important;
 }
 #clear-button:hover {
-    background: #ff0000 !important;
+    background: firebrick !important;
     color: white !important;
     text-decoration: none !important;
 }
@@ -205,33 +233,47 @@ body {
     overflow: auto;
 }
 
+/*----- SCHEDULE ------*/
+
 .schedule {
-    margin-top: 30px;
+    /*margin-top: 10px;*/
+    clear: both;
     margin-bottom: 50px;
+    padding-top: 5px;
+    border-top: 1px solid gainsboro;
 }
+
+.schedule h2 {
+    /*line-height: 0.8em;*/
+    color: #235d86;
+}
+
 table {
     width:100%;
 }
 th, td {
-    padding: 5px;
+    padding: 8px;
     text-align: left;
 }
 table, th, td {
-    border: 1px solid black;
+    border: 1px solid lightgray;
     border-collapse: collapse;
 }
-/*
+
 table tr:nth-child(even) {
     background-color: #93c1ee;
 }
 table tr:nth-child(odd) {
    background-color: #ffffff;
 }
-*/
+
 table th {
     background-color: white;
     color: black;
 }
 table input {
     width: 99%;
+    height: 25px;
+    font-size: 1.1em;
 }
+

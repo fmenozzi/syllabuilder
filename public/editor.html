@@ -69,20 +69,24 @@
 
             <!-- Left button panel -->
             <div class="left-side" ng-init="placeholderText='Description'; lastSection='Description'; currentSection='Description';">
-                <div class="button" id="Description"     ng-click="saveSection(text, 'Description',     lastSection)">Description</div>
-                <div class="button" id="Objectives"      ng-click="saveSection(text, 'Objectives',      lastSection)">Objectives</div>
-                <div class="button" id="Target Audience" ng-click="saveSection(text, 'Target Audience', lastSection)">Target Audience</div>
-                <div class="button" id="Prerequisites"   ng-click="saveSection(text, 'Prerequisites',   lastSection)">Prerequisites</div>
-                <div class="button" id="Goals"           ng-click="saveSection(text, 'Goals',           lastSection)">Goals</div>
-                <div class="button" id="Requirements"    ng-click="saveSection(text, 'Requirements',    lastSection)">Requirements</div>
-                <div class="button" id="Policies"        ng-click="saveSection(text, 'Policies',        lastSection)">Policies</div>
-                <div class="button" id="Resources"       ng-click="saveSection(text, 'Resources',       lastSection)">Resources</div>
-                <div class="button" id="Materials"       ng-click="saveSection(text, 'Materials',       lastSection)">Materials</div>
-                <div class="button" id="Grading"         ng-click="saveSection(text, 'Grading',         lastSection)">Grading</div>
-                <div class="button" id="Exams"           ng-click="saveSection(text, 'Exams',           lastSection)">Exams</div>
-                <div class="button" id="Honor Code"      ng-click="saveSection(text, 'Honor Code',      lastSection)">Honor Code</div>
-                <div class="button" id="Accessibility"   ng-click="saveSection(text, 'Accessibility',   lastSection)">Accessibility</div>
-                <div class="button" id="Disclaimer"      ng-click="saveSection(text, 'Disclaimer',      lastSection)">Disclaimer</div>
+                <div id="top_row">
+                    <div class="button" id="Description"     ng-click="saveSection(text, 'Description',     lastSection)">Description</div>
+                    <div class="button" id="Objectives"      ng-click="saveSection(text, 'Objectives',      lastSection)">Objectives</div>
+                    <div class="button" id="Target Audience" ng-click="saveSection(text, 'Target Audience', lastSection)">Audience</div>
+                    <div class="button" id="Prerequisites"   ng-click="saveSection(text, 'Prerequisites',   lastSection)">Prerequisites</div>
+                    <div class="button" id="Goals"           ng-click="saveSection(text, 'Goals',           lastSection)">Goals</div>
+                    <div class="button" id="Requirements"    ng-click="saveSection(text, 'Requirements',    lastSection)">Requirements</div>
+                    <div class="button" id="Policies"        ng-click="saveSection(text, 'Policies',        lastSection)">Policies</div>
+                </div>
+                <div id="bottom_row">
+                    <div class="button" id="Resources"       ng-click="saveSection(text, 'Resources',       lastSection)">Resources</div>
+                    <div class="button" id="Materials"       ng-click="saveSection(text, 'Materials',       lastSection)">Materials</div>
+                    <div class="button" id="Grading"         ng-click="saveSection(text, 'Grading',         lastSection)">Grading</div>
+                    <div class="button" id="Exams"           ng-click="saveSection(text, 'Exams',           lastSection)">Exams</div>
+                    <div class="button" id="Honor Code"      ng-click="saveSection(text, 'Honor Code',      lastSection)">Honor Code</div>
+                    <div class="button" id="Accessibility"   ng-click="saveSection(text, 'Accessibility',   lastSection)">Accessibility</div>
+                    <div class="button" id="Disclaimer"      ng-click="saveSection(text, 'Disclaimer',      lastSection)">Disclaimer</div>
+                </div>
             </div>
 
             <!-- Highlight "Description" button by default -->
@@ -101,7 +105,7 @@
             <!-- Bottom button panel -->
             <div class="bottom">
                 <span class="button" id="preview-button" style="background: #93c1ee; color: whitesmoke;" ng-click="preview()">Preview</span>
-                <!--
+
                 <form action="https://api.cloudconvert.com/convert" method="POST" enctype="multipart/form-data">
                     <input type="hidden" name="apikey" value="Zs2BH2Wykji2E2ZJh7tmBvZETDW2AT1_mv8ZcimWwzf1Ds4AYquUOyDPzf921Y9eorJeyAHses37jnWHPUlvyg">
                     <input type="hidden" name="input" value="raw">
@@ -111,7 +115,7 @@
                     <input type="hidden" name="file" value="{{exportDOCX();}}">
                     <input class="button" id="export-docx-button" style="background: #93c1ee; color: whitesmoke;" type="submit" value="Export to Word">
                 </form>
-                -->
+
 
                 <a class="button" id="export-html-button" style="background: #93c1ee; color: whitesmoke;" 
                     ng-click="exportHTML()" ng-href="{{fileUrl}}" download="syllabus.html">Export to HTML</a>
@@ -121,6 +125,7 @@
 
             <!-- Schedule -->
            <div class="schedule">
+                <h2> Schedule </h2>
                 <table>
                     <tr>
                         <th>Date</th>
