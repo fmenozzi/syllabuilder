@@ -103,6 +103,8 @@ body {
 }
 .prelude input[type="text"]{
     float: right;
+    width: 150px;
+    font-size: 0.7em;
 }
 .course-info {
     padding-bottom: 10px;
@@ -134,7 +136,7 @@ body {
     padding-bottom: 30px;
 }
 
-.button {
+.left-side .button {
     -webkit-border-radius: 6;
     -moz-border-radius: 6;
     border-radius: 0px;
@@ -193,21 +195,43 @@ body {
 .bottom .button {
     float: left;
     clear: left;
-    min-height: 25%;
+    -webkit-border-radius: 6;
+    -moz-border-radius: 6;
+    border-radius: 0px;
+    -moz-box-shadow: 0px 1px 5px #666666;
+    color: #575757;
+    font-size: 20px;
+    background: #ffffff;
+    /*padding: 10px 1px 10px 1px;*/
+    text-decoration: none;
+    user-select: none;
+    -moz-user-select: none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    -o-user-select: none;
+    cursor: pointer;
+    min-width: 13%;
+    max-width: 13%;
+    margin: auto 4px 7px 4px;
+    border: 1px solid lightgray;
+    text-align: center;
 }
 
 #preview-button {
-    padding: 48px 2px;
+    padding: 49px 2px;
+/*    width: 135px;
+    height: 120px;*/
+    /*text-align: center;*/
 }
 #export-docx-button {
-    padding: 48px 2px;
-    display: inline;
+    padding: 49px 2px;
+    width: 200px;
 }
 #export-html-button {
-    padding: 39px 2px;
+    padding: 40px 2px;
 }
 #clear-button {
-    padding: 48px 2px;
+    padding: 39px 2px;
 }
 
 #preview-button:hover, #export-docx-button:hover, #export-html-button:hover {
@@ -223,14 +247,15 @@ body {
 
 
 .editor {
-    width: 100%;
-    height: 507px;
+    width: 95%;
+    height: 500px;
     -moz-border-radius: 6;
     font-family: Arial;
     font-size: 20px;
     outline: none;
     resize: none;
     overflow: auto;
+    padding: 15px;
 }
 
 /*----- SCHEDULE ------*/
@@ -259,13 +284,13 @@ table, th, td {
     border: 1px solid lightgray;
     border-collapse: collapse;
 }
-
+/*
 table tr:nth-child(even) {
     background-color: #93c1ee;
 }
 table tr:nth-child(odd) {
    background-color: #ffffff;
-}
+}*/
 
 table th {
     background-color: white;
