@@ -104,23 +104,23 @@
 
             <!-- Bottom button panel -->
             <div class="bottom">
-                <span class="button" id="preview-button" style="background: #93c1ee; color: whitesmoke;" ng-click="preview()">Preview</span>
+                <span class="button" id="preview-button" style="background: #93c1ee; color: whitesmoke;" ng-click="preview()">PREVIEW</span>
 
-                <form action="https://api.cloudconvert.com/convert" method="POST" enctype="multipart/form-data">
+                <form action="https://api.cloudconvert.com/convert" method="POST" enctype="multipart/form-data" style="width: 1050px;">
                     <input type="hidden" name="apikey" value="Zs2BH2Wykji2E2ZJh7tmBvZETDW2AT1_mv8ZcimWwzf1Ds4AYquUOyDPzf921Y9eorJeyAHses37jnWHPUlvyg">
                     <input type="hidden" name="input" value="raw">
                     <input type="hidden" name="filename" value="syllabus.html">
                     <input type="hidden" name="inputformat" value="html">
                     <input type="hidden" name="outputformat" value="docx">
                     <input type="hidden" name="file" value="{{exportDOCX();}}">
-                    <input class="button" id="export-docx-button" style="background: #93c1ee; color: whitesmoke;" type="submit" value="Export to Word">
+                    <input class="button" id="export-docx-button" style="background: #93c1ee; color: whitesmoke;" type="submit" value="EXPORT TO WORD">
                 </form>
 
 
                 <a class="button" id="export-html-button" style="background: #93c1ee; color: whitesmoke;" 
-                    ng-click="exportHTML()" ng-href="{{fileUrl}}" download="syllabus.html">Export to HTML</a>
+                    ng-click="exportHTML()" ng-href="{{fileUrl}}" download="syllabus.html">EXPORT <br>TO HTML</a>
 
-                <span class="button" id="clear-button" style="background: #ff4d4d; color: whitesmoke;" ng-click="clear()">Clear Data</span>
+                <span class="button" id="clear-button" style="background: #ff4d4d; color: whitesmoke;" ng-click="clear()">CLEAR<br>DATA</span>
             </div>
 
             <!-- Schedule -->
