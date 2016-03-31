@@ -46,22 +46,15 @@ var getDates = function(fdocstr, ldocstr) {
 // TODO: Include year in fdoc/ldoc strings
 var calendar = {
     "2016" : {
-        "spring": {
-            "fdoc": "monday jan 11",
-            "ldoc": "wednesday apr 27",
-        },
-    },
-
-    "2017" : {
         "fall": {
             "fdoc": "tuesday aug 23",
             "ldoc": "wednesday dec 07",
         },
         "spring": {
-            "fdoc": "wednesday jan 11",
-            "ldoc": "friday apr 28",
-        }
-    }
+            "fdoc": "monday jan 11",
+            "ldoc": "wednesday apr 27",
+        },
+    },
 };
 
 app.controller('main-controller', function($scope, $window, $http) {
