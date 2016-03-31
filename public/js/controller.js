@@ -43,9 +43,35 @@ var getDates = function(fdocstr, ldocstr) {
     return res;
 }
 
+// TODO: Include year in fdoc/ldoc strings
+var calendar = {
+    "2016" : {
+        "spring": {
+            "fdoc": "monday jan 11",
+            "ldoc": "wednesday apr 27",
+        },
+    },
+
+    "2017" : {
+        "fall": {
+            "fdoc": "tuesday aug 23",
+            "ldoc": "wednesday dec 07",
+        },
+        "spring": {
+            "fdoc": "wednesday jan 11",
+            "ldoc": "friday apr 28",
+        }
+    }
+};
+
 app.controller('main-controller', function($scope, $window, $http) {
-    $scope.fdocstr = "monday mar 14";
-    $scope.ldocstr = "monday apr 04";
+    // Parse URL parameters to get year and semester
+    var params = location.search.substring(1).split("&");
+    var year     = params[0].split("=")[1];
+    var semester = params[1].split("=")[1];
+
+    $scope.fdocstr = calendar[year][semester]["fdoc"];
+    $scope.ldocstr = calendar[year][semester]["ldoc"];
 
     $scope.dates = getDates($scope.fdocstr, $scope.ldocstr);
 
