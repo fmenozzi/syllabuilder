@@ -57,9 +57,14 @@ var calendar = {
     },
 };
 
+var getLocationSearch = function() {
+		return location.search;
+};
+	
 app.controller('main-controller', function($scope, $window, $http) {
+
     // Parse URL parameters to get year and semester
-    var params = location.search.substring(1).split("&");
+    var params = getLocationSearch().substring(1).split("&");
     var year     = params[0].split("=")[1];
     var semester = params[1].split("=")[1];
 
@@ -68,6 +73,8 @@ app.controller('main-controller', function($scope, $window, $http) {
 
     $scope.dates = getDates($scope.fdocstr, $scope.ldocstr);
 
+	
+	
     $scope.checkDate = function(date) {
         var datestr = date.toString("ddd, MMM dd").substring(0, 2);
         if (datestr === "Mo" && $scope.mo ||
