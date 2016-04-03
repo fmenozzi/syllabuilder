@@ -33,6 +33,7 @@ header {
 	width: 210px;
 	margin: -62px auto 0 auto;
 }
+
 #about {
 	position: absolute;
 	right: 15px;
@@ -46,6 +47,7 @@ header {
 #about a:hover {
 	color: #235d86;
 }
+
 .tagline {
 	padding-left: 25px;
 	font-size: 18px;
@@ -57,32 +59,50 @@ header {
 h1 {
 	text-align: center;
 }
+h2 {
+	text-align: center;
+    color: #235d86;
+    margin: 230px auto 0 auto;
+    font-size: 1.5em;
+}
+
 #semester-box {
 	background: #93c1ee;
-	/*color: #235d86;*/
 	padding: 30px;
 	display: block;
 	width: 360px;
 	height: 150px;
-	margin: 250px auto 0 auto;
+	margin: 10px auto 0 auto;
 }
 #fields {
-	width: 310px;
-	margin: -10px auto 0 auto;
+	width: 250px;
+	margin: 0px auto 0 auto;
 }
 #fields span {
-	/*font-weight: bold;*/
+	font-weight: bold;
 	font-size: 1.15em;
+	color: #235d86;
+	margin-left: 10px;
+	margin-bottom: 10px;
+	width: 88px;
+	display: inline-block;
 }
 select {
-	height: 30px;
-	width: 200px;
-	font-size: 1.25em;
-	margin-left: 4px;	
+    height: 30px;
+    line-height: 28px;
+    width: 110px;
+    background: white;
+    font-size: 1.25em;
+    margin-left: 15px;
+    text-indent: 33x%;
+}
+option {
+	text-align: right;
+	font-family: Arial, sans-serif;
 }
 button {
 	display: block;
 	width: 100px;
 	height: 35px;
-	margin: 0 auto;
+	margin: 0 auto 10px auto;
 }
