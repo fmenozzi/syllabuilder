@@ -6,6 +6,7 @@ describe('app', function() {
 	beforeEach(inject(function(_$controller_){
 		// The injector unwraps the underscores (_) from around the parameter names when matching
 		$controller = _$controller_;
+		spyOn(window, 'getLocationSearch').and.returnValue('year=2016&semester=spring'); // stub getLocationSearch function
     }));
 	
 	describe('$scope.clear', function() {
@@ -51,7 +52,7 @@ describe('app', function() {
 		});
 		it('saves the text of the last section edited to sectionContents', function() {
 			var $scope = {};
-			var controller = $controller('main-controller', { $scope: $scope });
+			var controller = $controller('main-controller', {$scope: $scope});
 			$scope.saveSection("COMP 523", 'Objectives', 'Description');
 			expect(sectionContents["Description"]).toEqual("COMP 523");
 		});
