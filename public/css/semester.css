@@ -90,10 +90,10 @@ h2 {
 select {
     height: 30px;
     line-height: 28px;
-    width: 100px;
+    width: 110px;
     background: white;
     font-size: 1.25em;
-    margin-left: 25px;
+    margin-left: 15px;
     text-indent: 33x%;
 }
 option {
