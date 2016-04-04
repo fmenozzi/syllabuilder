@@ -23,8 +23,9 @@
         <!-- Top header -->
         <div class="header">
             <a href="http://www.unc.edu"><img id="unc_logo" src="images/small_white_300px.png"></a>
-            <span id="title">Syllabuilder</span>
+            <span id="title"> Syllabuilder </span>
             <span id="log_out"><a href="login.html"> Log Out </a></span>
+            <span id="help"><a href="help.html"> Help </a></span>
         </div>
 
         <div id="main" ng-controller='main-controller'>
@@ -113,7 +114,9 @@
                     <input type="hidden" name="inputformat" value="html">
                     <input type="hidden" name="outputformat" value="docx">
                     <input type="hidden" name="file" value="{{exportDOCX();}}">
-                    <input class="button" id="export-docx-button" style="background: #93c1ee; color: whitesmoke;" type="submit" value="EXPORT TO WORD">
+                    <input class="button" id="export-docx-button" style="background: #93c1ee; color: whitesmoke;" type="submit"
+                    value="EXPORT
+                    TO WORD">
                 </form>
 
                 <a class="button" id="export-html-button" style="background: #93c1ee; color: whitesmoke;" ng-click="exportHTML()" ng-href="{{fileUrl}}" download="syllabus.html">EXPORT<br>TO HTML</a>

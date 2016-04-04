@@ -34,28 +34,22 @@ header {
 	margin: -62px auto 0 auto;
 }
 
-#about {
+#help {
 	position: absolute;
 	right: 15px;
 	top: 17px;
 	font-size: 18px;
 }
-#about a {
+#help a {
 	text-decoration: none !important;
 	color: white;
 }
-#about a:hover {
+#help a:hover {
 	color: #235d86;
 }
 
-.tagline {
-	padding-left: 25px;
-	font-size: 18px;
-	position: relative;
-	left: 230px;
-	top: -30px;
-	color: #235d86;
-}
+/*----- BODY -----*/
+
 h1 {
 	text-align: center;
 }
