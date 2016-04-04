@@ -269,7 +269,8 @@ app.controller('main-controller', function($scope, $window, $http) {
             document.getElementById("section-num").value             = "";
             document.getElementById("from-time").value               = "";
             document.getElementById("to-time").value                 = "";
-            document.getElementById("meeting-location").value        = "";
+            document.getElementById("meeting-building").value        = "";
+            document.getElementById("meeting-room").value            = "";
             document.getElementById("course-website").value          = "";
             document.getElementById("instructor-name").value         = "";
             document.getElementById("instructor-email").value        = "";
