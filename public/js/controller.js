@@ -33,7 +33,7 @@ var getDates = function(fdocstr, ldocstr) {
     // Add all weekdays in between
     var date = fdoc.add(-1).day();
     var res = [];
-    while (date.compareTo(ldoc) <= 0) {
+    while (date.compareTo(ldoc) < 0) {
         date = date.add(1).day();
         if (!date.isWeekday())
             date = date.next().monday();
