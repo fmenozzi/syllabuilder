@@ -21,7 +21,7 @@ describe('app', function() {
 			affix('input[value="3:00"]#from-time .course-info');
 			affix('input[value="4:00"]#to-time .course-info');
 			affix('input[value="Brooks"]#meeting-building .course-info');
-			affix('input[value="FB009"]#meeting-room .course-info');			affix('.instructor-info#instructor-name input[value="d"]');
+			affix('input[value="FB009"]#meeting-room .course-info');
 			affix('input[value="Stotts"]#instructor-name .instructor-info');
 			affix('input[value="a@b.c"]#instructor-email .instructor-info');
 			affix('input[value="4"]#instructor-phone .instructor-info');
