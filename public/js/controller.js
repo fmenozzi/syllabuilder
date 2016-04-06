@@ -61,20 +61,7 @@ var getLocationSearch = function() {
 		return location.search;
 };
 
-// WIP
-var dbSetup = function() {
-	$scope.uri = 'mongodb://'+$OPENSHIFT_MONGODB_DB_HOST+':'+$OPENSHIFT_MONGODB_DB_PORT+'/';
-	$scope.dbOptions = {
-		user: $OPENSHIFT_MONGODB_DB_USERNAME,
-		pass: $OPENSHIFT_MONGODB_DB_PASSWORD
-	};
-	$scope.db = mongoose.connect(uri, dbOptions);
-	$scope.syllabusName = "";
-	// TODO: Initialize schema
-}
-	
 app.controller('main-controller', function($scope, $window, $http) {
-
     // Parse URL parameters to get year and semester
     var params = getLocationSearch().substring(1).split("&");
     var year     = params[0].split("=")[1];
@@ -85,8 +72,16 @@ app.controller('main-controller', function($scope, $window, $http) {
 
     $scope.dates = getDates($scope.fdocstr, $scope.ldocstr);
 
-	dbSetup();
-	
+    $scope.dbSetup = function() {
+        $scope.uri = 'mongodb://'+$OPENSHIFT_MONGODB_DB_HOST+':'+$OPENSHIFT_MONGODB_DB_PORT+'/';
+        $scope.dbOptions = {
+            user: $OPENSHIFT_MONGODB_DB_USERNAME,
+            pass: $OPENSHIFT_MONGODB_DB_PASSWORD
+        };
+        $scope.db = mongoose.connect(uri, dbOptions);
+        $scope.syllabusName = "";
+        // TODO: Initialize schema
+    };
 	
     $scope.checkDate = function(date) {
         var datestr = date.toString("ddd, MMM dd").substring(0, 2);
@@ -314,7 +309,7 @@ app.controller('main-controller', function($scope, $window, $http) {
 		$scope.title = prompt('Save as...', 'Enter a name for your syllabus'); // Remember the syllabus title for quick saving
 		var db = $scope.db;
 		$scope.syllabusName = $scope.username+'-'+title;
-		if (db.contains({ _id: $scope.syllabusName }) {
+		if (db.contains({ _id: $scope.syllabusName })) {
 			if (confirm(title+' already exists. Are you sure you want to overwrite it?')) {
 				// TODO: save the new syllabus in place of the old one
 			}
@@ -328,8 +323,9 @@ app.controller('main-controller', function($scope, $window, $http) {
 			// TODO: save the syllabus to the DB without confirmation
 		}
 		else {
-			saveAs();
+			$scope.saveAs();
 		}
+    }
 		
 	$scope.loadSyllabus = function(username, title) {
 		var db = $scope.db;
