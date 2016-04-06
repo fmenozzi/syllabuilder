@@ -36,55 +36,57 @@ header {
 
 #help {
 	position: absolute;
-	right: 15px;
-	top: 17px;
+	right: 12px;
+	top: 10px;
 	font-size: 18px;
-}
-#help a {
+	border-radius: 2px;
+	padding: 7px;
 	text-decoration: none !important;
 	color: white;
+	font-weight: bold;
 }
-#help a:hover {
-	color: #235d86;
+#help:hover {
+	color: white;
+	background: #235d86;
 }
 
-.tagline {
-	padding-left: 25px;
-	font-size: 18px;
-	position: relative;
-	left: 230px;
-	top: -30px;
-	color: #235d86;
-}
+/*----- BODY -----*/
+
 h1 {
 	text-align: center;
 }
-h2 {
-	text-align: center;
-    color: #235d86;
-    margin: 230px auto 0 auto;
-    font-size: 1.5em;
-}
+
 
 #semester-box {
-	background: #93c1ee;
 	padding: 30px;
 	display: block;
-	width: 360px;
-	height: 150px;
-	margin: 10px auto 0 auto;
+	width: 400px;
+	height: 240px;
+	margin: 200px auto 0 auto;
+	border: 10px solid #93c1ee;
+}
+#semester-box h2 {
+	text-align: center;
+    color: white;
+    margin: 0 auto;
+    font-size: 1.5em;
+    background: #93c1ee;
+    width: 460px;
+    padding: 0px 10px 10px 10px;
+    margin: -30px 0px 0px -40px;
 }
 #fields {
-	width: 250px;
-	margin: 0px auto 0 auto;
+	width: 320px;
+	margin: 25px auto 0 auto;
+	line-height: 1.5em;
 }
 #fields span {
 	font-weight: bold;
 	font-size: 1.15em;
 	color: #235d86;
-	margin-left: 10px;
+	margin-left: 70px;
 	margin-bottom: 10px;
-	width: 88px;
+	width: 60px;
 	display: inline-block;
 }
 select {
@@ -93,8 +95,8 @@ select {
     width: 110px;
     background: white;
     font-size: 1.25em;
-    margin-left: 15px;
-    text-indent: 33x%;
+    /*margin-left: 15px;*/
+    /*text-indent: 33%;*/
 }
 option {
 	text-align: right;
@@ -103,6 +105,16 @@ option {
 button {
 	display: block;
 	width: 100px;
-	height: 35px;
-	margin: 0 auto 10px auto;
+	height: 40px;
+	margin: 10px auto 0px auto;
+	background: #93c1ee;
+	color: white;
+	font-size: 1em;
+	font-weight: bold;
+	border: none;
+	border-radius: 2px;
+}
+button:hover {
+	color: white;
+	background: #235d86;
 }
