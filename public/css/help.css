@@ -1,0 +1,76 @@
+body {
+    width: 800px;
+    margin: auto;
+    margin-top: -1px;
+    overflow-x: hidden;
+    font-family: Arial;
+}
+
+/*----- HEADER -----*/
+
+.header {
+    height: 50px;
+    padding: 5px 0 0px 5px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    color: white;
+    background-color: #93c1ee;
+}
+
+#unc_logo {
+    display: inline;
+    position: relative;
+    height: 75px;
+    margin-top: -16px;
+    margin-left: -5px;
+}
+#title {
+    font-size: 36px;
+    font-weight: bold;
+    display: block;
+    color: white;
+    width: 210px;
+    margin: -62px auto 0 auto;
+}
+#log_out {
+    position: absolute;
+    right: 15px;
+    top: 10px;
+    font-size: 18px;
+    border-left: 1px solid gainsboro;
+    padding: 7px 0px 7px 13px;
+}
+#help {
+    position: absolute;
+    right: 108px;
+    top: 17px;
+    font-size: 18px;
+}
+.header a {
+    text-decoration: none !important;
+    color: white;
+}
+.header a:hover {
+    color: #235d86;
+}
+
+/*----- BODY -----*/
+
+#main {
+    padding: 75px 0px 30px 10px;
+    border-bottom: 1px solid lightgray;
+    margin-bottom: 40px;
+    height: auto;
+    overflow: auto;
+    font-size: 1.1em;
+}
+#main h2 {
+	color: #235d86;
+	text-align: center;
+}
+#main h3 {
+    line-height: 0.6em;
+    color: #93c1ee;
+}
