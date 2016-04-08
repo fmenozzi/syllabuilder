@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+    <!-- Angular -->
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+    <!-- Controllers -->
+    <script src="js/controller.js"></script>
+    <!-- Other -->
+    <script src="js/date.js"></script>
+    <!-- CSS -->
+    <head>
+        <title> Syllabuilder - Editor </title>
+        <link rel="stylesheet" type="text/css" href="css/editor.css">
+        <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
+        <link rel="shortcut icon" type="image/x-icon" href="images/favicon.ico">
+        <meta charset="UTF-8">
+    </head>
+
+    <body ng-app="syllabuilder">
+        <!-- Top header -->
+        <div class="header">
+            <a href="http://www.unc.edu"><img id="unc_logo" src="images/small_white_300px.png"></a>
+            <span id="title"> Syllabuilder </span>
+            <a id="log_out" href="login.html"> Log Out </a>
+            <span id="divider"></span>
+            <a id="help" href="#help_window"> Help </a>
+        </div>
+
+        <div id="main" ng-controller='main-controller'>
+            <!-- Prelude info -->
+            <div class="prelude">
+                <h2> Course Information </h2>
+                <span id="prelude1">
+                    <h3> Course Listing</h3>
+                    <div class="course-info">Course Title: <input type="text" id="course-name"></div>
+                    <div class="course-info">Department (abbr.): <input type="text" id="dept-id"></div>
+                    <div class="course-info">Course Number: <input type="text" id="course-num"></div>
+                    <div class="course-info">Section Number: <input type="text" id="section-num"></div>
+                    <div class="course-info">Course Website: <input type="text" id="course-website"></div>
+                </span>
+
+                <span id="prelude2">
+                    <h3> Course Meeting</h3>
+                    <div class="course-info" id="meeting-days">Weekdays:
+                        <span id="day_boxes">
+                            <span><input type="checkbox" ng-model="mo">M </span>
+                            <span><input type="checkbox" ng-model="tu">T </span>
+                            <span><input type="checkbox" ng-model="we">W </span>
+                            <span><input type="checkbox" ng-model="th">R </span>
+                            <span><input type="checkbox" ng-model="fr">F </span>
+                        </span>
+                    </div>
+                    <div class="course-info">Start Time: <input type="text" id="from-time"></div>
+                    <div class="course-info">End Time: <input type="text" id="to-time"></div>
+                    <div class="course-info">Building: <input type="text" id="meeting-building"></div>
+                    <div class="course-info">Room: <input type="text" id="meeting-room"></div>
+                </span>
+
+                <span id="prelude3">
+                    <h3> Course Instructor</h3>
+                    <div class="instructor-info">Name: <input type="text" id="instructor-name"></div>
+                    <div class="instructor-info">Email: <input type="text" id="instructor-email"></div>
+                    <div class="instructor-info">Phone: <input type="text" id="instructor-phone"></div>
+                    <div class="instructor-info">Website: <input type="text" id="instructor-website"></div>
+                    <div class="instructor-info">Office Hours: <input type="text" id="instructor-office-hours"></div>
+                </span>
+            </div>
+
+            <!-- Left button panel -->
+            <div class="left-side" ng-init="placeholderText='Description'; lastSection='Description'; currentSection='Description';">
+                <div id="top_row">
+                    <div class="button" id="Description"     ng-click="saveSection(text, 'Description',     lastSection)">Description</div>
+                    <div class="button" id="Objectives"      ng-click="saveSection(text, 'Objectives',      lastSection)">Objectives</div>
+                    <div class="button" id="Target Audience" ng-click="saveSection(text, 'Target Audience', lastSection)">Audience</div>
+                    <div class="button" id="Prerequisites"   ng-click="saveSection(text, 'Prerequisites',   lastSection)">Prerequisites</div>
+                    <div class="button" id="Goals"           ng-click="saveSection(text, 'Goals',           lastSection)">Goals</div>
+                    <div class="button" id="Requirements"    ng-click="saveSection(text, 'Requirements',    lastSection)">Requirements</div>
+                    <div class="button" id="Policies"        ng-click="saveSection(text, 'Policies',        lastSection)">Policies</div>
+                </div>
+                <div id="bottom_row">
+                    <div class="button" id="Resources"       ng-click="saveSection(text, 'Resources',       lastSection)">Resources</div>
+                    <div class="button" id="Materials"       ng-click="saveSection(text, 'Materials',       lastSection)">Materials</div>
+                    <div class="button" id="Grading"         ng-click="saveSection(text, 'Grading',         lastSection)">Grading</div>
+                    <div class="button" id="Exams"           ng-click="saveSection(text, 'Exams',           lastSection)">Exams</div>
+                    <div class="button" id="Honor Code"      ng-click="saveSection(text, 'Honor Code',      lastSection)">Honor Code</div>
+                    <div class="button" id="Accessibility"   ng-click="saveSection(text, 'Accessibility',   lastSection)">Accessibility</div>
+                    <div class="button" id="Disclaimer"      ng-click="saveSection(text, 'Disclaimer',      lastSection)">Disclaimer</div>
+                </div>
+            </div>
+
+            <!-- Highlight "Description" button by default -->
+            <script type="text/javascript">
+                document.getElementById('Description').style.background = "#235d86";
+                document.getElementById('Description').style.color = "white";
+            </script>
+
+            <!-- Text editor -->
+            <div class="right-side">
+                <div>
+                    <textarea class="editor" placeholder="{{placeholderText}}" ng-model="text"></textarea>
+                </div>
+            </div>
+
+            <!-- Bottom button panel -->
+            <div class="bottom">
+                <span class="button" id="preview-button" style="background: #93c1ee; color: whitesmoke;" ng-click="preview()">PREVIEW</span>
+
+                <form action="https://api.cloudconvert.com/convert" method="POST" enctype="multipart/form-data" style="width: 1050px;">
+                    <input type="hidden" name="apikey" value="Zs2BH2Wykji2E2ZJh7tmBvZETDW2AT1_mv8ZcimWwzf1Ds4AYquUOyDPzf921Y9eorJeyAHses37jnWHPUlvyg">
+                    <input type="hidden" name="input" value="raw">
+                    <input type="hidden" name="filename" value="syllabus.html">
+                    <input type="hidden" name="inputformat" value="html">
+                    <input type="hidden" name="outputformat" value="docx">
+                    <input type="hidden" name="file" value="{{exportDOCX();}}">
+                    <input class="button" id="export-docx-button" style="background: #93c1ee; color: whitesmoke;" type="submit"
+                    value="EXPORT
+                    TO WORD">
+                </form>
+
+                <a class="button" id="export-html-button" style="background: #93c1ee; color: whitesmoke;" ng-click="exportHTML()" ng-href="{{fileUrl}}" download="syllabus.html">EXPORT<br>TO HTML</a>
+
+                <span class="button" id="clear-button" style="background: #ff4d4d; color: whitesmoke;" ng-click="clear()">CLEAR<br>DATA</span>
+            </div>
+
+            <!-- Schedule -->
+           <div class="schedule">
+                <h2> Schedule </h2>
+                <table>
+                    <tr>
+                        <th>Date</th>
+                        <th>Material Covered</th>
+                        <th>Homework</th>
+                    </tr>
+                    <tr ng-repeat="date in dates">
+                        <td ng-if="checkDate(date)">{{date.toString("ddd, MMM dd")}}</td>
+                        <td ng-if="checkDate(date)"><input id="{{'material_' + $index}}" type="text"></td>
+                        <td ng-if="checkDate(date)"><input id="{{'homework_' + $index}}" type="text"></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </body>
+</html>
