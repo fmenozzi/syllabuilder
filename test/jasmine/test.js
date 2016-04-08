@@ -84,6 +84,7 @@ describe('app', function() {
 			expect(sectionContents["Description"]).toEqual("COMP 523");
 		});
 	});
+<<<<<<< HEAD
 	describe('$scope.constructHTML', function() {
 		beforeEach(function() {
 			var $scope = {};
@@ -192,3 +193,7 @@ describe('app', function() {
   
 });
 
+=======
+  
+});
+>>>>>>> origin/devi
