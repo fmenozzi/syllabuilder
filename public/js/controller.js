@@ -12,6 +12,10 @@ var sectionContents = {
     "Objectives":      "",
     "Target Audience": "",
     "Prerequisites":   "",
+    "Goals":           "",
+    "Requirements":    "",
+    "Policies":        "",
+    "Resources":       "",
     "Materials":       "",
     "Grading":         "",
     "Exams":           "",
@@ -29,7 +33,7 @@ var getDates = function(fdocstr, ldocstr) {
     // Add all weekdays in between
     var date = fdoc.add(-1).day();
     var res = [];
-    while (date.compareTo(ldoc) <= 0) {
+    while (date.compareTo(ldoc) < 0) {
         date = date.add(1).day();
         if (!date.isWeekday())
             date = date.next().monday();
@@ -39,12 +43,46 @@ var getDates = function(fdocstr, ldocstr) {
     return res;
 }
 
+// TODO: Include year in fdoc/ldoc strings
+var calendar = {
+    "2016" : {
+        "fall": {
+            "fdoc": "tuesday aug 23",
+            "ldoc": "wednesday dec 07",
+        },
+        "spring": {
+            "fdoc": "monday jan 11",
+            "ldoc": "wednesday apr 27",
+        },
+    },
+};
+
+var getLocationSearch = function() {
+        return location.search;
+};
+
 app.controller('main-controller', function($scope, $window, $http) {
-    $scope.fdocstr = "monday mar 14";
-    $scope.ldocstr = "monday apr 04";
+    // Parse URL parameters to get year and semester
+    var params = getLocationSearch().substring(1).split("&");
+    var year     = params[0].split("=")[1];
+    var semester = params[1].split("=")[1];
+
+    $scope.fdocstr = calendar[year][semester]["fdoc"];
+    $scope.ldocstr = calendar[year][semester]["ldoc"];
 
     $scope.dates = getDates($scope.fdocstr, $scope.ldocstr);
 
+    $scope.dbSetup = function() {
+        $scope.uri = 'mongodb://'+$OPENSHIFT_MONGODB_DB_HOST+':'+$OPENSHIFT_MONGODB_DB_PORT+'/';
+        $scope.dbOptions = {
+            user: $OPENSHIFT_MONGODB_DB_USERNAME,
+            pass: $OPENSHIFT_MONGODB_DB_PASSWORD
+        };
+        $scope.db = mongoose.connect(uri, dbOptions);
+        $scope.syllabusName = "";
+        // TODO: Initialize schema
+    };
+    
     $scope.checkDate = function(date) {
         var datestr = date.toString("ddd, MMM dd").substring(0, 2);
         if (datestr === "Mo" && $scope.mo ||
@@ -107,7 +145,8 @@ app.controller('main-controller', function($scope, $window, $http) {
         if ($scope.fr) meetingDays += "Fr";
         var fromTime              = document.getElementById("from-time").value;
         var toTime                = document.getElementById("to-time").value;
-        var meetingLocation       = document.getElementById("meeting-location").value;
+        var meetingBuilding       = document.getElementById("meeting-building").value;
+        var meetingRoom           = document.getElementById("meeting-room").value;
         var courseWebsite         = document.getElementById("course-website").value;
         var instructorName        = document.getElementById("instructor-name").value;
         var instructorEmail       = document.getElementById("instructor-email").value;
@@ -120,7 +159,8 @@ app.controller('main-controller', function($scope, $window, $http) {
         html += "<div class='prelude-header'>General Course Info</div>";
         html += "<br>";
         html += "<div class='prelude-contents'>Time: " + meetingDays + " from " + fromTime + " to " + toTime + "</div>";
-        html += "<div class='prelude-contents'>Location: " + meetingLocation + "</div>";
+        html += "<div class='prelude-contents'>Meeting Building: " + meetingBuilding + "</div>";
+        html += "<div class='prelude-contents'>Meeting Room: " + meetingRoom + "</div>";
         html += "<div class='prelude-contents'>Website: " + courseWebsite + "</div>";
         html += "<br>";
         html += "<div class='prelude-header'>Instructor Info</div>";
@@ -237,7 +277,8 @@ app.controller('main-controller', function($scope, $window, $http) {
             document.getElementById("section-num").value             = "";
             document.getElementById("from-time").value               = "";
             document.getElementById("to-time").value                 = "";
-            document.getElementById("meeting-location").value        = "";
+            document.getElementById("meeting-building").value        = "";
+            document.getElementById("meeting-room").value            = "";
             document.getElementById("course-website").value          = "";
             document.getElementById("instructor-name").value         = "";
             document.getElementById("instructor-email").value        = "";
@@ -262,7 +303,36 @@ app.controller('main-controller', function($scope, $window, $http) {
             }
         }
     }
-
+    
+    // DB save/load functions. WIP!!
+    $scope.saveAs = function() {
+        $scope.title = prompt('Save as...', 'Enter a name for your syllabus'); // Remember the syllabus title for quick saving
+        var db = $scope.db;
+        $scope.syllabusName = $scope.username+'-'+title;
+        if (db.contains({ _id: $scope.syllabusName })) {
+            if (confirm(title+' already exists. Are you sure you want to overwrite it?')) {
+                // TODO: save the new syllabus in place of the old one
+            }
+        } else {
+            // TODO: save the new syllabus
+        }
+    }
+    
+    $scope.quickSave = function() {
+        if ($scope.syllabusName != "") { // see if syllabus has been saved before
+            // TODO: save the syllabus to the DB without confirmation
+        }
+        else {
+            $scope.saveAs();
+        }
+    }
+        
+    $scope.loadSyllabus = function(username, title) {
+        var db = $scope.db;
+        var loadedSyllabus = db.find({ _id: username+'-'+title });
+        // TODO: Populate fields with data from the loaded syllabus
+    }
+    
     // Success and failure callbacks
     /*
     var success = function(resp) {$scope.resp = "Success! " + resp.data;};

@@ -50,25 +50,14 @@ header {
 	background: #235d86;
 }
 
-/*----- HELP WINDOW -----*/
-
-
 /*----- BODY -----*/
 
 h1 {
 	text-align: center;
 }
-/*h2 {
-	text-align: center;
-    color: white;
-    margin: 200px auto 0 auto;
-    font-size: 1.5em;
-    background: #93c1ee;
-    width: 460px;
-    padding: 10px 10px 0 10px;
-}*/
 
-#login_box {
+
+#semester-box {
 	padding: 30px;
 	display: block;
 	width: 400px;
@@ -76,7 +65,7 @@ h1 {
 	margin: 200px auto 0 auto;
 	border: 10px solid #93c1ee;
 }
-#login_box h2 {
+#semester-box h2 {
 	text-align: center;
     color: white;
     margin: 0 auto;
@@ -86,14 +75,6 @@ h1 {
     padding: 0px 10px 10px 10px;
     margin: -30px 0px 0px -40px;
 }
-/*#login_box {
-	padding: 30px;
-	display: block;
-	width: 400px;
-	height: 200px;
-	margin: 0px auto 0 auto;
-	border: 10px solid #93c1ee;
-}*/
 #fields {
 	width: 320px;
 	margin: 25px auto 0 auto;
@@ -103,18 +84,23 @@ h1 {
 	font-weight: bold;
 	font-size: 1.15em;
 	color: #235d86;
+	margin-left: 70px;
+	margin-bottom: 10px;
+	width: 60px;
+	display: inline-block;
 }
-input[type="text"]{
-	height: 30px;
-	width: 200px;
-	font-size: 1.25em;
-	margin-left: 7px;
+select {
+    height: 30px;
+    line-height: 28px;
+    width: 110px;
+    background: white;
+    font-size: 1.25em;
+    /*margin-left: 15px;*/
+    /*text-indent: 33%;*/
 }
-input[type="password"] {
-	height: 30px;
-	width: 200px;
-	font-size: 1.25em;
-	margin-left: 9px;
+option {
+	text-align: right;
+	font-family: Arial, sans-serif;
 }
 button {
 	display: block;
