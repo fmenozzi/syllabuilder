@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+
+    <body>
+
+        <div ng-app="">
+            <!-- "ng-model" binds the value of the input field to the variable "name" -->
+            <p>Name: <input type="text" ng-model="name"></p>
+
+            <!-- "ng-bind" binds the innerHTML of the <span> element to the variable "name" -->
+            Name: <span ng-bind="name"></span>
+
+            <!-- "ng-init" initializes the value of a variable -->
+            <div ng-init="variable='Hello!'">
+                <p>The initial value of "variable" is: <span ng-bind="variable"></span></p>
+            </div>
+        </div>
+
+    </body>
+</html>
