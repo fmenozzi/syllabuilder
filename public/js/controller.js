@@ -5,8 +5,23 @@ app.config(['$compileProvider', function ($compileProvider) {
     $compileProvider.aHrefSanitizationWhitelist(/^\s*(|blob|):/);
 }]);
 
+var requiredFormIds = [
+    "course-name",
+    "dept-id",
+    "course-num",
+    "section-num",
+
+    "from-time",
+    "to-time",
+    "meeting-building",
+    "meeting-room",
+
+    "instructor-name",
+    "instructor-email",
+    "instructor-office-hours"
+];
+
 // The contents of each section
-// TODO: Make placeholder text a hint about what to include
 var sectionContents = {
     "Description":     "",
     "Objectives":      "",
@@ -43,17 +58,27 @@ var getDates = function(fdocstr, ldocstr) {
     return res;
 }
 
-// TODO: Include year in fdoc/ldoc strings
 var calendar = {
     "2016" : {
         "fall": {
-            "fdoc": "tuesday aug 23",
-            "ldoc": "wednesday dec 07",
+            "fdoc": "tuesday aug 23 2016",
+            "ldoc": "wednesday dec 07 2016",
         },
         "spring": {
-            "fdoc": "monday jan 11",
-            "ldoc": "wednesday apr 27",
+            "fdoc": "monday jan 11 2016",
+            "ldoc": "wednesday apr 27 2016",
         },
+    },
+
+    "2017" : {
+        "fall": {
+            "fdoc": "",     // TODO: Data doesn't exist yet
+            "ldoc": "",     // TODO: Data doesn't exist yet
+        },
+        "spring": {
+            "fdoc": "wednesday jan 11 2017",
+            "ldoc": "friday apr 28 2017",
+        }
     },
 };
 
@@ -202,7 +227,6 @@ app.controller('main-controller', function($scope, $window, $http) {
 
         return html;
     };
-
 
     // Save contents of text editor to appropriate section
     $scope.saveSection = function(text, currentSection, lastSection) {
