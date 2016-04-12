@@ -34,9 +34,9 @@ var sectionContents = {
     "Materials":       "",
     "Grading":         "",
     "Exams":           "",
-    "Honor Code":      "",
-    "Accessibility":   "",
-    "Disclaimer":      "",
+    "Honor Code":      "The University of North Carolina at Chapel Hill has had a student-led honor system for over 100 years. Academic integrity is at the heart of Carolina and we all are responsible for upholding the ideals of honor and integrity.  The student-led Honor System is responsible for adjudicating any suspected violations of the Honor Code and all suspected instances of academic dishonesty will be reported to the honor system. Information, including your responsibilities as a student is outlined in the Instrument of Student Judicial Governance. Your full participation and observance of the Honor Code is expected.",
+    "Accessibility":   "The University of North Carolina at Chapel Hill ensures that no qualified person shall by reason of a disability be denied access to, participation in, or the benefits of, any program or activity operated by the University. Each qualified person shall receive reasonable accommodations to ensure equal access to educational opportunities, programs, and activities in the most integrated setting appropriate.",
+    "Disclaimer":      "The professor reserves to right to make changes to the syllabus, including project due dates and test dates. These changes will be announced as early as possible.",
 };
 
 // Get all weekdays between FDOC and LDOC
