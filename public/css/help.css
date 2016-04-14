@@ -36,24 +36,20 @@ body {
 }
 #log_out {
     position: absolute;
-    right: 15px;
+    right: 8px;
     top: 10px;
-    font-size: 18px;
-    border-left: 1px solid gainsboro;
-    padding: 7px 0px 7px 13px;
+    padding: 7px 7px 7px 7px;
 }
-#help {
-    position: absolute;
-    right: 108px;
-    top: 17px;
+#log_out {
     font-size: 18px;
-}
-.header a {
+    border-radius: 2px;
     text-decoration: none !important;
     color: white;
+    font-weight: bold;
 }
-.header a:hover {
-    color: #235d86;
+#log_out:hover {
+    color: white;
+    background: #235d86;
 }
 
 /*----- BODY -----*/
