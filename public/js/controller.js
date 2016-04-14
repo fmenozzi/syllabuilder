@@ -5,8 +5,23 @@ app.config(['$compileProvider', function ($compileProvider) {
     $compileProvider.aHrefSanitizationWhitelist(/^\s*(|blob|):/);
 }]);
 
+var requiredFormIds = [
+    "course-name",
+    "dept-id",
+    "course-num",
+    "section-num",
+
+    "from-time",
+    "to-time",
+    "meeting-building",
+    "meeting-room",
+
+    "instructor-name",
+    "instructor-email",
+    "instructor-office-hours"
+];
+
 // The contents of each section
-// TODO: Make placeholder text a hint about what to include
 var sectionContents = {
     "Description":     "",
     "Objectives":      "",
@@ -19,9 +34,9 @@ var sectionContents = {
     "Materials":       "",
     "Grading":         "",
     "Exams":           "",
-    "Honor Code":      "",
-    "Accessibility":   "",
-    "Disclaimer":      "",
+    "Honor Code":      "The University of North Carolina at Chapel Hill has had a student-led honor system for over 100 years. Academic integrity is at the heart of Carolina and we all are responsible for upholding the ideals of honor and integrity.  The student-led Honor System is responsible for adjudicating any suspected violations of the Honor Code and all suspected instances of academic dishonesty will be reported to the honor system. Information, including your responsibilities as a student is outlined in the Instrument of Student Judicial Governance. Your full participation and observance of the Honor Code is expected.",
+    "Accessibility":   "The University of North Carolina at Chapel Hill ensures that no qualified person shall by reason of a disability be denied access to, participation in, or the benefits of, any program or activity operated by the University. Each qualified person shall receive reasonable accommodations to ensure equal access to educational opportunities, programs, and activities in the most integrated setting appropriate.",
+    "Disclaimer":      "The professor reserves to right to make changes to the syllabus, including project due dates and test dates. These changes will be announced as early as possible.",
 };
 
 // Get all weekdays between FDOC and LDOC
@@ -43,17 +58,27 @@ var getDates = function(fdocstr, ldocstr) {
     return res;
 }
 
-// TODO: Include year in fdoc/ldoc strings
 var calendar = {
     "2016" : {
         "fall": {
-            "fdoc": "tuesday aug 23",
-            "ldoc": "wednesday dec 07",
+            "fdoc": "tuesday aug 23 2016",
+            "ldoc": "wednesday dec 07 2016",
         },
         "spring": {
-            "fdoc": "monday jan 11",
-            "ldoc": "wednesday apr 27",
+            "fdoc": "monday jan 11 2016",
+            "ldoc": "wednesday apr 27 2016",
         },
+    },
+
+    "2017" : {
+        "fall": {
+            "fdoc": "",     // TODO: Data doesn't exist yet
+            "ldoc": "",     // TODO: Data doesn't exist yet
+        },
+        "spring": {
+            "fdoc": "wednesday jan 11 2017",
+            "ldoc": "friday apr 28 2017",
+        }
     },
 };
 
@@ -202,7 +227,6 @@ app.controller('main-controller', function($scope, $window, $http) {
 
         return html;
     };
-
 
     // Save contents of text editor to appropriate section
     $scope.saveSection = function(text, currentSection, lastSection) {
