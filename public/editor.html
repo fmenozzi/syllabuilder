@@ -28,20 +28,34 @@
 
         <div id="main" ng-controller='main-controller'>
             <!-- Prelude info -->
+            <div class=syllabus-info>
+                <h2> Syllabus Information </h2>
+                Syllabus Name: <input type="text" id="syllabus-name">  
+                <button value="SAVE" id="save-button">SAVE</button>
+                Load Syllabus:
+                <select>
+                    <option value="Fall 2015"> Fall 2015 </option>
+                    <option value="Spring 2016"> Spring 2016 </option>
+                    <option value="Fall 2016"> Fall 2016 </option>
+                    <option value="Spring 2017"> Spring 2017 </option>    
+                </select>
+                <button value="LOAD">LOAD</button>
+            </div>
+
             <div class="prelude">
                 <h2> Course Information </h2>
                 <span id="prelude1">
                     <h3> Course Listing</h3>
                     <div class="course-info">Course Title: <input type="text" id="course-name"></div>
-                    <div class="course-info">Department (abbr.): <input type="text" id="dept-id"></div>
+                    <div class="course-info">Department: <input type="text" id="dept-id"></div>
                     <div class="course-info">Course Number: <input type="text" id="course-num"></div>
                     <div class="course-info">Section Number: <input type="text" id="section-num"></div>
-                    <div class="course-info">Course Website: <input type="text" id="course-website"></div>
+                    <div class="course-info"><i>Course Website: </i><input type="text" id="course-website"></div>
                 </span>
 
                 <span id="prelude2">
                     <h3> Course Meeting</h3>
-                    <div class="course-info" id="meeting-days">Weekdays:
+                    <div class="course-info" id="meeting-days"><b> Weekdays: </b>
                         <span id="day_boxes">
                             <span><input type="checkbox" ng-model="mo">M </span>
                             <span><input type="checkbox" ng-model="tu">T </span>
@@ -50,10 +64,10 @@
                             <span><input type="checkbox" ng-model="fr">F </span>
                         </span>
                     </div>
-                    <div class="course-info">Start Time: <input type="text" id="from-time"></div>
-                    <div class="course-info">End Time: <input type="text" id="to-time"></div>
-                    <div class="course-info">Building: <input type="text" id="meeting-building"></div>
-                    <div class="course-info">Room: <input type="text" id="meeting-room"></div>
+                    <div class="course-info"><b>Start Time: </b><input type="text" id="from-time"></div>
+                    <div class="course-info"><b>End Time: </b><input type="text" id="to-time"></div>
+                    <div class="course-info"><b>Building: </b><input type="text" id="meeting-building"></div>
+                    <div class="course-info"><b>Room: </b><input type="text" id="meeting-room"></div>
                 </span>
 
                 <span id="prelude3">
