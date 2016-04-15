@@ -213,15 +213,14 @@ button:focus {
     width: 150px;
     margin: 250px auto -5px auto;
 }
+/*
 #note:before {
     color: #93c1ee;
     content: '* ';
     display: inline;
     margin-left: -2px;
 }
-
-
-
+*/
 
 .left-side {
     float: left;
