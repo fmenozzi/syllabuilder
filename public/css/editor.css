@@ -65,9 +65,6 @@ body {
     border-right: 1px solid gainsboro;
 }
 
-/*----- HELP POPUP -----*/
-
-
 
 /*----- BODY -----*/
 
@@ -80,19 +77,19 @@ body {
     margin-bottom: 20px;
     height: auto;
     overflow: auto;
-    font-size: 1.1em;
-    align-content: center; 
+    font-size: 1.2em;
+    align-content: center;
+    text-align: center; 
 }
 .syllabus-info h2 {
+    font-size: 1.4em;
     line-height: 0.2em;
     color: #235d86;
     text-align: center;
-    padding-bottom: 5 px;
+    padding-bottom: 5px;
 }
 .syllabus-info button {
-    /*display: block;*/
-    /*width: 100px;*/
-    height: 35px;
+    height: 30px;`
     margin: 10px auto 0px auto;
     background: #93c1ee;
     color: white;
@@ -108,7 +105,8 @@ body {
 .syllabus-info input[type="text"]{
     float: right;
     width: 150px;
-    font-size: 0.7em;
+    height: 25px;
+    font-size: 0.9em;
 }
 .syllabus-info select {
     height: 30px;
@@ -123,9 +121,13 @@ body {
     text-align: right;
     font-family: Arial, sans-serif;
 }
-#save-button {
-    margin-right: 100px;
+.syllabus-actions {
+    display: block;
 }
+#save-button {
+    margin-right: 80px;
+}
+
 
 .prelude {
     padding: 0px 0px 30px 10px;
@@ -173,15 +175,17 @@ body {
 #syllabus-name {
     float: none;
 }
+
 .course-info {
     padding-bottom: 10px;
 }
-.course-info:before {
+/*.course-info:before {
     color: #93c1ee;
     content: '* ';
     display: inline;
     margin-left: -2px;
-}
+}*/
+
 #day_boxes {
     float: right;
     font-size: 0.9em;
@@ -189,9 +193,22 @@ body {
 #day_boxes input {
     margin-left: 5px;
 }
+
 .instructor-info {
     padding-bottom: 10px;
 }
+
+#note {
+    width: 150px;
+    margin: 250px auto -5px auto;
+}
+#note:before {
+    color: #93c1ee;
+    content: '* ';
+    display: inline;
+    margin-left: -2px;
+}
+
 
 
 

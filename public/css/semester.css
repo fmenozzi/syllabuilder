@@ -55,8 +55,6 @@ header {
 h1 {
 	text-align: center;
 }
-
-
 #semester-box {
 	padding: 30px;
 	display: block;
@@ -69,12 +67,13 @@ h1 {
 	text-align: center;
     color: white;
     margin: 0 auto;
-    font-size: 1.5em;
+    font-size: 1.75em;
     background: #93c1ee;
     width: 460px;
     padding: 0px 10px 10px 10px;
     margin: -30px 0px 0px -40px;
 }
+
 #fields {
 	width: 320px;
 	margin: 25px auto 0 auto;

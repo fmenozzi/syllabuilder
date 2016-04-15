@@ -23,23 +23,25 @@
             <span id="title"> Syllabuilder </span>
             <a id="log_out" href="login.html"> Log Out </a>
             <span id="divider"></span>
-            <a id="help" href="#help_window"> Help </a>
+            <a id="help" href="help.html"> Help </a>
         </div>
 
         <div id="main" ng-controller='main-controller'>
             <!-- Prelude info -->
             <div class=syllabus-info>
                 <h2> Syllabus Information </h2>
-                Syllabus Name: <input type="text" id="syllabus-name">  
-                <button value="SAVE" id="save-button">SAVE</button>
-                Load Syllabus:
-                <select>
-                    <option value="Fall 2015"> Fall 2015 </option>
-                    <option value="Spring 2016"> Spring 2016 </option>
-                    <option value="Fall 2016"> Fall 2016 </option>
-                    <option value="Spring 2017"> Spring 2017 </option>    
-                </select>
-                <button value="LOAD">LOAD</button>
+                <div class="syllabus-actions">
+                    Syllabus Name: <input type="text" id="syllabus-name">  
+                    <button value="SAVE" id="save-button">SAVE</button>
+                    Load Syllabus:
+                    <select>
+                        <option value="Fall 2015"> Fall 2015 </option>
+                        <option value="Spring 2016"> Spring 2016 </option>
+                        <option value="Fall 2016"> Fall 2016 </option>
+                        <option value="Spring 2017"> Spring 2017 </option>    
+                    </select>
+                    <button value="LOAD">LOAD</button>
+                </div>
             </div>
 
             <div class="prelude">
@@ -47,10 +49,10 @@
                 <span id="prelude1">
                     <h3> Course Listing</h3>
                     <div class="course-info">Course Title: <input type="text" id="course-name"></div>
-                    <div class="course-info">Department: <input type="text" id="dept-id"></div>
+                    <div class="course-info">Department: <input type="text" id="dept-id" maxlength="4"></div>
                     <div class="course-info">Course Number: <input type="text" id="course-num"></div>
                     <div class="course-info">Section Number: <input type="text" id="section-num"></div>
-                    <div class="course-info">Course Website: <input type="text" id="course-website"></div>
+                    <div class="course-info"><i>Course Website: </i><input type="text" id="course-website"></div>
                 </span>
 
                 <span id="prelude2">
@@ -75,9 +77,13 @@
                     <div class="instructor-info">Name: <input type="text" id="instructor-name"></div>
                     <div class="instructor-info">Email: <input type="text" id="instructor-email"></div>
                     <div class="instructor-info">Phone: <input type="text" id="instructor-phone"></div>
-                    <div class="instructor-info">Website: <input type="text" id="instructor-website"></div>
                     <div class="instructor-info">Office Hours: <input type="text" id="instructor-office-hours"></div>
+                    <div class="instructor-info"><i>Website: </i><input type="text" id="instructor-website"></div>
                 </span>
+
+                <div id="note">
+                    <i>Optional fields</i>
+                </div>
             </div>
 
             <!-- Top button panel -->

@@ -1,14 +1,13 @@
 body {
-    width: 800px;
+    width: 900px;
     margin: auto;
     margin-top: -1px;
     overflow-x: hidden;
     font-family: Arial;
 }
 
-/*----- HEADER -----*/
-
-.header {
+header {
+    font-family: Arial;
     height: 50px;
     padding: 5px 0 0px 5px;
     position: absolute;
@@ -34,15 +33,14 @@ body {
     width: 210px;
     margin: -62px auto 0 auto;
 }
+
 #log_out {
     position: absolute;
-    right: 8px;
+    right: 12px;
     top: 10px;
-    padding: 7px 7px 7px 7px;
-}
-#log_out {
     font-size: 18px;
     border-radius: 2px;
+    padding: 7px;
     text-decoration: none !important;
     color: white;
     font-weight: bold;
@@ -54,19 +52,38 @@ body {
 
 /*----- BODY -----*/
 
-#main {
-    padding: 75px 0px 30px 10px;
-    border-bottom: 1px solid lightgray;
-    margin-bottom: 40px;
-    height: auto;
-    overflow: auto;
-    font-size: 1.1em;
+h1 {
+    text-align: center;
 }
-#main h2 {
-	color: #235d86;
-	text-align: center;
+#help_box {
+    padding: 30px;
+    display: block;
+    width: 500px;
+    height: auto;
+    margin: 150px auto 0 auto;
+    border: 10px solid #93c1ee;
+}
+#help_box h2 {
+    text-align: center;
+    color: white;
+    margin: 0 auto;
+    font-size: 1.75em;
+    background: #93c1ee;
+    width: 560px;
+    padding: 0px 10px 10px 10px;
+    margin: -30px 0px 0px -40px;
+}
+
+#main {
+    /*padding: 0px 0px 30px 10px;*/
+    /*border-bottom: 1px solid lightgray;*/
+    /*margin-bottom: 40px;*/
+    height: auto;
+    /*overflow: auto;*/
+    font-size: 1.1em;
 }
 #main h3 {
     line-height: 0.6em;
-    color: #93c1ee;
+    /*color: #93c1ee;*/
+    color: #235d86;
 }

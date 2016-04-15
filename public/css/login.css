@@ -58,15 +58,6 @@ header {
 h1 {
 	text-align: center;
 }
-/*h2 {
-	text-align: center;
-    color: white;
-    margin: 200px auto 0 auto;
-    font-size: 1.5em;
-    background: #93c1ee;
-    width: 460px;
-    padding: 10px 10px 0 10px;
-}*/
 
 #login_box {
 	padding: 30px;
@@ -80,20 +71,13 @@ h1 {
 	text-align: center;
     color: white;
     margin: 0 auto;
-    font-size: 1.5em;
+    font-size: 1.75em;
     background: #93c1ee;
     width: 460px;
     padding: 0px 10px 10px 10px;
     margin: -30px 0px 0px -40px;
 }
-/*#login_box {
-	padding: 30px;
-	display: block;
-	width: 400px;
-	height: 200px;
-	margin: 0px auto 0 auto;
-	border: 10px solid #93c1ee;
-}*/
+
 #fields {
 	width: 320px;
 	margin: 25px auto 0 auto;
