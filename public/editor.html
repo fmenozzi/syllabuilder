@@ -30,6 +30,7 @@
             <!-- Prelude info -->
             <div class=syllabus-info>
                 <h2> Syllabus Information </h2>
+<<<<<<< HEAD
                 <div class="syllabus-actions">
                     Syllabus Name: <input type="text" id="syllabus-name">  
                     <button value="SAVE" id="save-button">SAVE</button>
@@ -42,6 +43,18 @@
                     </select>
                     <button value="LOAD">LOAD</button>
                 </div>
+=======
+                Syllabus Name: <input type="text" id="syllabus-name" ng-model="syllabusName">
+                <button value="SAVE" id="save-button" ng-click="saveSyllabus()">SAVE</button>
+                Load Syllabus:
+                <select>
+                    <option value="Fall 2015"> Fall 2015 </option>
+                    <option value="Spring 2016"> Spring 2016 </option>
+                    <option value="Fall 2016"> Fall 2016 </option>
+                    <option value="Spring 2017"> Spring 2017 </option>    
+                </select>
+                <button value="LOAD" ng-click="loadSyllabus()">LOAD</button>
+>>>>>>> 984c5f8c7481672f00806f05618b0a3585198b9e
             </div>
 
             <div class="prelude">
