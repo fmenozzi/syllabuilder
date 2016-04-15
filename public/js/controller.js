@@ -162,16 +162,16 @@ app.controller('main-controller', function($scope, $window, $http) {
         // Add in prelude
         var courseName = document.getElementById("course-name").value;
         if (courseName === "")
-            courseName = "(INSERT-COURSE-NAME-HERE)"
+            courseName = "[INSERT-COURSE-NAME-HERE]";
         var deptId = document.getElementById("dept-id").value;
         if (deptId === "")
-            deptId = "(INSERT-DEPT-ID-HERE)"
+            deptId = "[INSERT-DEPT-ID-HERE]";
         var courseNum = document.getElementById("course-num").value;
         if (courseNum === "")
-            courseNum = "(INSERT-COURSE-NUMBER-HERE)"
+            courseNum = "[INSERT-COURSE-NUMBER-HERE]";
         var sectionNum = document.getElementById("section-num").value;
         if (sectionNum === "")
-            sectionNum = "(INSERT-SECTION-NUMBER-HERE)"
+            sectionNum = "[INSERT-SECTION-NUMBER-HERE]";
         var meetingDays = "";
         if ($scope.mo) meetingDays += "Mo";
         if ($scope.tu) meetingDays += "Tu";
@@ -180,27 +180,27 @@ app.controller('main-controller', function($scope, $window, $http) {
         if ($scope.fr) meetingDays += "Fr";
         var fromTime = document.getElementById("from-time").value;
         if (fromTime === "")
-            fromTime = "(INSERT-START-TIME-HERE)"
+            fromTime = "[INSERT-START-TIME-HERE]";
         var toTime = document.getElementById("to-time").value;
         if (toTime === "")
-            toTime = "(INSERT-END-TIME-HERE)"
+            toTime = "[INSERT-END-TIME-HERE]";
         var meetingBuilding = document.getElementById("meeting-building").value;
         if (meetingBuilding === "")
-            meetingBuilding = "(INSERT-MEETING-BUILDING-HERE)"
+            meetingBuilding = "[INSERT-MEETING-BUILDING-HERE]";
         var meetingRoom = document.getElementById("meeting-room").value;
         if (meetingRoom === "")
-            meetingRoom = "(INSERT-MEETING-ROOM-HERE)"
+            meetingRoom = "[INSERT-MEETING-ROOM-HERE]";
         var courseWebsite  = document.getElementById("course-website").value;
         var instructorName = document.getElementById("instructor-name").value;
         if (instructorName === "")
-            instructorName = "(INSERT-INSTRUCTOR-NAME-HERE)"
+            instructorName = "[INSERT-INSTRUCTOR-NAME-HERE]";
         var instructorEmail = document.getElementById("instructor-email").value;
         if (instructorEmail === "")
-            instructorEmail = "(INSERT-INSTRUCTOR-EMAIL-HERE)"
+            instructorEmail = "[INSERT-INSTRUCTOR-EMAIL-HERE]";
         var instructorPhone       = document.getElementById("instructor-phone").value;
         var instructorOfficeHours = document.getElementById("instructor-office-hours").value;
         if (instructorOfficeHours === "")
-            instructorOfficeHours = "(INSERT-INSTRUCTOR-OFFICE-HOURS-HERE)"
+            instructorOfficeHours = "[INSERT-INSTRUCTOR-OFFICE-HOURS-HERE]";
         var instructorWebsite = document.getElementById("instructor-website").value;
         html += "<div style='font-size: 18pt; font-weight: bold;'>" + deptId + " " + courseNum + "-" + sectionNum + ": " + courseName+ "</div>";
         html += "<br>";
@@ -210,15 +210,18 @@ app.controller('main-controller', function($scope, $window, $http) {
         html += "<div class='prelude-contents'>Time: " + meetingDays + " from " + fromTime + " to " + toTime + "</div>";
         html += "<div class='prelude-contents'>Meeting Building: " + meetingBuilding + "</div>";
         html += "<div class='prelude-contents'>Meeting Room: " + meetingRoom + "</div>";
-        html += "<div class='prelude-contents'>Website: " + courseWebsite + "</div>";
+        if (courseWebsite !== "")
+            html += "<div class='prelude-contents'>Website: " + courseWebsite + "</div>";
         html += "<br>";
         html += "<div class='prelude-header'>Instructor Info</div>";
         html += "<br>";
         html += "<div class='prelude-contents'>Name: " + instructorName + "</div>";
         html += "<div class='prelude-contents'>Email: " + instructorEmail + "</div>";
-        html += "<div class='prelude-contents'>Phone: " + instructorPhone + "</div>";
+        if (instructorPhone !== "")
+            html += "<div class='prelude-contents'>Phone: " + instructorPhone + "</div>";
         html += "<div class='prelude-contents'>Office Hours: " + instructorOfficeHours + "</div>";
-        html += "<div class='prelude-contents'>Website: " + instructorWebsite + "</div>";
+        if (instructorWebsite !== "")
+            html += "<div class='prelude-contents'>Website: " + instructorWebsite + "</div>";
         html += "<br>";
 
         // Add in sections
