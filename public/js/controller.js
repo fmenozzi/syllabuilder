@@ -97,6 +97,7 @@ app.controller('main-controller', function($scope, $window, $http) {
 
     $scope.dates = getDates($scope.fdocstr, $scope.ldocstr);
 
+    /*
     $scope.dbSetup = function() {
         $scope.uri = 'mongodb://'+$OPENSHIFT_MONGODB_DB_HOST+':'+$OPENSHIFT_MONGODB_DB_PORT+'/';
         $scope.dbOptions = {
@@ -107,6 +108,7 @@ app.controller('main-controller', function($scope, $window, $http) {
         $scope.syllabusName = "";
         // TODO: Initialize schema
     };
+    */
 	
     $scope.checkDate = function(date) {
         var datestr = date.toString("ddd, MMM dd").substring(0, 2);
@@ -159,25 +161,47 @@ app.controller('main-controller', function($scope, $window, $http) {
 
         // Add in prelude
         var courseName = document.getElementById("course-name").value;
-        var deptId     = document.getElementById("dept-id").value;
-        var courseNum  = document.getElementById("course-num").value;
+        if (courseName === "")
+            courseName = "(INSERT-COURSE-NAME-HERE)"
+        var deptId = document.getElementById("dept-id").value;
+        if (deptId === "")
+            deptId = "(INSERT-DEPT-ID-HERE)"
+        var courseNum = document.getElementById("course-num").value;
+        if (courseNum === "")
+            courseNum = "(INSERT-COURSE-NUMBER-HERE)"
         var sectionNum = document.getElementById("section-num").value;
+        if (sectionNum === "")
+            sectionNum = "(INSERT-SECTION-NUMBER-HERE)"
         var meetingDays = "";
         if ($scope.mo) meetingDays += "Mo";
         if ($scope.tu) meetingDays += "Tu";
         if ($scope.we) meetingDays += "We";
         if ($scope.th) meetingDays += "Th";
         if ($scope.fr) meetingDays += "Fr";
-        var fromTime              = document.getElementById("from-time").value;
-        var toTime                = document.getElementById("to-time").value;
-        var meetingBuilding       = document.getElementById("meeting-building").value;
-        var meetingRoom           = document.getElementById("meeting-room").value;
-        var courseWebsite         = document.getElementById("course-website").value;
-        var instructorName        = document.getElementById("instructor-name").value;
-        var instructorEmail       = document.getElementById("instructor-email").value;
+        var fromTime = document.getElementById("from-time").value;
+        if (fromTime === "")
+            fromTime = "(INSERT-START-TIME-HERE)"
+        var toTime = document.getElementById("to-time").value;
+        if (toTime === "")
+            toTime = "(INSERT-END-TIME-HERE)"
+        var meetingBuilding = document.getElementById("meeting-building").value;
+        if (meetingBuilding === "")
+            meetingBuilding = "(INSERT-MEETING-BUILDING-HERE)"
+        var meetingRoom = document.getElementById("meeting-room").value;
+        if (meetingRoom === "")
+            meetingRoom = "(INSERT-MEETING-ROOM-HERE)"
+        var courseWebsite  = document.getElementById("course-website").value;
+        var instructorName = document.getElementById("instructor-name").value;
+        if (instructorName === "")
+            instructorName = "(INSERT-INSTRUCTOR-NAME-HERE)"
+        var instructorEmail = document.getElementById("instructor-email").value;
+        if (instructorEmail === "")
+            instructorEmail = "(INSERT-INSTRUCTOR-EMAIL-HERE)"
         var instructorPhone       = document.getElementById("instructor-phone").value;
         var instructorOfficeHours = document.getElementById("instructor-office-hours").value;
-        var instructorWebsite     = document.getElementById("instructor-website").value;
+        if (instructorOfficeHours === "")
+            instructorOfficeHours = "(INSERT-INSTRUCTOR-OFFICE-HOURS-HERE)"
+        var instructorWebsite = document.getElementById("instructor-website").value;
         html += "<div style='font-size: 18pt; font-weight: bold;'>" + deptId + " " + courseNum + "-" + sectionNum + ": " + courseName+ "</div>";
         html += "<br>";
         html += "<br>";
@@ -327,8 +351,17 @@ app.controller('main-controller', function($scope, $window, $http) {
             }
         }
     }
+
+    $scope.saveSyllabus = function() {
+
+    }
+
+    $scope.loadSyllabus = function() {
+
+    }
 	
 	// DB save/load functions. WIP!!
+    /*
 	$scope.saveAs = function() {
 		$scope.title = prompt('Save as...', 'Enter a name for your syllabus'); // Remember the syllabus title for quick saving
 		var db = $scope.db;
@@ -356,6 +389,7 @@ app.controller('main-controller', function($scope, $window, $http) {
 		var loadedSyllabus = db.find({ _id: username+'-'+title });
 		// TODO: Populate fields with data from the loaded syllabus
 	}
+    */
 	
     // Success and failure callbacks
     /*
