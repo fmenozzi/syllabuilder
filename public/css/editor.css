@@ -71,6 +71,16 @@ body {
 #main {
     padding-top: 80px;
 }
+
+input:focus,
+select:focus,
+textarea:focus {
+    outline: 2px solid #93c1ee;
+}
+button:focus {
+    outline: none;
+}
+
 .syllabus-info {
     padding: 6px 0px 30px 10px;
     border-bottom: 4px solid whitesmoke;
@@ -123,6 +133,7 @@ body {
 }
 .syllabus-actions {
     display: block;
+    padding-top: 5px;
 }
 #save-button {
     margin-right: 80px;

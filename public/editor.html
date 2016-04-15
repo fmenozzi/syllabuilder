@@ -30,7 +30,6 @@
             <!-- Prelude info -->
             <div class=syllabus-info>
                 <h2> Syllabus Information </h2>
-<<<<<<< HEAD
                 <div class="syllabus-actions">
                     Syllabus Name: <input type="text" id="syllabus-name">  
                     <button value="SAVE" id="save-button">SAVE</button>
@@ -43,18 +42,6 @@
                     </select>
                     <button value="LOAD">LOAD</button>
                 </div>
-=======
-                Syllabus Name: <input type="text" id="syllabus-name" ng-model="syllabusName">
-                <button value="SAVE" id="save-button" ng-click="saveSyllabus()">SAVE</button>
-                Load Syllabus:
-                <select>
-                    <option value="Fall 2015"> Fall 2015 </option>
-                    <option value="Spring 2016"> Spring 2016 </option>
-                    <option value="Fall 2016"> Fall 2016 </option>
-                    <option value="Spring 2017"> Spring 2017 </option>    
-                </select>
-                <button value="LOAD" ng-click="loadSyllabus()">LOAD</button>
->>>>>>> 984c5f8c7481672f00806f05618b0a3585198b9e
             </div>
 
             <div class="prelude">
@@ -65,7 +52,7 @@
                     <div class="course-info">Department: <input type="text" id="dept-id" maxlength="4"></div>
                     <div class="course-info">Course Number: <input type="text" id="course-num"></div>
                     <div class="course-info">Section Number: <input type="text" id="section-num"></div>
-                    <div class="course-info"><i>Course Website: </i><input type="text" id="course-website"></div>
+                    <div class="course-info" style="color:gray;"><i>Course Website: </i><input type="text" id="course-website"></div>
                 </span>
 
                 <span id="prelude2">
@@ -91,10 +78,10 @@
                     <div class="instructor-info">Email: <input type="text" id="instructor-email"></div>
                     <div class="instructor-info">Phone: <input type="text" id="instructor-phone"></div>
                     <div class="instructor-info">Office Hours: <input type="text" id="instructor-office-hours"></div>
-                    <div class="instructor-info"><i>Website: </i><input type="text" id="instructor-website"></div>
+                    <div class="instructor-info" style="color:gray;"><i>Website: </i><input type="text" id="instructor-website"></div>
                 </span>
 
-                <div id="note">
+                <div id="note" style="color:gray;">
                     <i>Optional fields</i>
                 </div>
             </div>

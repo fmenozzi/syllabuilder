@@ -50,10 +50,16 @@ header {
 	background: #235d86;
 }
 
-/*----- HELP WINDOW -----*/
-
 
 /*----- BODY -----*/
+input:focus,
+select:focus,
+textarea:focus {
+    outline: 2px solid #93c1ee;
+}
+button:focus {
+    outline: none;
+}
 
 h1 {
 	text-align: center;
