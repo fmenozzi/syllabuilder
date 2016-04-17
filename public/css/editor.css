@@ -36,24 +36,33 @@ body {
 }
 #log_out {
     position: absolute;
-    right: 15px;
+    right: 8px;
     top: 10px;
-    font-size: 18px;
-    border-left: 1px solid gainsboro;
-    padding: 7px 0px 7px 13px;
+    padding: 7px 7px 7px 7px;
 }
 #help {
     position: absolute;
-    right: 108px;
-    top: 17px;
-    font-size: 18px;
+    right: 107px;
+    top: 10px;
+    padding: 7px;
 }
-.header a {
+#help, #log_out {
+    font-size: 18px;
+    border-radius: 2px;
     text-decoration: none !important;
     color: white;
+    font-weight: bold;
 }
-.header a:hover {
-    color: #235d86;
+#help:hover, #log_out:hover {
+    color: white;
+    background: #235d86;
+}
+#divider {
+    position: absolute;
+    right: 98px;
+    top: 10px;
+    height: 35px;
+    border-right: 1px solid gainsboro;
 }
 
 
@@ -63,10 +72,77 @@ body {
     padding-top: 80px;
 }
 
+input:focus,
+select:focus,
+textarea:focus {
+    outline: 2px solid #93c1ee;
+}
+button:focus {
+    outline: none;
+}
+
+.syllabus-info {
+    padding: 6px 0px 30px 10px;
+    border-bottom: 4px solid whitesmoke;
+    margin-bottom: 20px;
+    height: auto;
+    overflow: auto;
+    font-size: 1.2em;
+    align-content: center;
+    text-align: center; 
+}
+.syllabus-info h2 {
+    font-size: 1.4em;
+    line-height: 0.2em;
+    color: #235d86;
+    text-align: center;
+    padding-bottom: 5px;
+}
+.syllabus-info button {
+    height: 30px;`
+    margin: 10px auto 0px auto;
+    background: #93c1ee;
+    color: white;
+    font-size: 1em;
+    font-weight: bold;
+    border: none;
+    border-radius: 2px;
+}
+.syllabus-info button:hover {
+    color: white;
+    background: #235d86;
+}
+.syllabus-info input[type="text"]{
+    float: right;
+    width: 150px;
+    height: 25px;
+    font-size: 0.9em;
+}
+.syllabus-info select {
+    height: 30px;
+    line-height: 28px;
+    width: 150px;
+    background: white;
+    font-size: 1em;
+}
+.syllabus-info option {
+    font-size: 0.8em;
+    color: red;
+    text-align: right;
+    font-family: Arial, sans-serif;
+}
+.syllabus-actions {
+    display: block;
+    padding-top: 5px;
+}
+#save-button {
+    margin-right: 80px;
+}
+
+
 .prelude {
-    /*padding-bottom: 40px;*/
-    padding: 10px 0px 30px 10px;
-    border-bottom: 1px solid lightgray;
+    padding: 0px 0px 30px 10px;
+    border-bottom: 4px solid whitesmoke;
     margin-bottom: 40px;
     height: auto;
     overflow: auto;
@@ -77,7 +153,7 @@ body {
     width: 32%;
     padding-right: 2%;
     margin-right: 2%;
-    border-right: 1px dotted gainsboro; 
+    border-right: 3px solid whitesmoke; 
 }
 #prelude2 {
     float: left;
@@ -90,7 +166,7 @@ body {
     width: 28%;
     padding-left: 1.5%;
     margin-right: 1%;
-    border-left: 1px dotted gainsboro;
+    border-left: 3px solid whitesmoke;
 
 }
 .prelude h2 {
@@ -107,9 +183,20 @@ body {
     width: 150px;
     font-size: 0.7em;
 }
+#syllabus-name {
+    float: none;
+}
+
 .course-info {
     padding-bottom: 10px;
 }
+/*.course-info:before {
+    color: #93c1ee;
+    content: '* ';
+    display: inline;
+    margin-left: -2px;
+}*/
+
 #day_boxes {
     float: right;
     font-size: 0.9em;
@@ -117,11 +204,23 @@ body {
 #day_boxes input {
     margin-left: 5px;
 }
+
 .instructor-info {
     padding-bottom: 10px;
 }
 
-
+#note {
+    width: 150px;
+    margin: 250px auto -5px auto;
+}
+/*
+#note:before {
+    color: #93c1ee;
+    content: '* ';
+    display: inline;
+    margin-left: -2px;
+}
+*/
 
 .left-side {
     float: left;
@@ -283,7 +382,7 @@ _:-moz-tree-row(hover), #clear-button {
     clear: both;
     margin-bottom: 50px;
     padding-top: 5px;
-    border-top: 1px solid gainsboro;
+    border-top: 4px solid whitesmoke;
 }
 
 .schedule h2 {
@@ -293,7 +392,7 @@ _:-moz-tree-row(hover), #clear-button {
 }
 
 table {
-    width:100%;
+    width: 100%;
 }
 th, td {
     padding: 8px;

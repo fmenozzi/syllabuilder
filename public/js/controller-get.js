@@ -5,38 +5,19 @@ app.config(['$compileProvider', function ($compileProvider) {
     $compileProvider.aHrefSanitizationWhitelist(/^\s*(|blob|):/);
 }]);
 
-var requiredFormIds = [
-    "course-name",
-    "dept-id",
-    "course-num",
-    "section-num",
-
-    "from-time",
-    "to-time",
-    "meeting-building",
-    "meeting-room",
-
-    "instructor-name",
-    "instructor-email",
-    "instructor-office-hours"
-];
-
 // The contents of each section
+// TODO: Make placeholder text a hint about what to include
 var sectionContents = {
     "Description":     "",
     "Objectives":      "",
     "Target Audience": "",
     "Prerequisites":   "",
-    "Goals":           "",
-    "Requirements":    "",
-    "Policies":        "",
-    "Resources":       "",
     "Materials":       "",
     "Grading":         "",
     "Exams":           "",
-    "Honor Code":      "The University of North Carolina at Chapel Hill has had a student-led honor system for over 100 years. Academic integrity is at the heart of Carolina and we all are responsible for upholding the ideals of honor and integrity.  The student-led Honor System is responsible for adjudicating any suspected violations of the Honor Code and all suspected instances of academic dishonesty will be reported to the honor system. Information, including your responsibilities as a student is outlined in the Instrument of Student Judicial Governance. Your full participation and observance of the Honor Code is expected.",
-    "Accessibility":   "The University of North Carolina at Chapel Hill ensures that no qualified person shall by reason of a disability be denied access to, participation in, or the benefits of, any program or activity operated by the University. Each qualified person shall receive reasonable accommodations to ensure equal access to educational opportunities, programs, and activities in the most integrated setting appropriate.",
-    "Disclaimer":      "The professor reserves to right to make changes to the syllabus, including project due dates and test dates. These changes will be announced as early as possible.",
+    "Honor Code":      "",
+    "Accessibility":   "",
+    "Disclaimer":      "",
 };
 
 // Get all weekdays between FDOC and LDOC
@@ -48,7 +29,7 @@ var getDates = function(fdocstr, ldocstr) {
     // Add all weekdays in between
     var date = fdoc.add(-1).day();
     var res = [];
-    while (date.compareTo(ldoc) < 0) {
+    while (date.compareTo(ldoc) <= 0) {
         date = date.add(1).day();
         if (!date.isWeekday())
             date = date.next().monday();
@@ -58,58 +39,12 @@ var getDates = function(fdocstr, ldocstr) {
     return res;
 }
 
-var calendar = {
-    "2016" : {
-        "fall": {
-            "fdoc": "tuesday aug 23 2016",
-            "ldoc": "wednesday dec 07 2016",
-        },
-        "spring": {
-            "fdoc": "monday jan 11 2016",
-            "ldoc": "wednesday apr 27 2016",
-        },
-    },
-
-    "2017" : {
-        "fall": {
-            "fdoc": "",     // TODO: Data doesn't exist yet
-            "ldoc": "",     // TODO: Data doesn't exist yet
-        },
-        "spring": {
-            "fdoc": "wednesday jan 11 2017",
-            "ldoc": "friday apr 28 2017",
-        }
-    },
-};
-
-var getLocationSearch = function() {
-		return location.search;
-};
-
 app.controller('main-controller', function($scope, $window, $http) {
-    // Parse URL parameters to get year and semester
-    var params = getLocationSearch().substring(1).split("&");
-    var year     = params[0].split("=")[1];
-    var semester = params[1].split("=")[1];
-
-    $scope.fdocstr = calendar[year][semester]["fdoc"];
-    $scope.ldocstr = calendar[year][semester]["ldoc"];
+    $scope.fdocstr = "monday mar 14";
+    $scope.ldocstr = "monday apr 04";
 
     $scope.dates = getDates($scope.fdocstr, $scope.ldocstr);
 
-    /*
-    $scope.dbSetup = function() {
-        $scope.uri = 'mongodb://'+$OPENSHIFT_MONGODB_DB_HOST+':'+$OPENSHIFT_MONGODB_DB_PORT+'/';
-        $scope.dbOptions = {
-            user: $OPENSHIFT_MONGODB_DB_USERNAME,
-            pass: $OPENSHIFT_MONGODB_DB_PASSWORD
-        };
-        $scope.db = mongoose.connect(uri, dbOptions);
-        $scope.syllabusName = "";
-        // TODO: Initialize schema
-    };
-    */
-	
     $scope.checkDate = function(date) {
         var datestr = date.toString("ddd, MMM dd").substring(0, 2);
         if (datestr === "Mo" && $scope.mo ||
@@ -161,47 +96,25 @@ app.controller('main-controller', function($scope, $window, $http) {
 
         // Add in prelude
         var courseName = document.getElementById("course-name").value;
-        if (courseName === "")
-            courseName = "[INSERT-COURSE-NAME-HERE]";
-        var deptId = document.getElementById("dept-id").value;
-        if (deptId === "")
-            deptId = "[INSERT-DEPT-ID-HERE]";
-        var courseNum = document.getElementById("course-num").value;
-        if (courseNum === "")
-            courseNum = "[INSERT-COURSE-NUMBER-HERE]";
+        var deptId     = document.getElementById("dept-id").value;
+        var courseNum  = document.getElementById("course-num").value;
         var sectionNum = document.getElementById("section-num").value;
-        if (sectionNum === "")
-            sectionNum = "[INSERT-SECTION-NUMBER-HERE]";
         var meetingDays = "";
         if ($scope.mo) meetingDays += "Mo";
         if ($scope.tu) meetingDays += "Tu";
         if ($scope.we) meetingDays += "We";
         if ($scope.th) meetingDays += "Th";
         if ($scope.fr) meetingDays += "Fr";
-        var fromTime = document.getElementById("from-time").value;
-        if (fromTime === "")
-            fromTime = "[INSERT-START-TIME-HERE]";
-        var toTime = document.getElementById("to-time").value;
-        if (toTime === "")
-            toTime = "[INSERT-END-TIME-HERE]";
-        var meetingBuilding = document.getElementById("meeting-building").value;
-        if (meetingBuilding === "")
-            meetingBuilding = "[INSERT-MEETING-BUILDING-HERE]";
-        var meetingRoom = document.getElementById("meeting-room").value;
-        if (meetingRoom === "")
-            meetingRoom = "[INSERT-MEETING-ROOM-HERE]";
-        var courseWebsite  = document.getElementById("course-website").value;
-        var instructorName = document.getElementById("instructor-name").value;
-        if (instructorName === "")
-            instructorName = "[INSERT-INSTRUCTOR-NAME-HERE]";
-        var instructorEmail = document.getElementById("instructor-email").value;
-        if (instructorEmail === "")
-            instructorEmail = "[INSERT-INSTRUCTOR-EMAIL-HERE]";
+        var fromTime              = document.getElementById("from-time").value;
+        var toTime                = document.getElementById("to-time").value;
+        var meetingBuilding       = document.getElementById("meeting-building").value;
+        var meetingRoom           = document.getElementById("meeting-room").value;
+        var courseWebsite         = document.getElementById("course-website").value;
+        var instructorName        = document.getElementById("instructor-name").value;
+        var instructorEmail       = document.getElementById("instructor-email").value;
         var instructorPhone       = document.getElementById("instructor-phone").value;
         var instructorOfficeHours = document.getElementById("instructor-office-hours").value;
-        if (instructorOfficeHours === "")
-            instructorOfficeHours = "[INSERT-INSTRUCTOR-OFFICE-HOURS-HERE]";
-        var instructorWebsite = document.getElementById("instructor-website").value;
+        var instructorWebsite     = document.getElementById("instructor-website").value;
         html += "<div style='font-size: 18pt; font-weight: bold;'>" + deptId + " " + courseNum + "-" + sectionNum + ": " + courseName+ "</div>";
         html += "<br>";
         html += "<br>";
@@ -210,18 +123,15 @@ app.controller('main-controller', function($scope, $window, $http) {
         html += "<div class='prelude-contents'>Time: " + meetingDays + " from " + fromTime + " to " + toTime + "</div>";
         html += "<div class='prelude-contents'>Meeting Building: " + meetingBuilding + "</div>";
         html += "<div class='prelude-contents'>Meeting Room: " + meetingRoom + "</div>";
-        if (courseWebsite !== "")
-            html += "<div class='prelude-contents'>Website: " + courseWebsite + "</div>";
+        html += "<div class='prelude-contents'>Website: " + courseWebsite + "</div>";
         html += "<br>";
         html += "<div class='prelude-header'>Instructor Info</div>";
         html += "<br>";
         html += "<div class='prelude-contents'>Name: " + instructorName + "</div>";
         html += "<div class='prelude-contents'>Email: " + instructorEmail + "</div>";
-        if (instructorPhone !== "")
-            html += "<div class='prelude-contents'>Phone: " + instructorPhone + "</div>";
+        html += "<div class='prelude-contents'>Phone: " + instructorPhone + "</div>";
         html += "<div class='prelude-contents'>Office Hours: " + instructorOfficeHours + "</div>";
-        if (instructorWebsite !== "")
-            html += "<div class='prelude-contents'>Website: " + instructorWebsite + "</div>";
+        html += "<div class='prelude-contents'>Website: " + instructorWebsite + "</div>";
         html += "<br>";
 
         // Add in sections
@@ -254,6 +164,7 @@ app.controller('main-controller', function($scope, $window, $http) {
 
         return html;
     };
+
 
     // Save contents of text editor to appropriate section
     $scope.saveSection = function(text, currentSection, lastSection) {
@@ -328,8 +239,7 @@ app.controller('main-controller', function($scope, $window, $http) {
             document.getElementById("section-num").value             = "";
             document.getElementById("from-time").value               = "";
             document.getElementById("to-time").value                 = "";
-            document.getElementById("meeting-building").value        = "";
-            document.getElementById("meeting-room").value            = "";
+            document.getElementById("meeting-location").value        = "";
             document.getElementById("course-website").value          = "";
             document.getElementById("instructor-name").value         = "";
             document.getElementById("instructor-email").value        = "";
@@ -355,50 +265,13 @@ app.controller('main-controller', function($scope, $window, $http) {
         }
     }
 
-    $scope.saveSyllabus = function() {
-
-    }
-
-    $scope.loadSyllabus = function() {
-
-    }
-	
-	// DB save/load functions. WIP!!
-    /*
-	$scope.saveAs = function() {
-		$scope.title = prompt('Save as...', 'Enter a name for your syllabus'); // Remember the syllabus title for quick saving
-		var db = $scope.db;
-		$scope.syllabusName = $scope.username+'-'+title;
-		if (db.contains({ _id: $scope.syllabusName })) {
-			if (confirm(title+' already exists. Are you sure you want to overwrite it?')) {
-				// TODO: save the new syllabus in place of the old one
-			}
-		} else {
-			// TODO: save the new syllabus
-		}
-	}
-	
-	$scope.quickSave = function() {
-		if ($scope.syllabusName != "") { // see if syllabus has been saved before
-			// TODO: save the syllabus to the DB without confirmation
-		}
-		else {
-			$scope.saveAs();
-		}
-    }
-		
-	$scope.loadSyllabus = function(username, title) {
-		var db = $scope.db;
-		var loadedSyllabus = db.find({ _id: username+'-'+title });
-		// TODO: Populate fields with data from the loaded syllabus
-	}
-    */
-	
     // Success and failure callbacks
-    /*
-    var success = function(resp) {$scope.resp = "Success! " + resp.data;};
-    var failure = function(resp) {$scope.resp = "Failure! " + resp.status;};
+    var success = function(resp) {console.log("Success! " + resp.data);};//$scope.resp = "Success! " + resp.data;};
+    var failure = function(resp) {console.log("Failure! " + resp.status);};//$scope.resp = "Failure! " + resp.status;};
 
-    $http.get("http://syllabuilder-menozzi.apps.unc.edu/test").then(success, failure);
-    */
+    var getPath = "http://syllabuilder-menozzi.apps.unc.edu/save";
+
+    var sampleJSON = {hello: "world", foo: "bar"};
+
+    $http.get(getPath, {params: sampleJSON}).then(success, failure);
 });
