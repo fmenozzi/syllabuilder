@@ -96,19 +96,6 @@ app.controller('main-controller', function($scope, $window, $http) {
     $scope.ldocstr = calendar[year][semester]["ldoc"];
 
     $scope.dates = getDates($scope.fdocstr, $scope.ldocstr);
-
-    /*
-    $scope.dbSetup = function() {
-        $scope.uri = 'mongodb://'+$OPENSHIFT_MONGODB_DB_HOST+':'+$OPENSHIFT_MONGODB_DB_PORT+'/';
-        $scope.dbOptions = {
-            user: $OPENSHIFT_MONGODB_DB_USERNAME,
-            pass: $OPENSHIFT_MONGODB_DB_PASSWORD
-        };
-        $scope.db = mongoose.connect(uri, dbOptions);
-        $scope.syllabusName = "";
-        // TODO: Initialize schema
-    };
-    */
 	
     $scope.checkDate = function(date) {
         var datestr = date.toString("ddd, MMM dd").substring(0, 2);
@@ -363,37 +350,129 @@ app.controller('main-controller', function($scope, $window, $http) {
 
     }
 	
-	// DB save/load functions. WIP!!
-    /*
-	$scope.saveAs = function() {
-		$scope.title = prompt('Save as...', 'Enter a name for your syllabus'); // Remember the syllabus title for quick saving
-		var db = $scope.db;
-		$scope.syllabusName = $scope.username+'-'+title;
-		if (db.contains({ _id: $scope.syllabusName })) {
-			if (confirm(title+' already exists. Are you sure you want to overwrite it?')) {
-				// TODO: save the new syllabus in place of the old one
-			}
-		} else {
-			// TODO: save the new syllabus
+	// DB save/load functions. Untested...
+	$scope.save = function(username, title) {
+		var syllabus = constructJSON(username, title);
+		$http.post('/syllabi/:'+username+'-'+title).success(function(data) {
+			return 0; // success
 		}
-	}
-	
-	$scope.quickSave = function() {
-		if ($scope.syllabusName != "") { // see if syllabus has been saved before
-			// TODO: save the syllabus to the DB without confirmation
-		}
-		else {
-			$scope.saveAs();
-		}
-    }
+	};
 		
 	$scope.loadSyllabus = function(username, title) {
-		var db = $scope.db;
-		var loadedSyllabus = db.find({ _id: username+'-'+title });
-		// TODO: Populate fields with data from the loaded syllabus
-	}
-    */
+		var syllabus;
+		$http.get('/syllabi/:'+username+'-'+title).success(function(data) {
+			syllabus = data;
+		});
+		// TODO: Add some sort of confirmation so the user doesn't accidentally lose work
+		$scope.populateFromJSON(syllabus);
+	};
 	
+	// Compile form data into a JSON object for storage in database
+	var constructJSON = function(username, title) {
+		var i = 0;
+		
+		// Construct timetable
+		var timetable = [];
+		 for (var i = 0; i < $scope.dates.length; i++) {
+            timetable.append({material: document.getElementById("material_" + i).value, homework: document.getElementById("homework_" + i).value});           
+        }
+		
+		var json =
+		{
+			_id: username+'-'+title
+			course-info: {
+				course-name: document.getElementById('course-name').value,
+				course: {
+					dept-id: document.getElementById('dept-id').value,
+					course-num: document.getElementById('course-num').value,
+					section-num: document.getElementById('section-num').value,
+				},
+				term: semester+' '+year,
+				from-time: document.getElementById('from-time').value,
+				to-time: document.getElementById('to-time').value,
+				meeting-building: document.getElementById('meeting-building').value,
+				meeting-room: document.getElementById('meeting-room').value,
+				meetings: {
+					mo: $scope.mo,
+					tu: $scope.tu,
+					we: $scope.we,
+					th: $scope.th,
+					fr: $scope.fr
+				},
+				website: document.getElementById('course-website').value,
+			},
+			instructor-info: {
+				name: document.getElementById('instructor-name').value,
+				email: document.getElementById('instructor-email').value,
+				phone: document.getElementById('instructor-phone').value,
+				office-hours: document.getElementById('office-hours').value,
+				website: document.getElementById('instructor-website').value
+			},
+			description: sectionsContents[i++],
+			objectives: sectionsContents[i++],
+			audience: sectionsContents[i++],
+			prerequisites: sectionsContents[i++],
+			goals: sectionsContents[i++],
+			requirements: sectionsContents[i++],
+			policies: sectionsContents[i++],
+			resources: sectionsContents[i++],
+			materials: sectionsContents[i++],
+			grading: sectionsContents[i++],
+			exams: sectionsContents[i++],
+			honor-code: sectionsContents[i++],
+			accessibility: sectionsContents[i++],
+			disclaimer: sectionsContents[i++],
+			time-table: timetable
+		}
+		
+		return json;
+	};
+	
+	// Populate the page from a loaded syllabus. Warning, will overwrite the existing data...
+	$scope.populateFromJSON = function(syllabus) {
+		// Populate prelude
+		document.getElementById("course-name").value             = syllabus['course-info']['course-name'];
+        document.getElementById("dept-id").value                 = syllabus['course-info']['course']['dept-id'];
+        $scope.mo = 											 = syllabus['course-info']['meetings']['mo'];
+        $scope.tu = 											 = syllabus['course-info']['meetings']['tu'];
+		$scope.we = 											 = syllabus['course-info']['meetings']['we'];
+		$scope.th = 											 = syllabus['course-info']['meetings']['th'];
+		$scope.fr = 											 = syllabus['course-info']['meetings']['fr'];
+		document.getElementById("course-num").value              = syllabus['course-info']['course']['course-num'];
+		document.getElementById("section-num").value             = syllabus['course-info']['course']['section-num'];
+		document.getElementById("from-time").value               = syllabus['course-info']['from-time'];
+		document.getElementById("to-time").value                 = syllabus['course-info']['to-time'];
+		document.getElementById("meeting-building").value        = syllabus['course-info']['meeting-building'];
+		document.getElementById("meeting-room").value            = syllabus['course-info']['meeting-room'];
+		document.getElementById("course-website").value          = syllabus['course-info']['website'];
+		document.getElementById("instructor-name").value         = syllabus['instructor-info']['name'];
+		document.getElementById("instructor-email").value        = syllabus['instructor-info']['email'];
+		document.getElementById("instructor-phone").value        = syllabus['instructor-info']['phone'];
+		document.getElementById("instructor-office-hours").value = syllabus['instructor-info']['office-hours'];
+		document.getElementById("instructor-website").value      = syllabus['instructor-info']['website'];
+		
+		// Populate section data
+		var i = 0;
+		sectionContents[i++] = syllabus['description'];
+		sectionContents[i++] = syllabus['objectives'];
+		sectionContents[i++] = syllabus['audience'];
+		sectionContents[i++] = syllabus['prerequisites'];
+		sectionContents[i++] = syllabus['goals'];
+		sectionContents[i++] = syllabus['requirements'];
+		sectionContents[i++] = syllabus['policies'];
+		sectionContents[i++] = syllabus['resources'];
+		sectionContents[i++] = syllabus['materials'];
+		sectionContents[i++] = syllabus['grading'];
+		sectionContents[i++] = syllabus['exams'];
+		sectionContents[i++] = syllabus['honor-code'];
+		sectionContents[i++] = syllabus['accessibility'];
+		sectionContents[i++] = syllabus['disclaimer'];
+		
+		for (var i = 0; i < $scope.dates.length; i++) {
+            document.getElementById("material_" + i).value = syllabus['time-table'][i]['material'];
+            document.getElementById("homework_" + i).value = syllabus['time-table'][i]['homework'];
+        }
+	});
     // Success and failure callbacks
     /*
     var success = function(resp) {$scope.resp = "Success! " + resp.data;};
