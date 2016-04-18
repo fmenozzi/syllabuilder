@@ -32,7 +32,7 @@
                 <h2> Syllabus Information </h2>
                 <div class="syllabus-actions">
                     Syllabus Name: <input type="text" id="syllabus-name">  
-                    <button value="SAVE" id="save-button" ng-click="save(testuser, testsyllabus)">Save</button>
+                    <button value="SAVE" id="save-button" ng-click="saveSyllabus('testuser', 'testsyllabus')">Save</button>
                     Load Syllabus:
                     <select>
                         <option value="Fall 2015"> Fall 2015 </option>
@@ -40,7 +40,7 @@
                         <option value="Fall 2016"> Fall 2016 </option>
                         <option value="Spring 2017"> Spring 2017 </option>    
                     </select>
-                    <button value="LOAD" ng-click="loadSyllabus(testuser, testsyllabus)">Load</button>
+                    <button value="LOAD" ng-click="loadSyllabus('testuser', 'testsyllabus')">Load</button>
                 </div>
             </div>
 

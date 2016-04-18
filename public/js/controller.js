@@ -327,20 +327,53 @@ app.controller('main-controller', function($scope, $window, $http) {
     }
 	
 	// DB save/load functions. Untested...
-	$scope.save = function(username, title) {
+	$scope.saveSyllabus = function(username, title) {
 		var syllabus = constructJSON(username, title);
+
+        var success = function(resp) {alert("SUCCESSFUL SAVE!");};
+        var failure = function(resp) {alert("FAILED SAVE!");};
+
+        $http.post("/syllabi/:" + username + "-" + title).then(success, failure);
+
+        /*
 		$http.post('/syllabi/:'+username+'-'+title).success(function(data) {
 			return 0; // success
 		});
+        */
 	}
 		
 	$scope.loadSyllabus = function(username, title) {
+        /*
+        var syllabus;
+
+        var success = function(resp) {alert("SUCCESSFUL LOAD!"); syllabus = resp.data};
+        var failure = function(resp) {alert("FAILED LOAD!");};
+
+        $http.get("/syllabi/:" + username + "-" + title).then(success, failure);
+        */
+
+        var success = function(resp) {console.log("Success! " + resp.data.message);};//$scope.resp = "Success! " + resp.data;};
+        var failure = function(resp) {console.log("Failure! " + resp.status);};//$scope.resp = "Failure! " + resp.status;};
+
+        var getPath = "http://syllabuilder-menozzi.apps.unc.edu/save";
+
+        var sampleJSON = {hello: "world", foo: "bar"};
+
+        $http.get(getPath, {params: sampleJSON}).then(success, failure);
+
+        /*
 		var syllabus;
 		$http.get('/syllabi/:'+username+'-'+title).success(function(data) {
 			syllabus = data;
 		});
+        */
+
+
+
+
+        
 		// TODO: Add some sort of confirmation so the user doesn't accidentally lose work
-		$scope.populateFromJSON(syllabus);
+		//$scope.populateFromJSON(syllabus);
 	}
 	
 	// Compile form data into a JSON object for storage in database
@@ -353,8 +386,7 @@ app.controller('main-controller', function($scope, $window, $http) {
             timetable.append({material: document.getElementById("material_" + i).value, homework: document.getElementById("homework_" + i).value});           
         }
 		
-		var json =
-		{
+		var json = {
 			"_id": username+'-'+title,
 			"course-info": {
 				"course-name": document.getElementById('course-name').value,
