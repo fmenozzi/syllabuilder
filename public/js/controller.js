@@ -425,11 +425,11 @@ app.controller('main-controller', function($scope, $window, $http) {
 		// Populate prelude
 		document.getElementById("course-name").value             = syllabus['course-info']['course-name'];
         document.getElementById("dept-id").value                 = syllabus['course-info']['course']['dept-id'];
-        $scope.mo = 											 = syllabus['course-info']['meetings']['mo'];
-        $scope.tu = 											 = syllabus['course-info']['meetings']['tu'];
-		$scope.we = 											 = syllabus['course-info']['meetings']['we'];
-		$scope.th = 											 = syllabus['course-info']['meetings']['th'];
-		$scope.fr = 											 = syllabus['course-info']['meetings']['fr'];
+        $scope.mo  												 = syllabus['course-info']['meetings']['mo'];
+        $scope.tu  												 = syllabus['course-info']['meetings']['tu'];
+		$scope.we  												 = syllabus['course-info']['meetings']['we'];
+		$scope.th  												 = syllabus['course-info']['meetings']['th'];
+		$scope.fr 	 											 = syllabus['course-info']['meetings']['fr'];
 		document.getElementById("course-num").value              = syllabus['course-info']['course']['course-num'];
 		document.getElementById("section-num").value             = syllabus['course-info']['course']['section-num'];
 		document.getElementById("from-time").value               = syllabus['course-info']['from-time'];
