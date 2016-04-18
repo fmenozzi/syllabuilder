@@ -5,22 +5,6 @@ app.config(['$compileProvider', function ($compileProvider) {
     $compileProvider.aHrefSanitizationWhitelist(/^\s*(|blob|):/);
 }]);
 
-var requiredFormIds = [
-    "course-name",
-    "dept-id",
-    "course-num",
-    "section-num",
-
-    "from-time",
-    "to-time",
-    "meeting-building",
-    "meeting-room",
-
-    "instructor-name",
-    "instructor-email",
-    "instructor-office-hours"
-];
-
 // The contents of each section
 var sectionContents = {
     "Description":     "",
@@ -149,16 +133,16 @@ app.controller('main-controller', function($scope, $window, $http) {
         // Add in prelude
         var courseName = document.getElementById("course-name").value;
         if (courseName === "")
-            courseName = "[INSERT-COURSE-NAME-HERE]";
+            courseName = "<span style='color: red;'>[INSERT-COURSE-NAME-HERE]</span>";
         var deptId = document.getElementById("dept-id").value;
         if (deptId === "")
-            deptId = "[INSERT-DEPT-ID-HERE]";
+            deptId = "<span style='color: red;'>[INSERT-DEPT-ID-HERE]</span>";
         var courseNum = document.getElementById("course-num").value;
         if (courseNum === "")
-            courseNum = "[INSERT-COURSE-NUMBER-HERE]";
+            courseNum = "<span style='color: red;'>[INSERT-COURSE-NUMBER-HERE]</span>";
         var sectionNum = document.getElementById("section-num").value;
         if (sectionNum === "")
-            sectionNum = "[INSERT-SECTION-NUMBER-HERE]";
+            sectionNum = "<span style='color: red;'>[INSERT-SECTION-NUMBER-HERE]</span>";
         var meetingDays = "";
         if ($scope.mo) meetingDays += "Mo";
         if ($scope.tu) meetingDays += "Tu";
@@ -167,27 +151,27 @@ app.controller('main-controller', function($scope, $window, $http) {
         if ($scope.fr) meetingDays += "Fr";
         var fromTime = document.getElementById("from-time").value;
         if (fromTime === "")
-            fromTime = "[INSERT-START-TIME-HERE]";
+            fromTime = "<span style='color: red;'>[INSERT-START-TIME-HERE]</span>";
         var toTime = document.getElementById("to-time").value;
         if (toTime === "")
-            toTime = "[INSERT-END-TIME-HERE]";
+            toTime = "<span style='color: red;'>[INSERT-END-TIME-HERE]</span>";
         var meetingBuilding = document.getElementById("meeting-building").value;
         if (meetingBuilding === "")
-            meetingBuilding = "[INSERT-MEETING-BUILDING-HERE]";
+            meetingBuilding = "<span style='color: red;'>[INSERT-MEETING-BUILDING-HERE]</span>";
         var meetingRoom = document.getElementById("meeting-room").value;
         if (meetingRoom === "")
-            meetingRoom = "[INSERT-MEETING-ROOM-HERE]";
+            meetingRoom = "<span style='color: red;'>[INSERT-MEETING-ROOM-HERE]</span>";
         var courseWebsite  = document.getElementById("course-website").value;
         var instructorName = document.getElementById("instructor-name").value;
         if (instructorName === "")
-            instructorName = "[INSERT-INSTRUCTOR-NAME-HERE]";
+            instructorName = "<span style='color: red;'>[INSERT-INSTRUCTOR-NAME-HERE]</span>";
         var instructorEmail = document.getElementById("instructor-email").value;
         if (instructorEmail === "")
-            instructorEmail = "[INSERT-INSTRUCTOR-EMAIL-HERE]";
+            instructorEmail = "<span style='color: red;'>[INSERT-INSTRUCTOR-EMAIL-HERE]</span>";
         var instructorPhone       = document.getElementById("instructor-phone").value;
         var instructorOfficeHours = document.getElementById("instructor-office-hours").value;
         if (instructorOfficeHours === "")
-            instructorOfficeHours = "[INSERT-INSTRUCTOR-OFFICE-HOURS-HERE]";
+            instructorOfficeHours = "<span style='color: red;'>[INSERT-INSTRUCTOR-OFFICE-HOURS-HERE]</span>";
         var instructorWebsite = document.getElementById("instructor-website").value;
         html += "<div style='font-size: 18pt; font-weight: bold;'>" + deptId + " " + courseNum + "-" + sectionNum + ": " + courseName+ "</div>";
         html += "<br>";
