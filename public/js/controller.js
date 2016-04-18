@@ -341,22 +341,14 @@ app.controller('main-controller', function($scope, $window, $http) {
             }
         }
     }
-
-    $scope.saveSyllabus = function() {
-
-    }
-
-    $scope.loadSyllabus = function() {
-
-    }
 	
 	// DB save/load functions. Untested...
 	$scope.save = function(username, title) {
 		var syllabus = constructJSON(username, title);
 		$http.post('/syllabi/:'+username+'-'+title).success(function(data) {
 			return 0; // success
-		}
-	};
+		});
+	}
 		
 	$scope.loadSyllabus = function(username, title) {
 		var syllabus;
@@ -365,7 +357,7 @@ app.controller('main-controller', function($scope, $window, $http) {
 		});
 		// TODO: Add some sort of confirmation so the user doesn't accidentally lose work
 		$scope.populateFromJSON(syllabus);
-	};
+	}
 	
 	// Compile form data into a JSON object for storage in database
 	var constructJSON = function(username, title) {
@@ -379,54 +371,54 @@ app.controller('main-controller', function($scope, $window, $http) {
 		
 		var json =
 		{
-			_id: username+'-'+title
-			course-info: {
-				course-name: document.getElementById('course-name').value,
-				course: {
-					dept-id: document.getElementById('dept-id').value,
-					course-num: document.getElementById('course-num').value,
-					section-num: document.getElementById('section-num').value,
+			"_id": username+'-'+title,
+			"course-info": {
+				"course-name": document.getElementById('course-name').value,
+				"course": {
+					"dept-id": document.getElementById('dept-id').value,
+					"course-num": document.getElementById('course-num').value,
+					"section-num": document.getElementById('section-num').value,
 				},
-				term: semester+' '+year,
-				from-time: document.getElementById('from-time').value,
-				to-time: document.getElementById('to-time').value,
-				meeting-building: document.getElementById('meeting-building').value,
-				meeting-room: document.getElementById('meeting-room').value,
-				meetings: {
-					mo: $scope.mo,
-					tu: $scope.tu,
-					we: $scope.we,
-					th: $scope.th,
-					fr: $scope.fr
+				"term": semester+' '+year,
+				"from-time": document.getElementById('from-time').value,
+				"to-time": document.getElementById('to-time').value,
+				"meeting-building": document.getElementById('meeting-building').value,	
+				"meeting-room": document.getElementById('meeting-room').value,
+				"meetings": {
+					"mo": $scope.mo,
+					"tu": $scope.tu,
+					"we": $scope.we,
+					"th": $scope.th,
+					"fr": $scope.fr
 				},
-				website: document.getElementById('course-website').value,
+				"website": document.getElementById('course-website').value,
 			},
-			instructor-info: {
-				name: document.getElementById('instructor-name').value,
-				email: document.getElementById('instructor-email').value,
-				phone: document.getElementById('instructor-phone').value,
-				office-hours: document.getElementById('office-hours').value,
-				website: document.getElementById('instructor-website').value
+			"instructor-info": {
+				"name": document.getElementById('instructor-name').value,
+				"email": document.getElementById('instructor-email').value,
+				"phone": document.getElementById('instructor-phone').value,
+				"office-hours": document.getElementById('office-hours').value,
+				"website": document.getElementById('instructor-website').value
 			},
-			description: sectionsContents[i++],
-			objectives: sectionsContents[i++],
-			audience: sectionsContents[i++],
-			prerequisites: sectionsContents[i++],
-			goals: sectionsContents[i++],
-			requirements: sectionsContents[i++],
-			policies: sectionsContents[i++],
-			resources: sectionsContents[i++],
-			materials: sectionsContents[i++],
-			grading: sectionsContents[i++],
-			exams: sectionsContents[i++],
-			honor-code: sectionsContents[i++],
-			accessibility: sectionsContents[i++],
-			disclaimer: sectionsContents[i++],
-			time-table: timetable
-		}
+			"description": sectionsContents[i++],
+			"objectives": sectionsContents[i++],
+			"audience": sectionsContents[i++],
+			"prerequisites": sectionsContents[i++],
+			"goals": sectionsContents[i++],
+			"requirements": sectionsContents[i++],
+			"policies": sectionsContents[i++],
+			"resources": sectionsContents[i++],
+			"materials": sectionsContents[i++],
+			"grading": sectionsContents[i++],
+			"exams": sectionsContents[i++],
+			"honor-code": sectionsContents[i++],
+			"accessibility": sectionsContents[i++],
+			"disclaimer": sectionsContents[i++],
+			"time-table": timetable
+		};
 		
 		return json;
-	};
+	}
 	
 	// Populate the page from a loaded syllabus. Warning, will overwrite the existing data...
 	$scope.populateFromJSON = function(syllabus) {
@@ -472,7 +464,7 @@ app.controller('main-controller', function($scope, $window, $http) {
             document.getElementById("material_" + i).value = syllabus['time-table'][i]['material'];
             document.getElementById("homework_" + i).value = syllabus['time-table'][i]['homework'];
         }
-	});
+	}
     // Success and failure callbacks
     /*
     var success = function(resp) {$scope.resp = "Success! " + resp.data;};
