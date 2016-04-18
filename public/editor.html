@@ -31,16 +31,16 @@
             <div class=syllabus-info>
                 <h2> Syllabus Information </h2>
                 <div class="syllabus-actions">
-                    Syllabus Name <input type="text" id="syllabus-name">  
-                    <button value="SAVE" id="save-button">SAVE</button>
-                    Load Syllabus
+                    Syllabus Name: <input type="text" id="syllabus-name">  
+                    <button value="SAVE" id="save-button">Save</button>
+                    Load Syllabus:
                     <select>
                         <option value="Fall 2015"> Fall 2015 </option>
                         <option value="Spring 2016"> Spring 2016 </option>
                         <option value="Fall 2016"> Fall 2016 </option>
                         <option value="Spring 2017"> Spring 2017 </option>    
                     </select>
-                    <button value="LOAD">LOAD</button>
+                    <button value="LOAD">Load</button>
                 </div>
             </div>
 
@@ -74,11 +74,11 @@
 
                 <span id="prelude3">
                     <h3> Course Instructor</h3>
-                    <div class="instructor-info">Name <input type="text" id="instructor-name"></div>
-                    <div class="instructor-info">Email <input type="text" id="instructor-email"></div>
-                    <div class="instructor-info">Phone <input type="text" id="instructor-phone"></div>
-                    <div class="instructor-info">Office Hours <input type="text" id="instructor-office-hours"></div>
-                    <div class="instructor-info" style="color:gray;"><i>* Website </i><input type="text" id="instructor-website"></div>
+                    <div class="instructor-info">Name: <input type="text" id="instructor-name"></div>
+                    <div class="instructor-info">Email: <input type="text" id="instructor-email"></div>
+                    <div class="instructor-info" style="color:gray;"><i>Phone: </i><input type="text" id="instructor-phone"></div>
+                    <div class="instructor-info">Office Hours: <input type="text" id="instructor-office-hours"></div>
+                    <div class="instructor-info" style="color:gray;"><i>Website: </i><input type="text" id="instructor-website"></div>
                 </span>
 
                 <div id="note" style="color:gray;">
@@ -123,7 +123,7 @@
 
             <!-- Left button panel -->
             <div class="bottom">
-                <span class="button" id="preview-button" style="background: #93c1ee; color: whitesmoke;" ng-click="preview()">PREVIEW</span>
+                <span class="button" id="preview-button" style="background: #93c1ee; color: whitesmoke;" ng-click="preview()">Preview</span>
 
                 <form action="https://api.cloudconvert.com/convert" method="POST" enctype="multipart/form-data" style="width: 1050px;">
                     <input type="hidden" name="apikey" value="Zs2BH2Wykji2E2ZJh7tmBvZETDW2AT1_mv8ZcimWwzf1Ds4AYquUOyDPzf921Y9eorJeyAHses37jnWHPUlvyg">
@@ -133,13 +133,13 @@
                     <input type="hidden" name="outputformat" value="docx">
                     <input type="hidden" name="file" value="{{exportDOCX();}}">
                     <input class="button" id="export-docx-button" style="background: #93c1ee; color: whitesmoke;" type="submit"
-                    value="EXPORT
-                    TO WORD">
+                    value="Export
+                    to Word">
                 </form>
 
-                <a class="button" id="export-html-button" style="background: #93c1ee; color: whitesmoke;" ng-click="exportHTML()" ng-href="{{fileUrl}}" download="syllabus.html">EXPORT<br>TO HTML</a>
+                <a class="button" id="export-html-button" style="background: #93c1ee; color: whitesmoke;" ng-click="exportHTML()" ng-href="{{fileUrl}}" download="syllabus.html">Export<br>to HTML</a>
 
-                <span class="button" id="clear-button" style="background: #ff4d4d; color: whitesmoke;" ng-click="clear()">CLEAR<br>DATA</span>
+                <span class="button" id="clear-button" style="background: #ff4d4d; color: whitesmoke;" ng-click="clear()">Clear<br>Data</span>
             </div>
 
             <!-- Schedule -->
