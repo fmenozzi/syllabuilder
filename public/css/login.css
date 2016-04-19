@@ -1,3 +1,10 @@
+html {
+    background: whitesmoke;
+}
+body div {
+	background: white;
+}
+
 body {
 	width: 900px;
 	margin: auto;
@@ -67,12 +74,17 @@ h1 {
 	text-align: center;
 }
 
+/*----- USERNAME/PASSWORD -----*/
+
 #login_box {
+	position: absolute;
+	top:0; bottom:0;
+	left:0; right:0;
+	margin: auto;
 	padding: 30px;
 	display: block;
 	width: 400px;
 	height: 240px;
-	margin: 200px auto 0 auto;
 	border: 10px solid #93c1ee;
 }
 #login_box h2 {
@@ -127,4 +139,57 @@ button {
 button:hover {
 	color: white;
 	background: #235d86;
+}
+
+/*----- SEMESTER -----*/
+
+#semester-box {
+	padding: 30px;
+	position: absolute;
+	top:0; bottom:0;
+	left:0; right:0;
+	margin: auto;
+	display: block;
+	width: 400px;
+	height: 240px;
+	border: 10px solid #93c1ee;
+	visibility: hidden;
+}
+#semester-box h2 {
+	text-align: center;
+    color: white;
+    margin: 0 auto;
+    font-size: 1.75em;
+    background: #93c1ee;
+    width: 460px;
+    padding: 0px 10px 10px 10px;
+    margin: -30px 0px 0px -40px;
+}
+
+#s-fields {
+	width: 320px;
+	margin: 25px auto 0 auto;
+	line-height: 1.5em;
+}
+#s-fields span {
+	font-weight: bold;
+	font-size: 1.15em;
+	color: #235d86;
+	margin-left: 70px;
+	margin-bottom: 10px;
+	width: 60px;
+	display: inline-block;
+}
+select {
+    height: 30px;
+    line-height: 28px;
+    width: 110px;
+    background: white;
+    font-size: 1.25em;
+    /*margin-left: 15px;*/
+    /*text-indent: 33%;*/
+}
+option {
+	text-align: right;
+	font-family: Arial, sans-serif;
 }
