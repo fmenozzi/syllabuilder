@@ -107,7 +107,6 @@ button:focus {
     line-height: 0.2em;
     color: #235d86;
     text-align: center;
-    padding-bottom: 5px;
 }
 .syllabus-info button {
     height: 30px;
@@ -145,10 +144,14 @@ button:focus {
     display: block;
     padding-top: 5px;
 }
-#save-button {
-    margin-right: 80px;
+#save-button, #divider2 {
+    margin-right: 40px;
 }
-
+#divider2 {
+    padding-top: 20px;
+    padding-bottom: 20px; 
+    border-right: 3px solid whitesmoke; 
+}
 
 .prelude {
     padding: 0px 0px 30px 10px;

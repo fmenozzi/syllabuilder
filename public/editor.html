@@ -23,7 +23,7 @@
             <span id="title"> Syllabuilder </span>
             <a id="log_out" href="login.html"> Log Out </a>
             <span id="divider"></span>
-            <a id="help" href="help.html"> Help </a>
+            <a id="help" href="help.html" target="_blank"> Help </a>
         </div>
 
         <div id="main" ng-controller='main-controller'>
@@ -31,16 +31,21 @@
             <div class=syllabus-info>
                 <h2> Syllabus Information </h2>
                 <div class="syllabus-actions">
-                    Syllabus Name: <input type="text" id="syllabus-name">  
-                    <button value="SAVE" id="save-button" ng-click="saveSyllabus('testuser', 'testsyllabus')">Save</button>
-                    Load Syllabus:
-                    <select>
-                        <option value="Fall 2015"> Fall 2015 </option>
-                        <option value="Spring 2016"> Spring 2016 </option>
-                        <option value="Fall 2016"> Fall 2016 </option>
-                        <option value="Spring 2017"> Spring 2017 </option>    
-                    </select>
-                    <button value="LOAD" ng-click="loadSyllabus('testuser', 'testsyllabus')">Load</button>
+                    <span id="save-syllabus">
+                        Syllabus Name: <input type="text" id="syllabus-name">  
+                        <button value="SAVE" id="save-button" ng-click="saveSyllabus('testuser', 'testsyllabus')">Save</button>
+                    </span>
+                    <span id="divider2"></span>
+                    <span id="load-syllabus">
+                        Load Syllabus:
+                        <select>
+                            <option value="Fall 2015"> Fall 2015 </option>
+                            <option value="Spring 2016"> Spring 2016 </option>
+                            <option value="Fall 2016"> Fall 2016 </option>
+                            <option value="Spring 2017"> Spring 2017 </option>    
+                        </select>
+                        <button value="LOAD" ng-click="loadSyllabus('testuser', 'testsyllabus')">Load</button>
+                    </span>
                 </div>
             </div>
 

@@ -73,8 +73,9 @@ var getLocationSearch = function() {
 app.controller('main-controller', function($scope, $window, $http) {
     // Parse URL parameters to get year and semester
     var params = getLocationSearch().substring(1).split("&");
-    var year     = params[0].split("=")[1];
-    var semester = params[1].split("=")[1];
+    var username = params[0].split("=")[1]
+    var year     = params[1].split("=")[1];
+    var semester = params[2].split("=")[1];
 
     $scope.fdocstr = calendar[year][semester]["fdoc"];
     $scope.ldocstr = calendar[year][semester]["ldoc"];
