@@ -32,7 +32,7 @@
                 <h2> Syllabus Information </h2>
                 <div class="syllabus-actions">
                     Syllabus Name: <input type="text" id="syllabus-name">  
-                    <button value="SAVE" id="save-button">Save</button>
+                    <button value="SAVE" id="save-button" ng-click="saveSyllabus('testuser', 'testsyllabus')">Save</button>
                     Load Syllabus:
                     <select>
                         <option value="Fall 2015"> Fall 2015 </option>
@@ -40,7 +40,7 @@
                         <option value="Fall 2016"> Fall 2016 </option>
                         <option value="Spring 2017"> Spring 2017 </option>    
                     </select>
-                    <button value="LOAD">Load</button>
+                    <button value="LOAD" ng-click="loadSyllabus('testuser', 'testsyllabus')">Load</button>
                 </div>
             </div>
 
@@ -48,16 +48,16 @@
                 <h2> Course Information </h2>
                 <span id="prelude1">
                     <h3> Course Listing</h3>
-                    <div class="course-info">Course Title: <input type="text" id="course-name"></div>
-                    <div class="course-info">Department: <input type="text" id="dept-id" maxlength="4"></div>
-                    <div class="course-info">Course Number: <input type="text" id="course-num"></div>
-                    <div class="course-info">Section Number: <input type="text" id="section-num"></div>
-                    <div class="course-info" style="color:gray;"><i>Course Website: </i><input type="text" id="course-website"></div>
+                    <div class="course-info">Course Title <input type="text" id="course-name"></div>
+                    <div class="course-info">Department <input type="text" id="dept-id" maxlength="4"></div>
+                    <div class="course-info">Course Number <input type="text" id="course-num"></div>
+                    <div class="course-info">Section Number <input type="text" id="section-num"></div>
+                    <div class="course-info" style="color:gray;"><i>Course Website </i><input type="text" id="course-website"></div>
                 </span>
 
                 <span id="prelude2">
                     <h3> Course Meeting</h3>
-                    <div class="course-info" id="meeting-days">Weekdays:
+                    <div class="course-info" id="meeting-days">Weekdays
                         <span id="day_boxes">
                             <span><input type="checkbox" ng-model="mo">M </span>
                             <span><input type="checkbox" ng-model="tu">T </span>
@@ -66,10 +66,10 @@
                             <span><input type="checkbox" ng-model="fr">F </span>
                         </span>
                     </div>
-                    <div class="course-info">Start Time: <input type="text" id="from-time"></div>
-                    <div class="course-info">End Time: <input type="text" id="to-time"></div>
-                    <div class="course-info">Building: <input type="text" id="meeting-building"></div>
-                    <div class="course-info">Room: <input type="text" id="meeting-room"></div>
+                    <div class="course-info">Start Time <input type="text" id="from-time"></div>
+                    <div class="course-info">End Time <input type="text" id="to-time"></div>
+                    <div class="course-info">Building <input type="text" id="meeting-building"></div>
+                    <div class="course-info">Room <input type="text" id="meeting-room"></div>
                 </span>
 
                 <span id="prelude3">
