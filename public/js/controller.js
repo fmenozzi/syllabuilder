@@ -70,10 +70,10 @@ var getLocationSearch = function() {
 		return location.search;
 };
 
-app.controller('main-controller', function($scope, $window, $http) {
+app.controller('main-controller', function($scope, $window, $http, $document) {
     // Parse URL parameters to get year and semester
     var params = getLocationSearch().substring(1).split("&");
-    var username = params[0].split("=")[1]
+    var username = params[0].split("=")[1];
     var year     = params[1].split("=")[1];
     var semester = params[2].split("=")[1];
 
@@ -93,6 +93,13 @@ app.controller('main-controller', function($scope, $window, $http) {
         return false;
     };
 
+	// Initialize weekday booleans
+	$scope.mo = false;
+	$scope.tu = false;
+	$scope.we = false;
+	$scope.th = false;
+	$scope.fr = false;
+	
     // Construct HTML representation of section contents
     // TODO: Handle newlines in the textarea more elegantly in the final HTML
     $scope.constructHTML = function() {
@@ -327,64 +334,60 @@ app.controller('main-controller', function($scope, $window, $http) {
         }
     }
 	
-	// DB save/load functions. Untested...
-	$scope.saveSyllabus = function(username, title) {
+	$scope.loadList = function() { // Get list of saved syllabus titles
+		var success = function(resp) {
+			console.log("Retrieved list "+JSON.stringify(resp.data));
+			$scope.loadnames = resp.data;
+		};
+		var failure = function(resp) {
+			console.log("List load failure! "+resp.data);
+		};
+		var listPath = "/list";
+		$http.get(listPath, {params: { username: username }}).then(success, failure);
+	}
+	
+	$scope.loadList(); // Initialize list of saved syllabi
+	
+	$scope.saveSyllabus = function(title) {
 		var syllabus = constructJSON(username, title);
 
-        var success = function(resp) {alert("SUCCESSFUL SAVE!");};
-        var failure = function(resp) {alert("FAILED SAVE!");};
+        var success = function(resp) {
+			console.log("Saved syllabus "+username+'-'+title);
+			alert("Save successful!");
+			$scope.loadList(); // Refresh list of saved syllabi		
+		};
+        var failure = function(resp) {
+			console.log("Save failure! "+resp.data);
+			alert("Save failed! Error from the server: " +resp.data);
+		};
 
-        $http.post("/syllabi/:" + username + "-" + title).then(success, failure);
-
-        /*
-		$http.post('/syllabi/:'+username+'-'+title).success(function(data) {
-			return 0; // success
-		});
-        */
+		var postPath = "/save";
+		$http.post(postPath, syllabus).then(success, failure);
 	}
 		
-	$scope.loadSyllabus = function(username, title) {
-        /*
-        var syllabus;
+	$scope.loadSyllabus = function(title) {
+        var success = function(resp) {
+			console.log("Retrieved syllabus "+JSON.stringify(resp.data));
+			$scope.populateFromJSON(resp.data);
+		};
+        var failure = function(resp) {
+			console.log("Load failure! " + resp.data);
+		};
+        var getPath = "/load";
 
-        var success = function(resp) {alert("SUCCESSFUL LOAD!"); syllabus = resp.data};
-        var failure = function(resp) {alert("FAILED LOAD!");};
-
-        $http.get("/syllabi/:" + username + "-" + title).then(success, failure);
-        */
-
-        var success = function(resp) {console.log("Success! " + resp.data.message);};//$scope.resp = "Success! " + resp.data;};
-        var failure = function(resp) {console.log("Failure! " + resp.status);};//$scope.resp = "Failure! " + resp.status;};
-
-        var getPath = "http://syllabuilder-menozzi.apps.unc.edu/save";
-
-        var sampleJSON = {hello: "world", foo: "bar"};
-
-        $http.get(getPath, {params: sampleJSON}).then(success, failure);
-
-        /*
-		var syllabus;
-		$http.get('/syllabi/:'+username+'-'+title).success(function(data) {
-			syllabus = data;
-		});
-        */
-
-
-
-
-        
-		// TODO: Add some sort of confirmation so the user doesn't accidentally lose work
-		//$scope.populateFromJSON(syllabus);
+        $http.get(getPath, {params: {_id: username+'-'+title}}).then(success, failure);
 	}
 	
 	// Compile form data into a JSON object for storage in database
-	var constructJSON = function(username, title) {
-		var i = 0;
-		
+	var constructJSON = function(username, title) {	
 		// Construct timetable
 		var timetable = [];
-		 for (var i = 0; i < $scope.dates.length; i++) {
-            timetable.append({material: document.getElementById("material_" + i).value, homework: document.getElementById("homework_" + i).value});           
+		 for (var j = 0; j < $scope.dates.length-5; j+=5) {
+            if ($scope.mo) timetable[timetable.length] = {material: document.getElementById("material_" + j).value, homework: document.getElementById("homework_" + j).value}; 
+			if ($scope.tu) timetable[timetable.length] = {material: document.getElementById("material_" + (j+1)).value, homework: document.getElementById("homework_" + (j+1)).value};           
+			if ($scope.we) timetable[timetable.length] = {material: document.getElementById("material_" + (j+2)).value, homework: document.getElementById("homework_" + (j+2)).value};
+			if ($scope.th) timetable[timetable.length] = {material: document.getElementById("material_" + (j+3)).value, homework: document.getElementById("homework_" + (j+3)).value};
+			if ($scope.fr) timetable[timetable.length] = {material: document.getElementById("material_" + (j+4)).value, homework: document.getElementById("homework_" + (j+4)).value};
         }
 		
 		var json = {
@@ -393,8 +396,8 @@ app.controller('main-controller', function($scope, $window, $http) {
 				"course-name": document.getElementById('course-name').value,
 				"course": {
 					"dept-id": document.getElementById('dept-id').value,
-					"course-num": document.getElementById('course-num').value,
-					"section-num": document.getElementById('section-num').value,
+					"course-num": parseInt(document.getElementById('course-num').value),
+					"section-num": parseInt(document.getElementById('section-num').value),
 				},
 				"term": semester+' '+year,
 				"from-time": document.getElementById('from-time').value,
@@ -414,23 +417,23 @@ app.controller('main-controller', function($scope, $window, $http) {
 				"name": document.getElementById('instructor-name').value,
 				"email": document.getElementById('instructor-email').value,
 				"phone": document.getElementById('instructor-phone').value,
-				"office-hours": document.getElementById('office-hours').value,
+				"office-hours": document.getElementById('instructor-office-hours').value,
 				"website": document.getElementById('instructor-website').value
 			},
-			"description": sectionsContents[i++],
-			"objectives": sectionsContents[i++],
-			"audience": sectionsContents[i++],
-			"prerequisites": sectionsContents[i++],
-			"goals": sectionsContents[i++],
-			"requirements": sectionsContents[i++],
-			"policies": sectionsContents[i++],
-			"resources": sectionsContents[i++],
-			"materials": sectionsContents[i++],
-			"grading": sectionsContents[i++],
-			"exams": sectionsContents[i++],
-			"honor-code": sectionsContents[i++],
-			"accessibility": sectionsContents[i++],
-			"disclaimer": sectionsContents[i++],
+			"description": sectionContents["Description"],
+			"objectives": sectionContents["Objectives"],
+			"audience": sectionContents["Audience"],
+			"prerequisites": sectionContents["Prerequisites"],
+			"goals": sectionContents["Goals"],
+			"requirements": sectionContents["Requirements"],
+			"policies": sectionContents["Policies"],
+			"resources": sectionContents["Resources"],
+			"materials": sectionContents["Materials"],
+			"grading": sectionContents["Grading"],
+			"exams": sectionContents["Exams"],
+			"honor-code": sectionContents["Honor Code"],
+			"accessibility": sectionContents["Accessibility"],
+			"disclaimer": sectionContents["Disclaimer"],
 			"time-table": timetable
 		};
 		
@@ -461,32 +464,46 @@ app.controller('main-controller', function($scope, $window, $http) {
 		document.getElementById("instructor-website").value      = syllabus['instructor-info']['website'];
 		
 		// Populate section data
-		var i = 0;
-		sectionContents[i++] = syllabus['description'];
-		sectionContents[i++] = syllabus['objectives'];
-		sectionContents[i++] = syllabus['audience'];
-		sectionContents[i++] = syllabus['prerequisites'];
-		sectionContents[i++] = syllabus['goals'];
-		sectionContents[i++] = syllabus['requirements'];
-		sectionContents[i++] = syllabus['policies'];
-		sectionContents[i++] = syllabus['resources'];
-		sectionContents[i++] = syllabus['materials'];
-		sectionContents[i++] = syllabus['grading'];
-		sectionContents[i++] = syllabus['exams'];
-		sectionContents[i++] = syllabus['honor-code'];
-		sectionContents[i++] = syllabus['accessibility'];
-		sectionContents[i++] = syllabus['disclaimer'];
+		$scope.saveSection(syllabus["description"], $scope.currentSection, "Description");
+		$scope.saveSection(syllabus["objectives"], $scope.currentSection, "Objectives");
+		$scope.saveSection(syllabus["prerequisites"], $scope.currentSection, "Prerequisites");
+		$scope.saveSection(syllabus["goals"], $scope.currentSection, "Goals");
+		$scope.saveSection(syllabus["requirements"], $scope.currentSection, "Requirements");
+		$scope.saveSection(syllabus["policies"], $scope.currentSection, "Policies");
+		$scope.saveSection(syllabus["resources"], $scope.currentSection, "Resources");
+		$scope.saveSection(syllabus["materials"], $scope.currentSection, "Materials");
+		$scope.saveSection(syllabus["grading"], $scope.currentSection, "Grading");
+		$scope.saveSection(syllabus["exams"], $scope.currentSection, "Exams");
+		$scope.saveSection(syllabus["honor-code"], $scope.currentSection, "Honor Code");
+		$scope.saveSection(syllabus["accessibility"], $scope.currentSection, "Accessibility");
+		$scope.saveSection(syllabus["disclaimer"], $scope.currentSection, "Disclaimer");
 		
-		for (var i = 0; i < $scope.dates.length; i++) {
-            document.getElementById("material_" + i).value = syllabus['time-table'][i]['material'];
-            document.getElementById("homework_" + i).value = syllabus['time-table'][i]['homework'];
-        }
+		// Populate timetable
+		$document.ready(function () { // Wait for the DOM to update according to loaded dates
+			var timetable = syllabus['time-table'];
+			for (var i = 0; i < $scope.dates.length-5; i+=5) {
+				if ($scope.mo) { 
+					document.getElementById("material_"+i).value = timetable[i]['material'];
+					document.getElementById("homework_"+i).value = timetable[i]['homework'];
+				}
+				if ($scope.tu) {
+					document.getElementById("material_"+(i+1)).value = timetable[i+1]['material'];
+					document.getElementById("homework_"+(i+1)).value = timetable[i+1]['homework'];
+				}
+				if ($scope.we) {
+					document.getElementById("material_"+(i+2)).value = timetable[i+2]['material'];
+					document.getElementById("homework_"+(i+2)).value = timetable[i+2]['homework'];
+				}
+				if ($scope.th) { 
+					document.getElementById("material_"+(i+3)).value = timetable[i+3]['material'];
+					document.getElementById("homework_"+(i+3)).value = timetable[i+3]['homework'];
+				}
+				if ($scope.fr) {
+					document.getElementById("material_"+(i+4)).value = timetable[i+4]['material'];
+					document.getElementById("homework_"+(i+4)).value = timetable[i+4]['homework'];
+				}
+			}
+		});
+		
 	}
-    // Success and failure callbacks
-    /*
-    var success = function(resp) {$scope.resp = "Success! " + resp.data;};
-    var failure = function(resp) {$scope.resp = "Failure! " + resp.status;};
-
-    $http.get("http://syllabuilder-menozzi.apps.unc.edu/test").then(success, failure);
-    */
 });

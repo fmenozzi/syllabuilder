@@ -3,6 +3,8 @@
 var express  = require('express');
 var fs       = require('fs');
 var mongoose = require('mongoose');
+var bodyParser = require('body-parser');
+var util = require('util');
 
 var db_host = process.env.OPENSHIFT_MONGODB_DB_HOST;
 var db_port = process.env.OPENSHIFT_MONGODB_DB_PORT;
@@ -12,10 +14,10 @@ var db_pass = process.env.OPENSHIFT_MONGODB_DB_PASSWORD;
 var uri = 'mongodb://' + db_host + ':' + db_port + '/syllabuilder';
 var options = {
     user: db_user,
-    pass: db_pass,
+    pass: db_pass
 };
 
-var SyllabusSchema = new mongoose.Schema({
+var SyllabusSchema = mongoose.Schema({
     "_id": String,
     "course-info": {
         "course-name": String,
@@ -62,10 +64,6 @@ var SyllabusSchema = new mongoose.Schema({
     "time-table": [{material: String, homework: String}]
 });
 
-mongoose.model('Syllabus', SyllabusSchema);
-
-var Syllabus = mongoose.model('Syllabus');
-
 mongoose.connect(uri, options);
 
 var db = mongoose.connection;
@@ -73,6 +71,8 @@ db.on('error', console.error.bind(console, 'connection error: '));
 db.once('open', function() {
     console.log("We're connected!");
 });
+
+var Syllabus = mongoose.model('Syllabus', SyllabusSchema);
 
 /**
  *  Define the sample application.
@@ -100,7 +100,7 @@ var SampleApp = function() {
             //  allows us to run/test the app locally.
             console.warn('No OPENSHIFT_NODEJS_IP var, using 127.0.0.1');
             self.ipaddress = "127.0.0.1";
-        };
+        }
     };
 
 
@@ -177,24 +177,41 @@ var SampleApp = function() {
 
         self.routes['/test'] = function(req, res) {
             res.status(200).json({message: "Hello, World!"});
-        }
+        };
 
-        self.routes['/save'] = function(req, res) {
-            // req.query is JSON object
-            var hello = req.query.hello;
-            var foo   = req.query.foo;
-
-            if (hello === "world" && foo === "bar")
-                res.status(200).json({message: "All good!"});
-            else
-                res.status(404).json({});
-        }
-
-        self.routes['/load'] = function(req, res) {
-
-        }
-    };
-
+        self.routes['/load'] = function(req, res) { // Sends back a single syllabus by its id
+			Syllabus.findOne({ '_id': req.query }, function (err, syllabus) {
+				if (err) {
+					console.log('Failed to retrieve syllabus '+req.query._id);
+					res.status(404);
+				}
+				else {
+					console.log('Retrieved syllabus '+syllabus._id);
+					res.status(200).json(syllabus);
+				}
+			});
+		};
+	
+		self.routes['/list'] = function(req, res) {	// Sends back an array of syllabus names given a requested username
+            var regexstr = "^" + req.query.username + "-";
+			Syllabus.find({'_id': {"$regex": regexstr}}, function (err, syllabi) {
+				if (err) {
+					console.log('Error in retrieving syllabus list ' + req.query);
+					res.status(404).json({ message: 'Error in retrieving syllabus list '+err });
+				} else {
+					console.log('Retrieved syllabi for user '+req.query.username);
+					var names = [];
+					var id;
+                    for (var i = 0; i < syllabi.length; i++) {
+						id = syllabi[i]._id;
+						names[names.length] = id.slice(id.indexOf('-')+1, id.length); // Send back only the syllabus name portion of the id
+					}
+    
+                    res.status(200).send(names);
+				}
+			});
+		};
+	};
 
     /**
      *  Initialize the server (express) and create the routes and register
@@ -203,46 +220,24 @@ var SampleApp = function() {
     self.initializeServer = function() {
         self.createRoutes();
         self.app = express.createServer();
+		self.app.use(bodyParser.urlencoded({extended: true}));
+		self.app.use(bodyParser.json());
 
         //  Add handlers for the app (from the routes).
         for (var r in self.routes) {
             self.app.get(r, self.routes[r]);
         }
-
-        self.app.get('/syllabi', function(req, res, next) {
-            Syllabus.find(function(err, syllabi) {
-                if(err) return next(err);
-                
-                res.json(syllabi);
-            });
-        });
-
-        self.app.post('/syllabi', function(req, res, next) {
-            var syllabus = new Syllabus(req.body);
-            
-            syllabus.save(function(err, syllabus) {
-                if(err) return next(err);
-
-                res.json(syllabus);
-            });
-        });
-
-        self.app.param('syllabus', function(req, res, next, id) {
-            var query = Syllabus.findbyId(id);
-            
-            query.exec(function (err, post) {
-                if (err) return next(err);
-                if (!post) return next(new Error('syllabus not found'));
-                
-                req.post = post;
-                return next();
-            });
-        });
-
-        self.app.get('/syllabi/:syllabus', function(req, res) {
-            res.json(req.post);
-        });
-
+		 
+		self.app.post('/save', function(req, res) {
+			var id = req.body._id;
+			delete req.body['_id'];
+			var syllabus = new Syllabus(req.body);
+			Syllabus.findOneAndUpdate({ _id: id }, syllabus, { upsert: true }, function(err) {
+				if (err) res.json({ message: 'Error! '+err });
+				res.json({ message: 'Syllabus saved!' });
+			});
+		}); 
+		
         self.app.use(express.static('public'));
     };
 
