@@ -34,7 +34,7 @@ header {
     margin: -62px auto 0 auto;
 }
 
-#log_out {
+#close {
     position: absolute;
     right: 12px;
     top: 10px;
@@ -45,7 +45,7 @@ header {
     color: white;
     font-weight: bold;
 }
-#log_out:hover {
+#close:hover {
     color: white;
     background: #235d86;
 }
@@ -68,7 +68,7 @@ h1 {
     display: block;
     width: 500px;
     height: auto;
-    margin: 150px auto 0 auto;
+    margin: 150px auto 100px auto;
     border: 10px solid #93c1ee;
 }
 #help_box h2 {
