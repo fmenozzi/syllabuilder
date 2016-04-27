@@ -181,7 +181,7 @@ app.controller('main-controller', function($scope, $window, $http, $document) {
         if (instructorOfficeHours === "")
             instructorOfficeHours = "<span style='color: red;'>[INSERT-INSTRUCTOR-OFFICE-HOURS-HERE]</span>";
         var instructorWebsite = document.getElementById("instructor-website").value;
-        html += "<div style='font-size: 18pt; font-weight: bold;'>" + deptId + " " + courseNum + "-" + sectionNum + ": " + courseName+ "</div>";
+        html += "<div style='font-size: 18pt; font-weight: bold;'>" + deptId.toUpperCase() + " " + courseNum + "-" + sectionNum + ": " + courseName+ "</div>";
         html += "<br>";
         html += "<br>";
         html += "<div class='prelude-header'>General Course Info</div>";
