@@ -481,26 +481,32 @@ app.controller('main-controller', function($scope, $window, $http, $document) {
 		// Populate timetable
 		$document.ready(function () { // Wait for the DOM to update according to loaded dates
 			var timetable = syllabus['time-table'];
+			var j = 0;
 			for (var i = 0; i < $scope.dates.length-5; i+=5) {
 				if ($scope.mo) { 
-					document.getElementById("material_"+i).value = timetable[i]['material'];
-					document.getElementById("homework_"+i).value = timetable[i]['homework'];
+					document.getElementById("material_"+i).value = timetable[j]['material'];
+					document.getElementById("homework_"+i).value = timetable[j]['homework'];
+					j++;
 				}
 				if ($scope.tu) {
-					document.getElementById("material_"+(i+1)).value = timetable[i+1]['material'];
-					document.getElementById("homework_"+(i+1)).value = timetable[i+1]['homework'];
+					document.getElementById("material_"+(i+1)).value = timetable[j]['material'];
+					document.getElementById("homework_"+(i+1)).value = timetable[j]['homework'];
+					j++;
 				}
 				if ($scope.we) {
-					document.getElementById("material_"+(i+2)).value = timetable[i+2]['material'];
-					document.getElementById("homework_"+(i+2)).value = timetable[i+2]['homework'];
+					document.getElementById("material_"+(i+2)).value = timetable[j]['material'];
+					document.getElementById("homework_"+(i+2)).value = timetable[j]['homework'];
+					j++;
 				}
 				if ($scope.th) { 
-					document.getElementById("material_"+(i+3)).value = timetable[i+3]['material'];
-					document.getElementById("homework_"+(i+3)).value = timetable[i+3]['homework'];
+					document.getElementById("material_"+(i+3)).value = timetable[j]['material'];
+					document.getElementById("homework_"+(i+3)).value = timetable[j]['homework'];
+					j++;
 				}
 				if ($scope.fr) {
-					document.getElementById("material_"+(i+4)).value = timetable[i+4]['material'];
-					document.getElementById("homework_"+(i+4)).value = timetable[i+4]['homework'];
+					document.getElementById("material_"+(i+4)).value = timetable[j]['material'];
+					document.getElementById("homework_"+(i+4)).value = timetable[j]['homework'];
+					j++;
 				}
 			}
 		});
