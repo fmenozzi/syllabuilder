@@ -229,6 +229,8 @@ var SampleApp = function() {
 			});
 		}); 
 		
+		// TODO: Add a post route to delete from the DB
+		
         self.app.use(express.static('public'));
     };
 

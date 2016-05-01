@@ -70,6 +70,11 @@ var getLocationSearch = function() {
 		return location.search;
 };
 
+/* TODO:
+ * Add Onyen authentication
+ * Replace all DOM manipulation with Angular variables
+ * Add a function to delete a saved syllabus
+ */
 app.controller('main-controller', function($scope, $window, $http, $document) {
     // Parse URL parameters to get year and semester
     var params = getLocationSearch().substring(1).split("&");
@@ -442,6 +447,10 @@ app.controller('main-controller', function($scope, $window, $http, $document) {
 	
 	// Populate the page from a loaded syllabus. Warning, will overwrite the existing data...
 	$scope.populateFromJSON = function(syllabus) {
+		// Populate syllabus title
+		var id = syllabus['_id'];
+		$scope.savename											 = id.slice(id.indexOf('-')+1, id.length);
+		
 		// Populate prelude
 		document.getElementById("course-name").value             = syllabus['course-info']['course-name'];
         document.getElementById("dept-id").value                 = syllabus['course-info']['course']['dept-id'];
